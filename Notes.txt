@@ -1,0 +1,8 @@
+git clone 'address from github'
+//use this second time if first not work ->       comopser require laravel/ui --dev
+database clone
+rename .env.example to .env
+change db_database to your db name
+APP_NAME = your app name
+create an empty database
+php artisan migrate:refresh --seed
