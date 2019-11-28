@@ -18,13 +18,14 @@
            </thead>
            <tbody>
              @foreach ($answers as $answer)
-
+        
+             @if($answer->question_id === $qid)
              <tr data-id="{{$answer->id}}">
                <td>{{ substr($answer->answer,'0','40') }}</td>
                <td>
 
                </td>
-          
+              @endif
              @endforeach
            </tbody>
          </table>

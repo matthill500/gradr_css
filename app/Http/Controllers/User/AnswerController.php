@@ -19,15 +19,16 @@ class AnswerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
+        $qid = (int)($id);
         $answers = Answer::all();
         $questions = Question::all();
 
       return view('user.answers.index')->with([
         'answers' => $answers,
-        'questions' => $questions
-
+        'questions' => $questions,
+        'qid' => $qid
       ]);
     }
 
@@ -75,7 +76,7 @@ class AnswerController extends Controller
      */
     public function show($id)
     {
-        //
+        $question_id = $id;
     }
 
     /**

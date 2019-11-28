@@ -22,7 +22,7 @@
            </tbody>
          </table>
 
-         <a href="{{ route('user.questions.index', $question->id )}}" class="btn btn-default">Back</a>
+         <a href="{{ route('user.questions.index' )}}" class="btn btn-default">Back</a>
          <a href="{{ route('user.answers.create', $question->id )}}" class="btn btn-default">Answer</a>
          <a href="{{ route('user.answers.index', $question->id)}}" class="btn btn-default">View Answers</a>
 

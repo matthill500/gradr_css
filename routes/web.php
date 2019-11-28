@@ -35,24 +35,25 @@ Route::get('/admin/questions/{id}/edit', 'Admin\QuestionController@edit')->name(
 Route::post('/admin/questions/{id}', 'Admin\QuestionController@update')->name('admin.questions.update');
 Route::delete('/admin/questions/{id}', 'Admin\QuestionController@destroy')->name('admin.questions.destroy');
 
-Route::get('/user/questions', 'User\QuestionController@index')->name('user.questions.index');
-Route::get('/user/questions/create', 'User\QuestionController@create')->name('user.questions.create');
-
-Route::get('/user/questions/{id}', 'User\QuestionController@show')->name('user.questions.show');
-Route::post('/user/questions/store', 'User\QuestionController@store')->name('user.questions.store');
-Route::get('/user/questions/{id}/edit', 'User\QuestionController@edit')->name('user.questions.edit');
-Route::post('/user/questions/{id}', 'User\QuestionController@update')->name('user.questions.update');
-Route::put('/user/questions/{id}', 'User\QuestionController@requestDelete')->name('user.questions.requestDelete');
-
 Route::get('/admin/students', 'Admin\StudentController@index')->name('admin.students.index');
-Route::get('/admin/students/{id}/create', 'Admin\StudentController@create')->name('admin.students.create');
+Route::get('/admin/students/create', 'Admin\StudentController@create')->name('admin.students.create');
 Route::get('/admin/students/{id}/show', 'Admin\StudentController@show')->name('admin.students.show');
 Route::post('/admin/students/store', 'Admin\StudentController@store')->name('admin.students.store');
 Route::get('/admin/students/{id}/edit', 'Admin\StudentController@edit')->name('admin.students.edit');
 Route::put('/admin/students/{id}', 'Admin\StudentController@update')->name('admin.students.update');
 Route::delete('/admin/students/{id}', 'Admin\StudentController@destroy')->name('admin.students.destroy');
 
-Route::get('/user/answers', 'User\AnswerController@index')->name('user.answers.index');
+Route::get('/user/questions', 'User\QuestionController@index')->name('user.questions.index');
+Route::get('/user/questions/create', 'User\QuestionController@create')->name('user.questions.create');
+Route::get('/user/questions/{id}', 'User\QuestionController@show')->name('user.questions.show');
+Route::post('/user/questions/store', 'User\QuestionController@store')->name('user.questions.store');
+Route::get('/user/questions/{id}/edit', 'User\QuestionController@edit')->name('user.questions.edit');
+Route::post('/user/questions/{id}', 'User\QuestionController@update')->name('user.questions.update');
+Route::put('/user/questions/{id}', 'User\QuestionController@requestDelete')->name('user.questions.requestDelete');
+
+
+
+Route::get('/user/answers{id}', 'User\AnswerController@index')->name('user.answers.index');
 Route::get('/user/answers/create/{id}', 'User\AnswerController@create')->name('user.answers.create');
 Route::get('/user/answers/{id}', 'User\AnswerController@show')->name('user.answers.show');
 Route::post('/user/answers/store/{id}', 'User\AnswerController@store')->name('user.answers.store');
