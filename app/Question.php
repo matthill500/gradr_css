@@ -11,5 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-  
+  public function student(){
+    return $this->belongsTo('App\Student');
+  }
 }

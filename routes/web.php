@@ -53,9 +53,9 @@ Route::put('/user/questions/{id}', 'User\QuestionController@requestDelete')->nam
 
 
 
-Route::get('/user/answers{id}', 'User\AnswerController@index')->name('user.answers.index');
+Route::get('/user/answers/{id}', 'User\AnswerController@index')->name('user.answers.index');
 Route::get('/user/answers/create/{id}', 'User\AnswerController@create')->name('user.answers.create');
-Route::get('/user/answers/{id}', 'User\AnswerController@show')->name('user.answers.show');
+//Route::get('/user/answers/{id}', 'User\AnswerController@show')->name('user.answers.show');
 Route::post('/user/answers/store/{id}', 'User\AnswerController@store')->name('user.answers.store');
 Route::get('/user/answers/{id}/edit', 'User\AnswerController@edit')->name('user.answers.edit');
 Route::post('/user/answers/{id}', 'User\AnswerController@update')->name('user.answers.update');
