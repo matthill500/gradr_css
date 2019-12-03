@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Question;
+
 use Auth;
 
 class QuestionController extends Controller
@@ -138,6 +139,7 @@ class QuestionController extends Controller
     {
       $question = Question::findOrFail($id);
 
+      $question->answer()->delete();
       $question->delete();
 
       return redirect()->route('admin.questions.deleteRequests');

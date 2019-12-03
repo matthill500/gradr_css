@@ -21,7 +21,7 @@ class CreateQuestionsTable extends Migration
             $table->bigInteger('student_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
         });
     }
 
