@@ -17,14 +17,21 @@
 */
 
 
+
 Route::get('/', 'PageController@welcome')->name('welcome');
 Route::get('/about', 'PageController@about')->name('about');
 
+Route::get('/user/courses/{id}', 'User\CoursesController@index')->name('user.courses');
+Route::get('/user/modules/{id}', 'User\ModulesController@index')->name('user.modules');
+Route::get('/user/base/{id}', 'User\BaseController@index')->name('user.base');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/home', 'Admin\HomeController@index')->name('admin.home');
 Route::get('/user/home', 'User\HomeController@index')->name('user.home');
+
+
+
 
 Route::get('/admin/questions', 'Admin\QuestionController@index')->name('admin.questions.index');
 Route::get('/admin/deleteRequests', 'Admin\QuestionController@deleteRequests')->name('admin.questions.deleteRequests');
@@ -42,6 +49,38 @@ Route::post('/admin/students/store', 'Admin\StudentController@store')->name('adm
 Route::get('/admin/students/{id}/edit', 'Admin\StudentController@edit')->name('admin.students.edit');
 Route::put('/admin/students/{id}', 'Admin\StudentController@update')->name('admin.students.update');
 Route::delete('/admin/students/{id}', 'Admin\StudentController@destroy')->name('admin.students.destroy');
+
+Route::get('/admin/colleges', 'Admin\CollegeController@index')->name('admin.colleges.index');
+Route::get('/admin/colleges/create', 'Admin\CollegeController@create')->name('admin.colleges.create');
+Route::get('/admin/colleges/{id}/show', 'Admin\CollegeController@show')->name('admin.colleges.show');
+Route::post('/admin/colleges/store', 'Admin\CollegeController@store')->name('admin.colleges.store');
+Route::get('/admin/colleges/{id}/edit', 'Admin\CollegeController@edit')->name('admin.colleges.edit');
+Route::put('/admin/colleges/{id}', 'Admin\CollegeController@update')->name('admin.colleges.update');
+Route::delete('/admin/colleges/{id}', 'Admin\CollegeController@destroy')->name('admin.colleges.destroy');
+
+Route::get('/admin/courses', 'Admin\CourseController@index')->name('admin.courses.index');
+Route::get('/admin/courses/create', 'Admin\CourseController@create')->name('admin.courses.create');
+Route::get('/admin/courses/{id}/show', 'Admin\CourseController@show')->name('admin.courses.show');
+Route::post('/admin/courses/store', 'Admin\CourseController@store')->name('admin.courses.store');
+Route::get('/admin/courses/{id}/edit', 'Admin\CourseController@edit')->name('admin.courses.edit');
+Route::put('/admin/courses/{id}', 'Admin\CourseController@update')->name('admin.courses.update');
+Route::delete('/admin/courses/{id}', 'Admin\CourseController@destroy')->name('admin.courses.destroy');
+
+Route::get('/admin/modules', 'Admin\ModuleController@index')->name('admin.modules.index');
+Route::get('/admin/modules/create', 'Admin\ModuleController@create')->name('admin.modules.create');
+Route::get('/admin/modules/{id}/show', 'Admin\ModuleController@show')->name('admin.modules.show');
+Route::post('/admin/modules/store', 'Admin\ModuleController@store')->name('admin.modules.store');
+Route::get('/admin/modules/{id}/edit', 'Admin\ModuleController@edit')->name('admin.modules.edit');
+Route::put('/admin/modules/{id}', 'Admin\ModuleController@update')->name('admin.modules.update');
+Route::delete('/admin/modules/{id}', 'Admin\ModuleController@destroy')->name('admin.modules.destroy');
+
+Route::get('/admin/categories', 'Admin\CategoryController@index')->name('admin.categories.index');
+Route::get('/admin/categories/create', 'Admin\CategoryController@create')->name('admin.categories.create');
+Route::get('/admin/categories/{id}/show', 'Admin\CategoryController@show')->name('admin.categories.show');
+Route::post('/admin/categories/store', 'Admin\CategoryController@store')->name('admin.categories.store');
+Route::get('/admin/categories/{id}/edit', 'Admin\CategoryController@edit')->name('admin.categories.edit');
+Route::put('/admin/categories/{id}', 'Admin\CategoryController@update')->name('admin.categories.update');
+Route::delete('/admin/categories/{id}', 'Admin\CategoryController@destroy')->name('admin.categories.destroy');
 
 Route::get('/user/questions', 'User\QuestionController@index')->name('user.questions.index');
 Route::get('/user/questions/create', 'User\QuestionController@create')->name('user.questions.create');

@@ -49,6 +49,18 @@
                 <a class="navbar-brand" href="{{ url('/admin/home') }}">
                   Home
                 </a>
+                <a class="navbar-brand" href="{{ url('admin/colleges') }}">
+                  Colleges
+                </a>
+                <a class="navbar-brand" href="{{ url('admin/courses') }}">
+                  Courses
+                </a>
+                <a class="navbar-brand" href="{{ url('admin/modules') }}">
+                  Modules
+                </a>
+                <a class="navbar-brand" href="{{ url('admin/categories') }}">
+                  Categories
+                </a>
                 <a class="navbar-brand" href="{{ url('admin/students') }}">
                   Students
                 </a>

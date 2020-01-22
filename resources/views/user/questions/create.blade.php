@@ -29,6 +29,18 @@
                   <label for="info">Info</label>
                   <textarea class="form-control" rows="5" id="info" name="info" value="{{old('info')}}"></textarea>
                 </div>
+
+                <div class="form-group">
+                  <label for="category">Category</label>
+                  <select name="category_id">
+                    @foreach($categories as $category)
+                      <option value="{{$category->id}}" {{ (old('category_id') == $category->id) ? "selected" : "" }} >
+                        {{$category->category_name}}
+                      </option>
+                    @endforeach
+                  </select>
+                </div>
+
                 <a href="{{route('user.questions.index')}}" class="btn btn-link">Cancel</a>
                 <button type="submit" class="btn btn-primary float-right">Submit</button>
 

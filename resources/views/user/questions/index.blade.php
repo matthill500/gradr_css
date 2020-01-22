@@ -17,6 +17,7 @@
             <thead>
               <th>Title</th>
                 <th>Info</th>
+                <th>Category</th>
            </thead>
            <tbody>
              @foreach ($questions as $question)
@@ -24,6 +25,7 @@
              <tr data-id="{{$question->id}}">
                <td>{{ substr($question->title,'0','20') }}</td>
                <td>{{ substr($question->info,'0','40') }}</td>
+               <td>{{ substr($question->category->category_name,'0','40') }}</td>
                <td>
 
 

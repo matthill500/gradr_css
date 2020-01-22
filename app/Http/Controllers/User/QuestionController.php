@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\User;
 use App\Student;
+use App\Category;
 use Auth;
 
 class QuestionController extends Controller
@@ -40,7 +41,11 @@ class QuestionController extends Controller
      */
     public function create()
     {
-          return view('user.questions.create');
+          $categories = Category::all();
+
+            return view('user.questions.create')->with([
+              'categories' => $categories
+            ]);
     }
 
     /**
@@ -60,6 +65,7 @@ class QuestionController extends Controller
 
       $question->title = $request->input('title');
       $question->info = $request->input('info');
+      $question->category_id = $request->input('category_id');
       $question->student_id = Auth::user()->student->id;
 
       $question->save();

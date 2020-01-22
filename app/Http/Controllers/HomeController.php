@@ -36,6 +36,12 @@ class HomeController extends Controller
         }
 
         return redirect()->route($home);
+
+        $colleges = College::all();
+
+        return view('admin.colleges.index')->with([
+          'colleges' => $colleges
+        ]);
     }
-    
+
 }
