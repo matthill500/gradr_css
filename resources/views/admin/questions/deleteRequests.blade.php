@@ -9,7 +9,7 @@
          Delete Requests
         </div>
         <div class="card-body">
-          @if (count($questions) === 0)
+          @if (count($questionsColleges) === 0)
           <p> There are no questions to delete </p>
           @else
           <table id="table-questions" class="table table-hover">
@@ -18,15 +18,49 @@
                 <th>Info</th>
            </thead>
            <tbody>
-             @foreach ($questions as $question)
-             @if ($question->delete === 1)
-             <tr data-id="{{$question->id}}">
-               <td>{{ substr($question->title,'0','20') }}</td>
-               <td>{{ substr($question->info,'0','40') }}</td>
+             @foreach ($questionsColleges as $questionsCollege)
+             @if ($questionsCollege->delete === 1)
+             <tr data-id="{{$questionsCollege->id}}">
+               <td>{{ substr($questionsCollege->title,'0','20') }}</td>
+               <td>{{ substr($questionsCollege->info,'0','40') }}</td>
                <td>
-                 <a href="{{ route('admin.questions.show', $question->id )}}" class="btn btn-default">View</a>
-                 <a href="{{route('admin.questions.edit', $question->id )}}" class="btn btn-warning">Edit</a>
-                  <form style="display:inline-block" method="POST" action="{{route('admin.questions.destroy',$question->id)}}">
+                 <a href="{{ route('admin.questions.show', $questionsCollege->id )}}" class="btn btn-default">View</a>
+                 <a href="{{route('admin.questions.edit', $questionsCollege->id )}}" class="btn btn-warning">Edit</a>
+                  <form style="display:inline-block" method="POST" action="{{route('admin.questions.destroyCollege',$questionsCollege->id)}}">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="form-control btn btn-danger">Delete</a>
+                 </form>
+               </td>
+               @endif
+             @endforeach
+
+             @foreach ($questionsCourses as $questionsCourse)
+             @if ($questionsCourse->delete === 1)
+             <tr data-id="{{$questionsCourse->id}}">
+               <td>{{ substr($questionsCourse->title,'0','20') }}</td>
+               <td>{{ substr($questionsCourse->info,'0','40') }}</td>
+               <td>
+                 <a href="{{ route('admin.questions.show', $questionsCourse->id )}}" class="btn btn-default">View</a>
+                 <a href="{{route('admin.questions.edit', $questionsCourse->id )}}" class="btn btn-warning">Edit</a>
+                  <form style="display:inline-block" method="POST" action="{{route('admin.questions.destroyCourse',$questionsCourse->id)}}">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="form-control btn btn-danger">Delete</a>
+                 </form>
+               </td>
+               @endif
+             @endforeach
+
+             @foreach ($questionsModules as $questionsModule)
+             @if ($questionsModule->delete === 1)
+             <tr data-id="{{$questionsModule->id}}">
+               <td>{{ substr($questionsModule->title,'0','20') }}</td>
+               <td>{{ substr($questionsModule->info,'0','40') }}</td>
+               <td>
+                 <a href="{{ route('admin.questions.show', $questionsModule->id )}}" class="btn btn-default">View</a>
+                 <a href="{{route('admin.questions.edit', $questionsModule->id )}}" class="btn btn-warning">Edit</a>
+                  <form style="display:inline-block" method="POST" action="{{route('admin.questions.destroyModule',$questionsModule->id)}}">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <button type="submit" class="form-control btn btn-danger">Delete</a>

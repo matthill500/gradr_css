@@ -78,8 +78,10 @@ class QuestionController extends Controller
         'category' => 'required|starts_with:co,mo'
       ]);
 
+      $about = $request->input('category');
 
 
+      if($about === "colleges"){
         $questionsCollege = new QuestionsCollege();
         $questionsCollege->title = $request->input('title');
         $questionsCollege->info = $request->input('info');
@@ -87,10 +89,28 @@ class QuestionController extends Controller
         $questionsCollege->student_id = Auth::user()->student->id;
 
         $questionsCollege->save();
+      }else if($about === "courses"){
+        $questionsCourse = new QuestionsCourse();
+        $questionsCourse->title = $request->input('title');
+        $questionsCourse->info = $request->input('info');
+        $questionsCourse->course_id = $request->input('course');
+        $questionsCourse->student_id = Auth::user()->student->id;
+
+        $questionsCourse->save();
+      }else if($about === "modules"){
+        $questionsModule = new QuestionsModule();
+        $questionsModule->title = $request->input('title');
+        $questionsModule->info = $request->input('info');
+        $questionsModule->module_id = $request->input('module');
+        $questionsModule->student_id = Auth::user()->student->id;
+
+        $questionsModule->save();
       }
 
-      return redirect()->route('user.questions.index');
-    }
+        return redirect()->route('user.questions.index');
+      }
+
+
 
     /**
      * Display the specified resource.
@@ -129,12 +149,29 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editCollege($id)
     {
-      $question = Question::findOrFail($id);
+      $questionsCollege = QuestionsCollege::findOrFail($id);
 
-      return view('user.questions.edit')->with([
-        'question' => $question
+      return view('user.questions.editCollege')->with([
+        'questionsCollege' => $questionsCollege
+      ]);
+    }
+
+    public function editCourse($id)
+    {
+      $questionsCourse = QuestionsCourse::findOrFail($id);
+
+      return view('user.questions.editCourse')->with([
+        'questionsCourse' => $questionsCourse
+      ]);
+    }
+    public function editModule($id)
+    {
+      $questionsModule = QuestionsModule::findOrFail($id);
+
+      return view('user.questions.editModule')->with([
+        'questionsModule' => $questionsModule
       ]);
     }
 
@@ -145,18 +182,52 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateCollege(Request $request, $id)
     {
-      $question = Question::findOrFail($id);
+      $questionsCollege = QuestionsCollege::findOrFail($id);
 
       $request->validate([
         'title' => 'required|max:191',
         'info' => 'required|min:30|max:300',
       ]);
 
-      $question->title = $request->input('title');
-      $question->info = $request->input('info');
-      $question->save();
+      $questionsCollege->title = $request->input('title');
+      $questionsCollege->info = $request->input('info');
+      $questionsCollege->save();
+
+      return redirect()->route('user.questions.index');
+
+    }
+
+    public function updateCourse(Request $request, $id)
+    {
+      $questionsCourse = QuestionsCourse::findOrFail($id);
+
+      $request->validate([
+        'title' => 'required|max:191',
+        'info' => 'required|min:30|max:300',
+      ]);
+
+      $questionsCourse->title = $request->input('title');
+      $questionsCourse->info = $request->input('info');
+      $questionsCourse->save();
+
+      return redirect()->route('user.questions.index');
+
+    }
+
+    public function updateModule(Request $request, $id)
+    {
+      $questionsModule = QuestionsModule::findOrFail($id);
+
+      $request->validate([
+        'title' => 'required|max:191',
+        'info' => 'required|min:30|max:300',
+      ]);
+
+      $questionsModule->title = $request->input('title');
+      $questionsModule->info = $request->input('info');
+      $questionsModule->save();
 
       return redirect()->route('user.questions.index');
 
@@ -169,17 +240,50 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function requestDelete($id)
+     public function requestDeleteCollege($id)
       {
-       $question = Question::findOrFail($id);
-              if($question->delete === 0){
-                $question->delete = 1;
-                  $question->save();
+       $questionsCollege = QuestionsCollege::findOrFail($id);
+
+              if($questionsCollege->delete === 0){
+                $questionsCollege->delete = 1;
+                  $questionsCollege->save();
                   return redirect()->route('user.questions.index')->with('status','Requested to delete!');
-              }else if($question->delete === 1){
-                $question->delete = 0;
-                $question->save();
+              }else if($questionsCollege->delete === 1){
+                $questionsCollege->delete = 0;
+                $questionsCollege->save();
              return redirect()->route('user.questions.index')->with('status','Request withdrawn!');
                }
       }
+
+      public function requestDeleteCourse($id)
+       {
+        $questionsCourse = QuestionsCourse::findOrFail($id);
+
+               if($questionsCourse->delete === 0){
+                 $questionsCourse->delete = 1;
+                   $questionsCourse->save();
+                   return redirect()->route('user.questions.index')->with('status','Requested to delete!');
+               }else if($questionsCourse->delete === 1){
+                 $questionsCourse->delete = 0;
+                 $questionsCourse->save();
+              return redirect()->route('user.questions.index')->with('status','Request withdrawn!');
+                }
+       }
+
+       public function requestDeleteModule($id)
+        {
+         $questionsModule = QuestionsModule::findOrFail($id);
+
+                if($questionsModule->delete === 0){
+                  $questionsModule->delete = 1;
+                    $questionsModule->save();
+                    return redirect()->route('user.questions.index')->with('status','Requested to delete!');
+                }else if($questionsModule->delete === 1){
+                  $questionsModule->delete = 0;
+                  $questionsModule->save();
+               return redirect()->route('user.questions.index')->with('status','Request withdrawn!');
+                 }
+        }
+
+
 }

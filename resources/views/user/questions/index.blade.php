@@ -29,9 +29,9 @@
                <td>{{ substr($questionsCollege->college_id,'0','40') }}</td>
                <td>
                  <a href="{{ route('user.questions.showCollege', $questionsCollege->id )}}" class="btn btn-primary">View</a>
-                 <a href="{{ route('user.questions.edit', $questionsCollege->id )}}" class="btn btn-warning">Edit</a>
+                 <a href="{{ route('user.questions.editCollege', $questionsCollege->id )}}" class="btn btn-warning">Edit</a>
 
-                 <form style="display:inline-block" method="POST" action="{{route('user.questions.requestDelete',$questionsCollege->id)}}">
+                 <form style="display:inline-block" method="POST" action="{{route('user.questions.requestDeleteCollege',$questionsCollege->id)}}">
                    <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                    @if ($questionsCollege->delete === 0)
@@ -55,9 +55,9 @@
             <td>{{ substr($questionsCourse->course_id,'0','40') }}</td>
             <td>
               <a href="{{ route('user.questions.showCourse', $questionsCourse->id )}}" class="btn btn-primary">View</a>
-              <a href="{{ route('user.questions.edit', $questionsCourse->id )}}" class="btn btn-warning">Edit</a>
+              <a href="{{ route('user.questions.editCourse', $questionsCourse->id )}}" class="btn btn-warning">Edit</a>
 
-              <form style="display:inline-block" method="POST" action="{{route('user.questions.requestDelete',$questionsCourse->id)}}">
+               <form style="display:inline-block" method="POST" action="{{route('user.questions.requestDeleteCourse',$questionsCourse->id)}}">
                 <input type="hidden" name="_method" value="PUT">
                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 @if ($questionsCourse->delete === 0)
@@ -81,9 +81,9 @@
          <td>{{ substr($questionsModule->module_id,'0','40') }}</td>
          <td>
            <a href="{{ route('user.questions.showModule', $questionsModule->id )}}" class="btn btn-primary">View</a>
-           <a href="{{ route('user.questions.edit', $questionsModule->id )}}" class="btn btn-warning">Edit</a>
+           <a href="{{ route('user.questions.editModule', $questionsModule->id )}}" class="btn btn-warning">Edit</a>
 
-           <form style="display:inline-block" method="POST" action="{{route('user.questions.requestDelete',$questionsModule->id)}}">
+            <form style="display:inline-block" method="POST" action="{{route('user.questions.requestDeleteModule',$questionsModule->id)}}">
              <input type="hidden" name="_method" value="PUT">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
              @if ($questionsModule->delete === 0)

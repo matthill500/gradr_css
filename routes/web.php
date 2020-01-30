@@ -17,7 +17,6 @@
 */
 
 
-
 Route::get('/', 'PageController@welcome')->name('welcome');
 Route::get('/about', 'PageController@about')->name('about');
 
@@ -32,7 +31,6 @@ Route::get('/user/home', 'User\HomeController@index')->name('user.home');
 
 
 
-
 Route::get('/admin/questions', 'Admin\QuestionController@index')->name('admin.questions.index');
 Route::get('/admin/deleteRequests', 'Admin\QuestionController@deleteRequests')->name('admin.questions.deleteRequests');
 Route::get('/admin/questions/create', 'Admin\QuestionController@create')->name('admin.questions.create');
@@ -40,7 +38,9 @@ Route::get('/admin/questions/{id}', 'Admin\QuestionController@show')->name('admi
 Route::post('/admin/questions/store', 'Admin\QuestionController@store')->name('admin.questions.store');
 Route::get('/admin/questions/{id}/edit', 'Admin\QuestionController@edit')->name('admin.questions.edit');
 Route::post('/admin/questions/{id}', 'Admin\QuestionController@update')->name('admin.questions.update');
-Route::delete('/admin/questions/{id}', 'Admin\QuestionController@destroy')->name('admin.questions.destroy');
+Route::delete('/admin/questions/{id}/college', 'Admin\QuestionController@destroyCollege')->name('admin.questions.destroyCollege');
+Route::delete('/admin/questions/{id}/course', 'Admin\QuestionController@destroyCourse')->name('admin.questions.destroyCourse');
+Route::delete('/admin/questions/{id}/module', 'Admin\QuestionController@destroyModule')->name('admin.questions.destroyModule');
 
 Route::get('/admin/students', 'Admin\StudentController@index')->name('admin.students.index');
 Route::get('/admin/students/create', 'Admin\StudentController@create')->name('admin.students.create');
@@ -88,9 +88,24 @@ Route::get('/user/questionsCollege/{id}', 'User\QuestionController@showCollege')
 Route::get('/user/questionsCourse/{id}', 'User\QuestionController@showCourse')->name('user.questions.showCourse');
 Route::get('/user/questionsModule/{id}', 'User\QuestionController@showModule')->name('user.questions.showModule');
 Route::post('/user/questions/store', 'User\QuestionController@store')->name('user.questions.store');
-Route::get('/user/questions/{id}/edit', 'User\QuestionController@edit')->name('user.questions.edit');
-Route::post('/user/questions/{id}', 'User\QuestionController@update')->name('user.questions.update');
-Route::put('/user/questions/{id}', 'User\QuestionController@requestDelete')->name('user.questions.requestDelete');
+Route::get('/user/questions/{id}/editCollege', 'User\QuestionController@editCollege')->name('user.questions.editCollege');
+Route::get('/user/questions/{id}/editCourse', 'User\QuestionController@editCourse')->name('user.questions.editCourse');
+Route::get('/user/questions/{id}/editModule', 'User\QuestionController@editModule')->name('user.questions.editModule');
+Route::post('/user/questions/{id}/updateCollege', 'User\QuestionController@updateCollege')->name('user.questions.updateCollege');
+Route::post('/user/questions/{id}/updateCourse', 'User\QuestionController@updateCourse')->name('user.questions.updateCourse');
+Route::post('/user/questions/{id}/updateModule', 'User\QuestionController@updateModule')->name('user.questions.updateModule');
+
+Route::put('/user/questions/{id}/college', 'User\QuestionController@requestDeleteCollege')->name('user.questions.requestDeleteCollege');
+Route::put('/user/questions/{id}/course', 'User\QuestionController@requestDeleteCourse')->name('user.questions.requestDeleteCourse');
+Route::put('/user/questions/{id}/module', 'User\QuestionController@requestDeleteModule')->name('user.questions.requestDeleteModule');
+
+
+
+
+
+
+
+
 
 
 

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\QuestionsCollege;
+use App\QuestionsCourse;
+use App\QuestionsModule;
 use App\Question;
 
 use Auth;
@@ -27,14 +30,6 @@ class QuestionController extends Controller
         $questions = Question::all();
 
         return view('admin.questions.index')->with([
-          'questions' => $questions
-        ]);
-    }
-    public function deleteRequests()
-    {
-        $questions = Question::all();
-
-        return view('admin.questions.deleteRequests')->with([
           'questions' => $questions
         ]);
     }
@@ -135,12 +130,47 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-      $question = Question::findOrFail($id);
+     public function deleteRequests()
+     {
+         $questionsColleges = QuestionsCollege::all();
+         $questionsCourses = QuestionsCourse::all();
+         $questionsModules = QuestionsModule::all();
 
-      $question->answer()->delete();
-      $question->delete();
+         return view('admin.questions.deleteRequests')->with([
+           'questionsColleges' => $questionsColleges,
+           'questionsCourses' => $questionsCourses,
+           'questionsModules' => $questionsModules
+         ]);
+     }
+
+    public function destroyCollege($id)
+    {
+      $questionsCollege = QuestionsCollege::findOrFail($id);
+
+      //$questionsCollege->answer()->delete();
+      $questionsCollege->delete();
+
+      return redirect()->route('admin.questions.deleteRequests');
+    }
+
+
+    public function destroyCourse($id)
+    {
+      $questionsCourse = QuestionsCourse::findOrFail($id);
+
+      //$questionsCollege->answer()->delete();
+      $questionsCourse->delete();
+
+      return redirect()->route('admin.questions.deleteRequests');
+    }
+
+
+    public function destroyModule($id)
+    {
+      $questionsModule = QuestionsModule::findOrFail($id);
+
+      //$questionsCollege->answer()->delete();
+      $questionsModule->delete();
 
       return redirect()->route('admin.questions.deleteRequests');
     }
