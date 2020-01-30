@@ -84,7 +84,9 @@ Route::delete('/admin/categories/{id}', 'Admin\CategoryController@destroy')->nam
 
 Route::get('/user/questions', 'User\QuestionController@index')->name('user.questions.index');
 Route::get('/user/questions/create', 'User\QuestionController@create')->name('user.questions.create');
-Route::get('/user/questions/{id}', 'User\QuestionController@show')->name('user.questions.show');
+Route::get('/user/questionsCollege/{id}', 'User\QuestionController@showCollege')->name('user.questions.showCollege');
+Route::get('/user/questionsCourse/{id}', 'User\QuestionController@showCourse')->name('user.questions.showCourse');
+Route::get('/user/questionsModule/{id}', 'User\QuestionController@showModule')->name('user.questions.showModule');
 Route::post('/user/questions/store', 'User\QuestionController@store')->name('user.questions.store');
 Route::get('/user/questions/{id}/edit', 'User\QuestionController@edit')->name('user.questions.edit');
 Route::post('/user/questions/{id}', 'User\QuestionController@update')->name('user.questions.update');

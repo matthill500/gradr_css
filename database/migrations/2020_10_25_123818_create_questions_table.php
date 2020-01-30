@@ -18,12 +18,11 @@ class CreateQuestionsTable extends Migration
             $table->string('title');
             $table->string('info');
             $table->boolean('delete')->default(0);
-            $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('student_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
         });
     }
 

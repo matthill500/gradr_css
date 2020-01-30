@@ -4,10 +4,15 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Question;
+use App\QuestionsModule;
+use App\QuestionsCourse;
+use App\QuestionsCollege;
 use App\User;
 use App\Student;
 use App\Category;
+use App\College;
+use App\Course;
+use App\Module;
 use Auth;
 
 class QuestionController extends Controller
@@ -24,11 +29,16 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::all();
+        $questionsColleges = QuestionsCollege::all();
+        $questionsCourses = QuestionsCourse::all();
+        $questionsModules = QuestionsModule::all();
+
         $users = User::all();
 
         return view('user.questions.index')->with([
-          'questions' => $questions,
+          'questionsColleges' => $questionsColleges,
+          'questionsCourses' => $questionsCourses,
+          'questionsModules' => $questionsModules,
           'users' => $users
 
         ]);
@@ -42,9 +52,15 @@ class QuestionController extends Controller
     public function create()
     {
           $categories = Category::all();
+          $colleges = College::all();
+          $courses = Course::all();
+          $modules = Module::all();
 
             return view('user.questions.create')->with([
-              'categories' => $categories
+              'categories' => $categories,
+              'colleges' => $colleges,
+              'courses' => $courses,
+              'modules' => $modules
             ]);
     }
 
@@ -59,16 +75,19 @@ class QuestionController extends Controller
       $request->validate([
         'title' => 'required|max:191',
         'info' => 'required|min:30|max:300',
+        'category' => 'required|starts_with:co,mo'
       ]);
 
-      $question = new Question();
 
-      $question->title = $request->input('title');
-      $question->info = $request->input('info');
-      $question->category_id = $request->input('category_id');
-      $question->student_id = Auth::user()->student->id;
 
-      $question->save();
+        $questionsCollege = new QuestionsCollege();
+        $questionsCollege->title = $request->input('title');
+        $questionsCollege->info = $request->input('info');
+        $questionsCollege->college_id = $request->input('college');
+        $questionsCollege->student_id = Auth::user()->student->id;
+
+        $questionsCollege->save();
+      }
 
       return redirect()->route('user.questions.index');
     }
@@ -79,12 +98,28 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showCollege($id)
     {
-      $question = Question::findOrFail($id);
+      $questionsCollege = QuestionsCollege::findOrFail($id);
 
-      return view('user.questions.show')->with([
-        'question' => $question
+      return view('user.questions.showCollege')->with([
+        'questionsCollege' => $questionsCollege
+      ]);
+    }
+    public function showCourse($id)
+    {
+      $questionsCourse = QuestionsCourse::findOrFail($id);
+
+      return view('user.questions.showCourse')->with([
+        'questionsCourse' => $questionsCourse
+      ]);
+    }
+    public function showModule($id)
+    {
+      $questionsModule = QuestionsModule::findOrFail($id);
+
+      return view('user.questions.showModule')->with([
+        'questionsModule' => $questionsModule
       ]);
     }
 
