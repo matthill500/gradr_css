@@ -109,7 +109,7 @@ Route::put('/user/questions/{id}/module', 'User\QuestionController@requestDelete
 
 
 
-Route::get('/user/answers/{id}', 'User\AnswerController@index')->name('user.answers.index');
+Route::get('/user/answers/{type}/{id}', 'User\AnswerController@index')->name('user.answers.index');
 Route::get('/user/answers/create/{id}', 'User\AnswerController@create')->name('user.answers.create');
 //Route::get('/user/answers/{id}', 'User\AnswerController@show')->name('user.answers.show');
 Route::post('/user/answers/store/{id}', 'User\AnswerController@store')->name('user.answers.store');

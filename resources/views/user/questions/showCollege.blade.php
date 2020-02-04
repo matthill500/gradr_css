@@ -24,7 +24,8 @@
 
          <a href="{{ route('user.questions.index' )}}" class="btn btn-default">Back</a>
          <a href="{{ route('user.answers.create', $questionsCollege->id )}}" class="btn btn-default">Answer</a>
-         <a href="{{ route('user.answers.index', $questionsCollege->id)}}" class="btn btn-default">View Answers</a>
+         <a href="{{ route('user.answers.index', 
+          ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}" class="btn btn-default">View Answers</a>
 
         </div>
       </div>

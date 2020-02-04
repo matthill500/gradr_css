@@ -9,6 +9,9 @@ namespace App\Http\Controllers\User;
 use App\Answer;
 use App\Question;
 use Auth;
+use App\QuestionsModule;
+use App\QuestionsCourse;
+use App\QuestionsCollege;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -19,17 +22,36 @@ class AnswerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index($type, $id)
     {
+
         $qid = (int)($id);
         $answers = Answer::all();
-        $questions = Question::all();
+        $question = $this->getQuestion($type, $id);
 
       return view('user.answers.index')->with([
         'answers' => $answers,
-        'questions' => $questions,
+        'question' => $question,
         'qid' => $qid
       ]);
+    }
+
+    private function getQuestion($type, $id) {
+      $question;
+
+      switch($type) {
+        case 'questions_colleges':
+          $question = QuestionsCollege::findOrFail($id);
+          break;
+        case 'questions_modules':
+          $question = QuestionsModule::findOrFail($id);
+          break;
+        case 'questions_courses':
+          $question = QuestionsCourse::findOrFail($id);
+          break;
+      }
+
+      return $question;
     }
 
     /**
