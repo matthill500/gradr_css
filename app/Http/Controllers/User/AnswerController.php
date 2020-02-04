@@ -6,8 +6,9 @@
 
 
 namespace App\Http\Controllers\User;
-use App\Answer;
-use App\Question;
+use App\AnswersCollege;
+use App\AnswersCourse;
+use App\AnswersModule;
 use Auth;
 use App\QuestionsModule;
 use App\QuestionsCourse;
@@ -24,19 +25,22 @@ class AnswerController extends Controller
      */
     public function index($type, $id)
     {
-
-        $qid = (int)($id);
-        $answers = Answer::all();
-        $question = $this->getQuestion($type, $id);
+      $qid = (int)($id);
+      $answersColleges = AnswersCollege::all();
+      $answersCourses = AnswersCourse::all();
+      $answersModules = AnswersModule::all();
 
       return view('user.answers.index')->with([
-        'answers' => $answers,
-        'question' => $question,
-        'qid' => $qid
+        'answersColleges' => $answersColleges,
+        'answersCourses' => $answersCourses,
+        'answersModules' => $answersModules,
+        'qid' => $qid,
+        'type' => $type
       ]);
+
     }
 
-    private function getQuestion($type, $id) {
+    private function getQuestionType($type, $id) {
       $question;
 
       switch($type) {
@@ -51,7 +55,7 @@ class AnswerController extends Controller
           break;
       }
 
-      return $question;
+     return $question;
     }
 
     /**
@@ -59,10 +63,12 @@ class AnswerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create($type, $id)
     {
+
         return view('user.answers.create')->with([
-          'id' => $id
+          'id' => $id,
+          'type' => $type
         ]);
     }
 
@@ -72,22 +78,43 @@ class AnswerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request, $type, $id)
     {
 
       $request->validate([
         'answer' => 'required|min:2|max:300',
       ]);
 
-      $answer = new Answer();
+      if($type === "questions_colleges"){
+        $answer = new AnswersCollege();
 
-      $answer->answer = $request->input('answer');
-      $answer->question_id = $id;
-      $answer->student_id = Auth::user()->student->id;
+        $answer->answer = $request->input('answer');
+        $answer->question_id = $id;
+        $answer->type = $type;
+        $answer->student_id = Auth::user()->student->id;
 
-      $answer->save();
+        $answer->save();
+      }else if($type === "questions_courses"){
+        $answer = new AnswersCollege();
 
-      return redirect()->route('user.questions.show', $id);
+        $answer->answer = $request->input('answer');
+        $answer->question_id = $id;
+        $answer->type = $type;
+        $answer->student_id = Auth::user()->student->id;
+
+        $answer->save();
+      }else if($type === "questions_modules"){
+        $answer = new AnswersCollege();
+
+        $answer->answer = $request->input('answer');
+        $answer->question_id = $id;
+        $answer->type = $type;
+        $answer->student_id = Auth::user()->student->id;
+
+        $answer->save();
+      }
+
+      return redirect()->route('user.answers.index',['type' => $type, 'id' => $id]);
     }
 
     /**

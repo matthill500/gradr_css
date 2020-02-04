@@ -24,6 +24,9 @@ Route::get('/user/courses/{id}', 'User\CoursesController@index')->name('user.cou
 Route::get('/user/modules/{id}', 'User\ModulesController@index')->name('user.modules');
 Route::get('/user/base/{id}', 'User\BaseController@index')->name('user.base');
 
+Route::get('/user/answers/{type}/create/{id}', 'User\AnswerController@create')->name('user.answers.create');
+
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/home', 'Admin\HomeController@index')->name('admin.home');
@@ -101,18 +104,9 @@ Route::put('/user/questions/{id}/module', 'User\QuestionController@requestDelete
 
 
 
-
-
-
-
-
-
-
-
-Route::get('/user/answers/{type}/{id}', 'User\AnswerController@index')->name('user.answers.index');
-Route::get('/user/answers/create/{id}', 'User\AnswerController@create')->name('user.answers.create');
+Route::get('/user/{type}/answers/{id}', 'User\AnswerController@index')->name('user.answers.index');
 //Route::get('/user/answers/{id}', 'User\AnswerController@show')->name('user.answers.show');
-Route::post('/user/answers/store/{id}', 'User\AnswerController@store')->name('user.answers.store');
+Route::post('/user/answers/{type}/store/{id}', 'User\AnswerController@store')->name('user.answers.store');
 Route::get('/user/answers/{id}/edit', 'User\AnswerController@edit')->name('user.answers.edit');
 Route::post('/user/answers/{id}', 'User\AnswerController@update')->name('user.answers.update');
 Route::put('/user/answers/{id}', 'User\AnswerController@requestDelete')->name('user.answers.requestDelete');

@@ -18,7 +18,7 @@
               </ul>
             </div>
             @endif
-            <form method="POST" action="{{route('user.answers.store', $id)}}">
+            <form method="POST" action="{{route('user.answers.store', ['type' => $type, 'id' => $id])}}">
                 <div class="form-group">
                   <input type="hidden" name="_token">
                         {{ csrf_field() }}

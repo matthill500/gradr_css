@@ -23,8 +23,8 @@
          </table>
 
          <a href="{{ route('user.questions.index' )}}" class="btn btn-default">Back</a>
-         <a href="{{ route('user.answers.create', $questionsModule->id )}}" class="btn btn-default">Answer</a>
-         <a href="{{ route('user.answers.index', $questionsModule->id)}}" class="btn btn-default">View Answers</a>
+         <a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-default">Answer</a>
+         <a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-default">View Answers</a>
 
         </div>
       </div>

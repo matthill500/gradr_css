@@ -9,7 +9,7 @@
           Answers
         </div>
         <div class="card-body">
-          @if (count($answers) === 0)
+          @if (count($answersColleges) === 0 && (count($answersCourses) === 0) && (count($answersModules) === 0))
           <p> There are no answers</p>
           @else
           <table id="table-answers" class="table table-hover">
@@ -18,14 +18,34 @@
                 <th>Answers</th>
            </thead>
            <tbody>
-             @foreach ($answers as $answer)
 
-             @if($answer->question_id === $qid)
-             <tr data-id="{{$answer->id}}">
-               <td>{{ $answer->student->user->name }}</td>
-               <td>{{ $answer->answer }}</td>
+             @foreach ($answersColleges as $answersCollege)
+
+             @if($answersCollege->question_id === $qid && $answersCollege->type === $type)
+             <tr data-id="{{$answersCollege->id}}">
+               <td>{{ $answersCollege->student->user->name }}</td>
+               <td>{{ $answersCollege->answer }}</td>
               @endif
              @endforeach
+
+             @foreach ($answersCourses as $answersCourse)
+
+             @if($answersCourse->question_id === $qid && $answersCourse->type === $type)
+             <tr data-id="{{$answersCourse->id}}">
+               <td>{{ $answersCourse->student->user->name }}</td>
+               <td>{{ $answersCourse->answer }}</td>
+              @endif
+             @endforeach
+
+             @foreach ($answersModules as $answersModule)
+
+             @if($answersModule->question_id === $qid && $answersModule->type === $type)
+             <tr data-id="{{$answersModule->id}}">
+               <td>{{ $answersModule->student->user->name }}</td>
+               <td>{{ $answersModule->answer }}</td>
+              @endif
+             @endforeach
+
            </tbody>
          </table>
           @endif
