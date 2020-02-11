@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\QuestionsCollege;
 use App\QuestionsCourse;
 use App\QuestionsModule;
+use App\QuestionsGeneral;
 use App\Question;
 
 use Auth;
@@ -135,11 +136,14 @@ class QuestionController extends Controller
          $questionsColleges = QuestionsCollege::all();
          $questionsCourses = QuestionsCourse::all();
          $questionsModules = QuestionsModule::all();
+         $questionsGenerals = QuestionsGeneral::all();
 
          return view('admin.questions.deleteRequests')->with([
            'questionsColleges' => $questionsColleges,
            'questionsCourses' => $questionsCourses,
-           'questionsModules' => $questionsModules
+           'questionsModules' => $questionsModules,
+           'questionsGenerals' => $questionsGenerals
+
          ]);
      }
 
@@ -171,6 +175,15 @@ class QuestionController extends Controller
 
       //$questionsCollege->answer()->delete();
       $questionsModule->delete();
+
+      return redirect()->route('admin.questions.deleteRequests');
+    }
+    public function destroyGeneral($id)
+    {
+      $questionsGeneral = QuestionsGeneral::findOrFail($id);
+
+      //$questionsCollege->answer()->delete();
+      $questionsGeneral->delete();
 
       return redirect()->route('admin.questions.deleteRequests');
     }

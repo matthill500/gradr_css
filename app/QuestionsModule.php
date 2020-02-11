@@ -15,7 +15,10 @@ class QuestionsModule extends Model
   public function student(){
     return $this->belongsTo('App\Student');
   }
+  public function module(){
+    return $this->belongsTo('App\Module');
+  }
   public function answer(){
-    return $this->hasMany('App\Answer');
+    return $this->hasMany('App\AnswerModule');
   }
 }

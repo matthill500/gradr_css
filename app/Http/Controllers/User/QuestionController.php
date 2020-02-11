@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use App\QuestionsModule;
 use App\QuestionsCourse;
 use App\QuestionsCollege;
+use App\QuestionsGeneral;
 use App\User;
 use App\Student;
-use App\Category;
 use App\College;
 use App\Course;
 use App\Module;
@@ -32,6 +32,7 @@ class QuestionController extends Controller
         $questionsColleges = QuestionsCollege::all();
         $questionsCourses = QuestionsCourse::all();
         $questionsModules = QuestionsModule::all();
+        $questionsGenerals = QuestionsGeneral::all();
 
         $users = User::all();
 
@@ -39,6 +40,7 @@ class QuestionController extends Controller
           'questionsColleges' => $questionsColleges,
           'questionsCourses' => $questionsCourses,
           'questionsModules' => $questionsModules,
+          'questionsGenerals' => $questionsGenerals,
           'users' => $users
 
         ]);
@@ -51,13 +53,11 @@ class QuestionController extends Controller
      */
     public function create()
     {
-          $categories = Category::all();
           $colleges = College::all();
           $courses = Course::all();
           $modules = Module::all();
 
             return view('user.questions.create')->with([
-              'categories' => $categories,
               'colleges' => $colleges,
               'courses' => $courses,
               'modules' => $modules
@@ -75,7 +75,7 @@ class QuestionController extends Controller
       $request->validate([
         'title' => 'required|max:191',
         'info' => 'required|min:30|max:300',
-        'category' => 'required|starts_with:co,mo'
+        'category' => 'required|starts_with:co,mo,gen'
       ]);
 
       $about = $request->input('category');
@@ -105,6 +105,13 @@ class QuestionController extends Controller
         $questionsModule->student_id = Auth::user()->student->id;
 
         $questionsModule->save();
+      }else if($about === "general"){
+        $questionsGeneral = new QuestionsGeneral();
+        $questionsGeneral->title = $request->input('title');
+        $questionsGeneral->info = $request->input('info');
+        $questionsGeneral->student_id = Auth::user()->student->id;
+
+        $questionsGeneral->save();
       }
 
         return redirect()->route('user.questions.index');
@@ -142,6 +149,14 @@ class QuestionController extends Controller
         'questionsModule' => $questionsModule
       ]);
     }
+    public function showGeneral($id)
+    {
+      $questionsGeneral = QuestionsGeneral::findOrFail($id);
+
+      return view('user.questions.showGeneral')->with([
+        'questionsGeneral' => $questionsGeneral
+      ]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -172,6 +187,14 @@ class QuestionController extends Controller
 
       return view('user.questions.editModule')->with([
         'questionsModule' => $questionsModule
+      ]);
+    }
+    public function editGeneral($id)
+    {
+      $questionsGeneral = QuestionsGeneral::findOrFail($id);
+
+      return view('user.questions.editGeneral')->with([
+        'questionsGeneral' => $questionsGeneral
       ]);
     }
 
@@ -233,6 +256,23 @@ class QuestionController extends Controller
 
     }
 
+    public function updateGeneral(Request $request, $id)
+    {
+      $questionsGeneral = QuestionsGeneral::findOrFail($id);
+
+      $request->validate([
+        'title' => 'required|max:191',
+        'info' => 'required|min:30|max:300',
+      ]);
+
+      $questionsGeneral->title = $request->input('title');
+      $questionsGeneral->info = $request->input('info');
+      $questionsGeneral->save();
+
+      return redirect()->route('user.questions.index');
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -284,6 +324,21 @@ class QuestionController extends Controller
                return redirect()->route('user.questions.index')->with('status','Request withdrawn!');
                  }
         }
+
+        public function requestDeleteGeneral($id)
+         {
+          $questionsGeneral = QuestionsGeneral::findOrFail($id);
+
+                 if($questionsGeneral->delete === 0){
+                   $questionsGeneral->delete = 1;
+                     $questionsGeneral->save();
+                     return redirect()->route('user.questions.index')->with('status','Requested to delete!');
+                 }else if($questionsGeneral->delete === 1){
+                   $questionsGeneral->delete = 0;
+                   $questionsGeneral->save();
+                return redirect()->route('user.questions.index')->with('status','Request withdrawn!');
+                  }
+         }
 
 
 }

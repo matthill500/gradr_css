@@ -15,7 +15,10 @@ class QuestionsCollege extends Model
   public function student(){
     return $this->belongsTo('App\Student');
   }
+  public function college(){
+    return $this->belongsTo('App\College');
+  }
   public function answer(){
-    return $this->hasMany('App\Answer');
+    return $this->hasMany('App\AnswerCollege');
   }
 }

@@ -58,9 +58,6 @@
                 <a class="navbar-brand" href="{{ url('admin/modules') }}">
                   Modules
                 </a>
-                <a class="navbar-brand" href="{{ url('admin/categories') }}">
-                  Categories
-                </a>
                 <a class="navbar-brand" href="{{ url('admin/students') }}">
                   Students
                 </a>

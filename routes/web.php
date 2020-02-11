@@ -44,6 +44,7 @@ Route::post('/admin/questions/{id}', 'Admin\QuestionController@update')->name('a
 Route::delete('/admin/questions/{id}/college', 'Admin\QuestionController@destroyCollege')->name('admin.questions.destroyCollege');
 Route::delete('/admin/questions/{id}/course', 'Admin\QuestionController@destroyCourse')->name('admin.questions.destroyCourse');
 Route::delete('/admin/questions/{id}/module', 'Admin\QuestionController@destroyModule')->name('admin.questions.destroyModule');
+Route::delete('/admin/questions/{id}/general', 'Admin\QuestionController@destroyGeneral')->name('admin.questions.destroyGeneral');
 
 Route::get('/admin/students', 'Admin\StudentController@index')->name('admin.students.index');
 Route::get('/admin/students/create', 'Admin\StudentController@create')->name('admin.students.create');
@@ -90,17 +91,21 @@ Route::get('/user/questions/create', 'User\QuestionController@create')->name('us
 Route::get('/user/questionsCollege/{id}', 'User\QuestionController@showCollege')->name('user.questions.showCollege');
 Route::get('/user/questionsCourse/{id}', 'User\QuestionController@showCourse')->name('user.questions.showCourse');
 Route::get('/user/questionsModule/{id}', 'User\QuestionController@showModule')->name('user.questions.showModule');
+Route::get('/user/questionsGeneral/{id}', 'User\QuestionController@showGeneral')->name('user.questions.showGeneral');
 Route::post('/user/questions/store', 'User\QuestionController@store')->name('user.questions.store');
 Route::get('/user/questions/{id}/editCollege', 'User\QuestionController@editCollege')->name('user.questions.editCollege');
 Route::get('/user/questions/{id}/editCourse', 'User\QuestionController@editCourse')->name('user.questions.editCourse');
 Route::get('/user/questions/{id}/editModule', 'User\QuestionController@editModule')->name('user.questions.editModule');
+Route::get('/user/questions/{id}/editGeneral', 'User\QuestionController@editGeneral')->name('user.questions.editGeneral');
 Route::post('/user/questions/{id}/updateCollege', 'User\QuestionController@updateCollege')->name('user.questions.updateCollege');
 Route::post('/user/questions/{id}/updateCourse', 'User\QuestionController@updateCourse')->name('user.questions.updateCourse');
 Route::post('/user/questions/{id}/updateModule', 'User\QuestionController@updateModule')->name('user.questions.updateModule');
+Route::post('/user/questions/{id}/updateGeneral', 'User\QuestionController@updateGeneral')->name('user.questions.updateGeneral');
 
 Route::put('/user/questions/{id}/college', 'User\QuestionController@requestDeleteCollege')->name('user.questions.requestDeleteCollege');
 Route::put('/user/questions/{id}/course', 'User\QuestionController@requestDeleteCourse')->name('user.questions.requestDeleteCourse');
 Route::put('/user/questions/{id}/module', 'User\QuestionController@requestDeleteModule')->name('user.questions.requestDeleteModule');
+Route::put('/user/questions/{id}/general', 'User\QuestionController@requestDeleteGeneral')->name('user.questions.requestDeleteGeneral');
 
 
 

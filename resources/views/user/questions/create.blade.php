@@ -42,6 +42,7 @@
       				    		<option value="colleges">Colleges</option>
                       <option value="courses">Courses</option>
                       <option value="modules">Modules</option>
+                      <option value="general">General</option>
       				    </select>
 				       </div>
 

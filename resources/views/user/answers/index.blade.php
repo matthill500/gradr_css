@@ -46,6 +46,15 @@
               @endif
              @endforeach
 
+             @foreach ($answersGenerals as $answersGeneral)
+
+             @if($answersGeneral->question_id === $qid && $answersGeneral->type === $type)
+             <tr data-id="{{$answersGeneral->id}}">
+               <td>{{ $answersGeneral->student->user->name }}</td>
+               <td>{{ $answersGeneral->answer }}</td>
+              @endif
+             @endforeach
+
            </tbody>
          </table>
           @endif

@@ -19,7 +19,7 @@
                 <br />
                   @foreach ($colleges as $college)
                     <div class="card float-left" style="width: 18rem; margin-left:38px; margin-bottom:18px;">
-                      <img src="{{asset('storage/img/'.$college->image)}}" height="250px" width="30px" class="card-img-top" src="..." alt="Card image cap">
+                      <img src="{{asset('storage/img/'.$college->image)}}" height="200px" width="15px" class="card-img-top" src="..." alt="Card image cap">
                       <div class="card-body">
                         <h5 class="card-title">{{ $college->name }}</h5>
                         <p class="card-text">{{ $college->info }}</p>

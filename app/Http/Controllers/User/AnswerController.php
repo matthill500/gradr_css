@@ -9,6 +9,7 @@ namespace App\Http\Controllers\User;
 use App\AnswersCollege;
 use App\AnswersCourse;
 use App\AnswersModule;
+use App\AnswersGeneral;
 use Auth;
 use App\QuestionsModule;
 use App\QuestionsCourse;
@@ -29,33 +30,17 @@ class AnswerController extends Controller
       $answersColleges = AnswersCollege::all();
       $answersCourses = AnswersCourse::all();
       $answersModules = AnswersModule::all();
+      $answersGenerals = AnswersGeneral::all();
 
       return view('user.answers.index')->with([
         'answersColleges' => $answersColleges,
         'answersCourses' => $answersCourses,
         'answersModules' => $answersModules,
+        'answersGenerals' => $answersGenerals,
         'qid' => $qid,
         'type' => $type
       ]);
 
-    }
-
-    private function getQuestionType($type, $id) {
-      $question;
-
-      switch($type) {
-        case 'questions_colleges':
-          $question = QuestionsCollege::findOrFail($id);
-          break;
-        case 'questions_modules':
-          $question = QuestionsModule::findOrFail($id);
-          break;
-        case 'questions_courses':
-          $question = QuestionsCourse::findOrFail($id);
-          break;
-      }
-
-     return $question;
     }
 
     /**
@@ -105,6 +90,15 @@ class AnswerController extends Controller
         $answer->save();
       }else if($type === "questions_modules"){
         $answer = new AnswersCollege();
+
+        $answer->answer = $request->input('answer');
+        $answer->question_id = $id;
+        $answer->type = $type;
+        $answer->student_id = Auth::user()->student->id;
+
+        $answer->save();
+      }else if($type === "questions_generals"){
+        $answer = new AnswersGeneral();
 
         $answer->answer = $request->input('answer');
         $answer->question_id = $id;

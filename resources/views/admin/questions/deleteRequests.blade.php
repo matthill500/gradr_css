@@ -68,6 +68,23 @@
                </td>
                @endif
              @endforeach
+
+             @foreach ($questionsGenerals as $questionsGeneral)
+             @if ($questionsGeneral->delete === 1)
+             <tr data-id="{{$questionsGeneral->id}}">
+               <td>{{ substr($questionsGeneral->title,'0','20') }}</td>
+               <td>{{ substr($questionsGeneral->info,'0','40') }}</td>
+               <td>
+                 <a href="{{ route('admin.questions.show', $questionsGeneral->id )}}" class="btn btn-default">View</a>
+                 <a href="{{route('admin.questions.edit', $questionsGeneral->id )}}" class="btn btn-warning">Edit</a>
+                  <form style="display:inline-block" method="POST" action="{{route('admin.questions.destroyGeneral',$questionsGeneral->id)}}">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="form-control btn btn-danger">Delete</a>
+                 </form>
+               </td>
+               @endif
+             @endforeach
            </tbody>
          </table>
           @endif
