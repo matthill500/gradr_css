@@ -10,7 +10,7 @@
 
         </div>
         <div class="card-body">
-          @if ((count($questionsColleges) === 0) && (count($questionsCourses) === 0) && (count($questionsModules) === 0))
+          @if ((count($questionsColleges) === 0) && (count($questionsCourses) === 0) && (count($questionsModules) === 0) && (count($questionsGenerals) === 0))
           <p> There are no questions </p>
           @else
           <table id="table-questions" class="table table-hover">
@@ -99,7 +99,6 @@
     @endforeach
 
     @foreach ($questionsGenerals as $questionsGeneral)
-
     @if($questionsGeneral->student_id === Auth::user()->student->id)
     <tr data-id="{{$questionsGeneral->id}}">
       <td>{{ substr($questionsGeneral->title,'0','20') }}</td>

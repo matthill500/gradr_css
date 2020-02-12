@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\College;
+use App\QuestionsGeneral;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,9 +17,11 @@ class HomeController extends Controller
 
   public function index(){
     $colleges = College::all();
+    $questionsGenerals = QuestionsGeneral::all();
 
     return view('user.home')->with([
-      'colleges' => $colleges
+      'colleges' => $colleges,
+      'questionsGenerals' => $questionsGenerals
     ]);
   }
 }
