@@ -46,7 +46,7 @@
                 <a class="navbar-brand" href="{{ url('/user/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-              
+
                 <a class="navbar-brand" href="{{ url('/user/questions') }}">
                   My Questions
                 </a>
@@ -80,7 +80,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}">
+                                    <a class="dropdown-item" href="{{ url('/user/profile') }}">
                                         Profile
                                     </a>
 
