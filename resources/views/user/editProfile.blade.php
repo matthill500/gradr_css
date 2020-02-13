@@ -1,14 +1,17 @@
-@extends('layouts.appAdmin')
+@extends('layouts.appUser')
+
+<link rel="stylesheet" href="{{ URL::asset('css/imageUpload.css') }}" />
 
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-md-10 col-md-offset-2">
+    <div class="col-md-12 col-md-offset-2">
       <div class="card">
         <div class="card-header">
-          Edit College
+          Edit Profile
         </div>
         <div class="card-body">
+
           @if ($errors->any())
           <div class="alert alert-danger">
             <ul>
@@ -18,7 +21,7 @@
             </ul>
           </div>
           @endif
-          <form method="POST" action="{{route('admin.colleges.update', $college->id)}}" enctype="multipart/form-data">
+          <form method="POST" action="{{route('user.updateProfile', $user->id)}}" enctype="multipart/form-data">
 
             <input type="hidden" name="_method" value ="PUT">
             <input type="hidden" name="_token">
@@ -26,34 +29,31 @@
 
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" name="name" value="{{old('name', $college->name)}}" />
+              <input type="text" class="form-control" id="name" name="name" value="{{old('name', $user->name)}}" />
             </div>
 
             <div class="form-group">
-              <label for="info">Info</label>
-              <input type="text" class="form-control" id="info" name="info" value="{{old('info', $college->info)}}" />
+              <label for="bio">Bio</label>
+              <input type="text" class="form-control" id="bio" name="bio" value="{{old('bio', $user->bio)}}" />
             </div>
 
-            <div class="form-group">
-              <label for="address">Address</label>
-              <input type="text" class="form-control" id="address" name="address" value="{{old('address', $college->address)}}" />
-            </div>
-
-            <div class="custom-file">
               <label for="address">Image</label>
+            <div class="custom-file">
             <input type="file" name="image" class="custom-file-input {{$errors->has('image') ? 'is-invalid' : ''}}" id="image">
-            <label class="custom-file-label" for="image">College Image</label>
+            <label class="custom-file-label" for="image">Profile Image</label>
             @if($errors->has('image'))
                 <span class="invalid-feedback">
                     {{$errors->first('image')}}
                 </span>
             @endif
           </div>
-
-            <a href="{{route('admin.colleges.index')}}" class="btn btn-danger">Cancel</a>
+          <div class="imageUpload">
+            <a href="{{route('user.home')}}" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn btn-primary float-right">Submit</button>
-
+          </div> 
           </form>
+
+
         </div>
       </div>
     </div>

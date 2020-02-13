@@ -6,7 +6,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          Profile <a href="{{ route('user.questions.create')}}" class="btn btn-primary float-right">Edit</a>
+          Profile
         </div>
         <div class="card-body">
           Test

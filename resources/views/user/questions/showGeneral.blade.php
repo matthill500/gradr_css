@@ -22,7 +22,7 @@
            </tbody>
          </table>
 
-         <a href="{{ route('user.questions.index' )}}" class="btn btn-default">Back</a>
+         <a href="{{ route('user.questions.index' )}}" class="btn btn-default">My Questions</a>
          <a href="{{ route('user.answers.create', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}" class="btn btn-default">Answer</a>
          <a href="{{ route('user.answers.index', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}"
          class="btn btn-default">View Answers</a>

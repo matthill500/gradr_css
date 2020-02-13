@@ -18,7 +18,7 @@ class HomeController extends Controller
   public function index(){
     $colleges = College::all();
     $questionsGenerals = QuestionsGeneral::all();
-
+    
     return view('user.home')->with([
       'colleges' => $colleges,
       'questionsGenerals' => $questionsGenerals

@@ -1,5 +1,7 @@
 @extends('layouts.appUser')
 
+<link rel="stylesheet" href="{{ URL::asset('css/courses.css') }}" />
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -29,6 +31,51 @@
                     </div>
                   @endif
                   @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container questions">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">@foreach ($colleges as $college) @if($college->id === $cid) {{ $college->name }} @endif  @endforeach Questions</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <table id="table-questions" class="table table-hover">
+                      <thead>
+                        <th>Title</th>
+                          <th>Info</th>
+                          <th>Category</th>
+                      </thead>
+                      <tbody>
+                        @foreach ($questionsColleges as $questionsCollege)
+                        @if($questionsCollege->college_id === $cid)
+                        <tr data-id="{{$questionsCollege->id}}">
+                          <td>{{ substr($questionsCollege->title,'0','20') }}</td>
+                          <td>{{ substr($questionsCollege->info,'0','40') }}</td>
+                          <td>{{ substr($questionsCollege->college->name,'0','40') }}</td>
+                          <td>
+                            <a href="{{ route('user.questions.showCollege', $questionsCollege->id )}}" class="btn btn-primary">View</a>
+                          </td>
+                        </tr>
+                        @endif
+                     @endforeach
+                      </tbody>
+                    </table>
+
+
+                  </br>
+                <br />
+
                 </div>
             </div>
         </div>
