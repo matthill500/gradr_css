@@ -24,7 +24,8 @@ Route::get('/user/courses/{id}', 'User\CoursesController@index')->name('user.cou
 Route::get('/user/modules/{id}', 'User\ModulesController@index')->name('user.modules');
 Route::get('/user/base/{id}', 'User\BaseController@index')->name('user.base');
 
-Route::get('/user/{name}/profile', 'User\ProfileController@index')->name('user.profile');
+Route::get('/user/{name}/profile', 'User\ProfileController@viewUserProfile')->name('user.profile.name');
+Route::get('/user/profile', 'User\ProfileController@index')->name('user.profile');
 Route::get('/user/editProfile', 'User\ProfileController@edit')->name('user.editProfile');
 Route::put('/user/updateProfile', 'User\ProfileController@update')->name('user.updateProfile');
 

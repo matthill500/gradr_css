@@ -14,7 +14,16 @@ use Storage;
 
 class ProfileController extends Controller
 {
-  public function index($name)
+  public function index()
+  {
+    $user = Auth::user();
+
+    return view('user.myProfile')->with([
+      'user' => $user
+    ]);
+  }
+
+  public function viewUserProfile($name)
   {
     $questionsColleges = QuestionsCollege::all();
 
@@ -27,8 +36,10 @@ class ProfileController extends Controller
   }
   public function edit()
   {
-    $id = Auth::user()->id;
-    $user = User::findOrFail($id);
+    // $id = Auth::user()->id;
+    // $user = User::findOrFail($id);
+
+    $user = Auth::user();
 
     return view('user.editProfile')->with([
       'user' => $user

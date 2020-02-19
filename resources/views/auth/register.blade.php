@@ -15,6 +15,8 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
+
+                              <p style="color:red; text-align:center;">name must contain a dash e.g. firstname-lastname</p>
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
@@ -22,6 +24,8 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
+
                             </div>
                         </div>
 

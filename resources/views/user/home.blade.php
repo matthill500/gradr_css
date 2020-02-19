@@ -59,7 +59,7 @@
                           <td>{{ substr($questionsGeneral->title,'0','20') }}</td>
                           <td>{{ substr($questionsGeneral->info,'0','40') }}</td>
                           <td>General</td>
-                          <td><a href="{{ route('user.profile', $questionsGeneral->student->user->name) }}">{{ $questionsGeneral->student->user->name }}</a></td>
+                          <td><a href="{{ route('user.profile.name', $questionsGeneral->student->user->name) }}">{{ $questionsGeneral->student->user->name }}</a></td>
                           <td>
                             <a href="{{ route('user.questions.showGeneral', $questionsGeneral->id )}}" class="btn btn-primary">View</a>
                           </td>
