@@ -20,8 +20,7 @@
                 <br />
                   @foreach ($modules as $module)
                   @if($module->course_id === $mid)
-                    <div class="card float-left" style="width: 18rem; margin-left:38px; margin-bottom:18px;">
-                      <img src="" height="250px" width="30px" class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card float-left" style="width: 18rem; margin-left:38px; margin-bottom:18px; text-align:center;">
                       <div class="card-body">
                         <h5 class="card-title">{{ $module->module_name }}</h5>
 
@@ -66,7 +65,7 @@
                           <td><a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">{{ $questionsCourse->student->user->name }}</a></td>
                           <td>
                             <a href="{{ route('user.questions.showCourse', $questionsCourse->id )}}" class="btn btn-primary">View</a>
-                          
+
                             <a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" class="btn btn-success">Answer</a>
                           </td>
                         </tr>

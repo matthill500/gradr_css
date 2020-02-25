@@ -64,7 +64,7 @@
                 <option value="none">Select</option>
                   @foreach($courses as $course)
                   <option value="{{$course->id}}" id="courseValue" {{ (old('course_id') == $course->id) ? "selected" : "" }} >
-                    {{$course->course_name}}
+                    {{$course->college->name}} - {{$course->course_name}}
                   </option>
                   @endforeach
               </select>
@@ -76,7 +76,7 @@
               <option value="none" id="moduleValue">Select</option>
               @foreach($modules as $module)
               <option value="{{$module->id}}" {{ (old('module_id') == $module->id) ? "selected" : "" }} >
-                {{$module->module_name}}
+              {{$module->course->college->name}} - {{$module->module_name}}
               </option>
               @endforeach
             </select>

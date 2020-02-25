@@ -22,8 +22,7 @@
                 <br />
                   @foreach ($courses as $course)
                   @if($course->college_id === $cid)
-                    <div class="card float-left" style="width: 18rem; margin-left:38px; margin-bottom:18px;">
-                      <img src="" height="250px" width="30px" class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card float-left" style="width: 18rem; margin-left:38px; margin-bottom:18px; text-align:center;">
                       <div class="card-body">
                         <h5 class="card-title">{{ $course->course_name }}</h5>
                         <p class="card-text">Course Code: {{ $course->course_code }}<br />CAO Points: {{$course->cao_points}}</p>
@@ -68,7 +67,7 @@
                           <td><a href="{{ route('user.profile', $questionsCollege->student->user->name) }}">{{ $questionsCollege->student->user->name }}</a></td>
                           <td>
                             <a href="{{ route('user.questions.showCollege', $questionsCollege->id )}}" class="btn btn-primary">View</a>
-                          
+
                             <a href="{{ route('user.answers.create', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}" class="btn btn-success">Answer</a>
                           </td>
                         </tr>

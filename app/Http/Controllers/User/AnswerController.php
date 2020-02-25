@@ -14,6 +14,7 @@ use Auth;
 use App\QuestionsModule;
 use App\QuestionsCourse;
 use App\QuestionsCollege;
+use App\QuestionsGeneral;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -50,12 +51,41 @@ class AnswerController extends Controller
      */
     public function create($type, $id)
     {
-      $answersColleges = AnswersCollege::all();
+      if ($type === "questions_generals"){
+          $questionsGeneral = questionsGeneral::findOrFail($id);
 
-        return view('user.answers.create')->with([
-          'id' => $id,
-          'type' => $type
-        ]);
+          return view('user.answers.create')->with([
+            'id' => $id,
+            'type' => $type,
+            'questionsGeneral' => $questionsGeneral
+          ]);
+
+      }else if($type === "questions_colleges"){
+          $questionsCollege = questionsCollege::findOrFail($id);
+
+          return view('user.answers.create')->with([
+            'id' => $id,
+            'type' => $type,
+            'questionsCollege' => $questionsCollege
+          ]);
+
+      }else if($type === "questions_courses"){
+          $questionsCourse = questionsCourse::findOrFail($id);
+
+          return view('user.answers.create')->with([
+            'id' => $id,
+            'type' => $type,
+            'questionsCourse' => $questionsCourse
+          ]);
+      }else{
+          $questionsModule = questionsModule::findOrFail($id);
+
+          return view('user.answers.create')->with([
+            'id' => $id,
+            'type' => $type,
+            'questionsModule' => $questionsModule
+          ]);
+      }
     }
 
     /**
