@@ -24,8 +24,9 @@ Route::get('/user/courses/{id}', 'User\CoursesController@index')->name('user.cou
 Route::get('/user/modules/{id}', 'User\ModulesController@index')->name('user.modules');
 Route::get('/user/base/{id}', 'User\BaseController@index')->name('user.base');
 
-Route::get('/user/{name}/profile', 'User\ProfileController@viewUserProfile')->name('user.profile.name');
-Route::get('/user/profile', 'User\ProfileController@index')->name('user.profile');
+// Route::get('/user/profile', 'User\ProfileController@index')->name('user.profile');
+Route::get('/user/{name}/profile', 'User\ProfileController@viewUserProfile')->name('user.profile');
+Route::get('/user/profile', 'User\ProfileController@index')->name('user.myProfile');
 Route::get('/user/editProfile', 'User\ProfileController@edit')->name('user.editProfile');
 Route::put('/user/updateProfile', 'User\ProfileController@update')->name('user.updateProfile');
 
@@ -112,6 +113,7 @@ Route::put('/user/questions/{id}/course', 'User\QuestionController@requestDelete
 Route::put('/user/questions/{id}/module', 'User\QuestionController@requestDeleteModule')->name('user.questions.requestDeleteModule');
 Route::put('/user/questions/{id}/general', 'User\QuestionController@requestDeleteGeneral')->name('user.questions.requestDeleteGeneral');
 
+Route::get('/user/questions/redirect/{type}/{id}', 'User\QuestionController@redirect')->name('user.questions.redirect');
 
 
 Route::get('/user/{type}/answers/{id}', 'User\AnswerController@index')->name('user.answers.index');

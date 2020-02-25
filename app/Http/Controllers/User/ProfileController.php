@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\QuestionsCollege;
+use App\QuestionsCourse;
+use App\QuestionsModule;
+use App\QuestionsGeneral;
 use App\User;
 use Auth;
 use Hash;
@@ -17,21 +20,37 @@ class ProfileController extends Controller
   public function index()
   {
     $user = Auth::user();
+    $questionsColleges = QuestionsCollege::all()->take(2);
+    $questionsCourses = QuestionsCourse::all()->take(2);
+    $questionsModules = QuestionsModule::all()->take(2);
+    $questionsGenerals = QuestionsGeneral::all()->take(2);
 
     return view('user.myProfile')->with([
-      'user' => $user
+      'user' => $user,
+      'questionsColleges' => $questionsColleges,
+      'questionsCourses' => $questionsCourses,
+      'questionsModules' => $questionsModules,
+      'questionsGenerals' => $questionsGenerals
+
     ]);
   }
 
   public function viewUserProfile($name)
   {
-    $questionsColleges = QuestionsCollege::all();
+    $questionsColleges = QuestionsCollege::all()->take(2);
+    $questionsCourses = QuestionsCourse::all()->take(2);
+    $questionsModules = QuestionsModule::all()->take(2);
+    $questionsGenerals = QuestionsGeneral::all()->take(2);
 
-    $name = urldecode($name);
+    $user = User::where('name',$name)->first();
 
     return view('user.profile')->with([
       'questionsColleges' => $questionsColleges,
-      'name' => $name
+      'questionsCourses' => $questionsCourses,
+      'questionsModules' => $questionsModules,
+      'questionsGenerals' => $questionsGenerals,
+      'name' => $name,
+      'user' => $user
     ]);
   }
   public function edit()
@@ -67,7 +86,7 @@ class ProfileController extends Controller
     }
     $user->save();
 
-    return redirect()->route('user.home');
+    return redirect()->route('user.myProfile');
 
   }
 }

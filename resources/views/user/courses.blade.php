@@ -27,7 +27,7 @@
                       <div class="card-body">
                         <h5 class="card-title">{{ $course->course_name }}</h5>
                         <p class="card-text">Course Code: {{ $course->course_code }}<br />CAO Points: {{$course->cao_points}}</p>
-                        <a href="{{ route('user.modules', $course->id) }}" class="btn btn-primary">Modules</a>
+                        <a href="{{ route('user.modules', $course->id) }}" class="btn btn-primary">{{$course->course_name}} Modules</a>
                       </div>
                     </div>
                   @endif
@@ -56,6 +56,7 @@
                         <th>Title</th>
                           <th>Info</th>
                           <th>Category</th>
+                          <th>User</th>
                       </thead>
                       <tbody>
                         @foreach ($questionsColleges as $questionsCollege)
@@ -64,8 +65,11 @@
                           <td>{{ substr($questionsCollege->title,'0','20') }}</td>
                           <td>{{ substr($questionsCollege->info,'0','40') }}</td>
                           <td>{{ substr($questionsCollege->college->name,'0','40') }}</td>
+                          <td><a href="{{ route('user.profile', $questionsCollege->student->user->name) }}">{{ $questionsCollege->student->user->name }}</a></td>
                           <td>
                             <a href="{{ route('user.questions.showCollege', $questionsCollege->id )}}" class="btn btn-primary">View</a>
+                          
+                            <a href="{{ route('user.answers.create', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}" class="btn btn-success">Answer</a>
                           </td>
                         </tr>
                         @endif

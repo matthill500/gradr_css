@@ -24,8 +24,8 @@
                       <img src="" height="250px" width="30px" class="card-img-top" src="..." alt="Card image cap">
                       <div class="card-body">
                         <h5 class="card-title">{{ $module->module_name }}</h5>
-                        <p class="card-text">Test</p>
-                        <a href="{{ route('user.base', $module->id) }}" class="btn btn-primary">Module</a>
+
+                        <a href="{{ route('user.base', $module->id) }}" class="btn btn-primary">{{$module->module_name}} Modules</a>
                       </div>
                     </div>
                   @endif
@@ -54,6 +54,7 @@
                         <th>Title</th>
                           <th>Info</th>
                           <th>Category</th>
+                          <th>User</th>
                       </thead>
                       <tbody>
                         @foreach ($questionsCourses as $questionsCourse)
@@ -62,8 +63,11 @@
                           <td>{{ substr($questionsCourse->title,'0','20') }}</td>
                           <td>{{ substr($questionsCourse->info,'0','40') }}</td>
                           <td>{{ substr($questionsCourse->course->course_name,'0','40') }}</td>
+                          <td><a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">{{ $questionsCourse->student->user->name }}</a></td>
                           <td>
                             <a href="{{ route('user.questions.showCourse', $questionsCourse->id )}}" class="btn btn-primary">View</a>
+                          
+                            <a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" class="btn btn-success">Answer</a>
                           </td>
                         </tr>
                         @endif

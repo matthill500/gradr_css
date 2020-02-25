@@ -64,6 +64,19 @@ class QuestionController extends Controller
             ]);
     }
 
+
+    public function redirect($type, $id)
+    {
+      if ($type === "questions_colleges") {
+        return redirect()->route('user.questions.showCollege', $id);
+      }else if($type === "questions_courses"){
+        return redirect()->route('user.questions.showCourse', $id);
+      }else if($type == "questions_modules"){
+        return redirect()->route('user.questions.showModule', $id);
+      }
+      return redirect()->route('user.questions.showGeneral', $id);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -211,7 +224,7 @@ class QuestionController extends Controller
 
       $request->validate([
         'title' => 'required|max:191',
-        'info' => 'required|min:30|max:300',
+        'info' => 'required|min:10|max:300',
       ]);
 
       $questionsCollege->title = $request->input('title');
@@ -228,7 +241,7 @@ class QuestionController extends Controller
 
       $request->validate([
         'title' => 'required|max:191',
-        'info' => 'required|min:30|max:300',
+        'info' => 'required|min:10|max:300',
       ]);
 
       $questionsCourse->title = $request->input('title');
@@ -245,7 +258,7 @@ class QuestionController extends Controller
 
       $request->validate([
         'title' => 'required|max:191',
-        'info' => 'required|min:30|max:300',
+        'info' => 'required|min:10|max:300',
       ]);
 
       $questionsModule->title = $request->input('title');
@@ -262,7 +275,7 @@ class QuestionController extends Controller
 
       $request->validate([
         'title' => 'required|max:191',
-        'info' => 'required|min:30|max:300',
+        'info' => 'required|min:10|max:300',
       ]);
 
       $questionsGeneral->title = $request->input('title');

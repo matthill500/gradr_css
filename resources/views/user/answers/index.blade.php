@@ -9,7 +9,7 @@
           Answers
         </div>
         <div class="card-body">
-          @if (count($answersColleges) === 0 && (count($answersCourses) === 0) && (count($answersModules) === 0) && (count($questionsGenerals) === 0))
+          @if (count($answersColleges) === 0 && (count($answersCourses) === 0) && (count($answersModules) === 0) && (count($answersGenerals) === 0))
           <p> There are no answers</p>
           @else
           <table id="table-answers" class="table table-hover">

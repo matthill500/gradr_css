@@ -6,6 +6,26 @@
       <div class ="col-md-12 col-md-offset-2">
         <div class="card">
           <div class="card-header">
+            Question:
+          </div>
+          <div class="card-body">
+            <table class="table table-hover">
+              <tbody>
+                <tr>
+                  <td>Question Title</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Question Body</td>
+                  <td></td>
+               </tr>
+             </tbody>
+           </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
             Add new answer
           </div>
           <div class="card-body">
@@ -25,7 +45,7 @@
                   <label for="answer">Answer</label>
                   <textarea class="form-control" rows="5" id="answer" name="answer" value="{{old('answer')}}"></textarea>
                 </div>
-                <a href="{{route('user.questions.index')}}" class="btn btn-link">Cancel</a>
+                <a href="{{route('user.questions.redirect', ['type' => $type, 'id' => $id] )}}" class="btn btn-link">Cancel</a>
                 <button type="submit" class="btn btn-primary float-right">Submit</button>
 
             </form>

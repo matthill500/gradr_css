@@ -50,6 +50,7 @@ class AnswerController extends Controller
      */
     public function create($type, $id)
     {
+      $answersColleges = AnswersCollege::all();
 
         return view('user.answers.create')->with([
           'id' => $id,

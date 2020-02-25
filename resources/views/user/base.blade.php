@@ -21,6 +21,7 @@
                         <th>Title</th>
                         <th>Info</th>
                         <th>Category</th>
+                        <th>User</th>
                       </thead>
                       <tbody>
                         @foreach ($questionsModules as $questionsModule)
@@ -29,8 +30,11 @@
                           <td>{{ substr($questionsModule->title,'0','20') }}</td>
                           <td>{{ substr($questionsModule->info,'0','40') }}</td>
                           <td>{{ substr($questionsModule->module->module_name,'0','40') }}</td>
+                          <td><a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $questionsModule->student->user->name }}</a></td>
                           <td>
                             <a href="{{ route('user.questions.showModule', $questionsModule->id )}}" class="btn btn-primary">View</a>
+                        
+                            <a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-success">Answer</a>
                           </td>
                         </tr>
                         @endif
