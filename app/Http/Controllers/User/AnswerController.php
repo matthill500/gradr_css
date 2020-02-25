@@ -66,6 +66,7 @@ class AnswerController extends Controller
     public function store(Request $request, $type, $id)
     {
 
+
       $request->validate([
         'answer' => 'required|min:2|max:300',
       ]);
@@ -80,7 +81,7 @@ class AnswerController extends Controller
 
         $answer->save();
       }else if($type === "questions_courses"){
-        $answer = new AnswersCollege();
+        $answer = new AnswersCourse();
 
         $answer->answer = $request->input('answer');
         $answer->question_id = $id;
@@ -89,7 +90,7 @@ class AnswerController extends Controller
 
         $answer->save();
       }else if($type === "questions_modules"){
-        $answer = new AnswersCollege();
+        $answer = new AnswersModule();
 
         $answer->answer = $request->input('answer');
         $answer->question_id = $id;

@@ -6,7 +6,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          My Questions <a href="{{ route('user.questions.create')}}" class="btn btn-primary float-right">Add</a>
+          My Questions <a href="{{ route('user.questions.create')}}" class="btn btn-primary float-right">Ask a question</a>
 
         </div>
         <div class="card-body">

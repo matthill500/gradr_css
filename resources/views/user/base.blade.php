@@ -6,7 +6,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">@foreach ($modules as $module) @if($module->id === $bid) {{ $module->module_name }} @endif  @endforeach Questions</div>
+                <div class="card-header">@foreach ($modules as $module) @if($module->id === $bid) {{ $module->module_name }} @endif  @endforeach Questions <a href="{{ route('user.questions.create')}}" class="btn btn-primary float-right">Ask Question</a></div>
+
 
                 <div class="card-body">
                     @if (session('status'))

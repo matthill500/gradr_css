@@ -25,18 +25,18 @@
                 <div class="form-group">
                   <input type="hidden" name="_token">
                         {{ csrf_field() }}
-                  <label for="title">Title</label>
+                  <label for="title">Question Title</label>
                   <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}"/>
                 </div>
 
                 <div class="form-group">
-                  <label for="info">Info</label>
+                  <label for="info">Question Body</label>
                   <textarea class="form-control" rows="5" id="info" name="info" value="{{old('info')}}"></textarea>
                 </div>
 
 
                 <div class="form-group">
-      				    <label for="category">What is your question about?</label>
+      				    <label for="category">What is your question related to?</label>
       				    <select name="category" class="form-control" id="category">
       				    	<option value="none">-- select category --</option>
       				    		<option value="colleges">Colleges</option>
