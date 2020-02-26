@@ -16,7 +16,6 @@
 |
 */
 
-
 Route::get('/', 'PageController@welcome')->name('welcome');
 Route::get('/about', 'PageController@about')->name('about');
 
@@ -30,15 +29,10 @@ Route::get('/user/profile', 'User\ProfileController@index')->name('user.myProfil
 Route::get('/user/editProfile', 'User\ProfileController@edit')->name('user.editProfile');
 Route::put('/user/updateProfile', 'User\ProfileController@update')->name('user.updateProfile');
 
-Route::get('/user/answers/{type}/create/{id}', 'User\AnswerController@create')->name('user.answers.create');
-
-
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/home', 'Admin\HomeController@index')->name('admin.home');
 Route::get('/user/home', 'User\HomeController@index')->name('user.home');
-
-
 
 Route::get('/admin/questions', 'Admin\QuestionController@index')->name('admin.questions.index');
 Route::get('/admin/deleteRequests', 'Admin\QuestionController@deleteRequests')->name('admin.questions.deleteRequests');
@@ -84,14 +78,6 @@ Route::get('/admin/modules/{id}/edit', 'Admin\ModuleController@edit')->name('adm
 Route::put('/admin/modules/{id}', 'Admin\ModuleController@update')->name('admin.modules.update');
 Route::delete('/admin/modules/{id}', 'Admin\ModuleController@destroy')->name('admin.modules.destroy');
 
-Route::get('/admin/categories', 'Admin\CategoryController@index')->name('admin.categories.index');
-Route::get('/admin/categories/create', 'Admin\CategoryController@create')->name('admin.categories.create');
-Route::get('/admin/categories/{id}/show', 'Admin\CategoryController@show')->name('admin.categories.show');
-Route::post('/admin/categories/store', 'Admin\CategoryController@store')->name('admin.categories.store');
-Route::get('/admin/categories/{id}/edit', 'Admin\CategoryController@edit')->name('admin.categories.edit');
-Route::put('/admin/categories/{id}', 'Admin\CategoryController@update')->name('admin.categories.update');
-Route::delete('/admin/categories/{id}', 'Admin\CategoryController@destroy')->name('admin.categories.destroy');
-
 Route::get('/user/questions', 'User\QuestionController@index')->name('user.questions.index');
 Route::get('/user/questions/create', 'User\QuestionController@create')->name('user.questions.create');
 Route::get('/user/questionsCollege/{id}', 'User\QuestionController@showCollege')->name('user.questions.showCollege');
@@ -116,9 +102,31 @@ Route::put('/user/questions/{id}/general', 'User\QuestionController@requestDelet
 Route::get('/user/questions/redirect/{type}/{id}', 'User\QuestionController@redirect')->name('user.questions.redirect');
 
 
+
 Route::get('/user/{type}/answers/{id}', 'User\AnswerController@index')->name('user.answers.index');
-//Route::get('/user/answers/{id}', 'User\AnswerController@show')->name('user.answers.show');
+Route::get('/user/answers/{type}/create/{id}', 'User\AnswerController@create')->name('user.answers.create');
+Route::get('/user/answersCollege/{id}', 'User\AnswerController@showCollege')->name('user.answers.showCollege');
+Route::get('/user/answersCourse/{id}', 'User\AnswerController@showCourse')->name('user.answers.showCourse');
+Route::get('/user/answersModule/{id}', 'User\AnswerController@showModule')->name('user.answers.showModule');
+Route::get('/user/answersGeneral/{id}', 'User\AnswerController@showGeneral')->name('user.answers.showGeneral');
 Route::post('/user/answers/{type}/store/{id}', 'User\AnswerController@store')->name('user.answers.store');
-Route::get('/user/answers/{id}/edit', 'User\AnswerController@edit')->name('user.answers.edit');
-Route::post('/user/answers/{id}', 'User\AnswerController@update')->name('user.answers.update');
-Route::put('/user/answers/{id}', 'User\AnswerController@requestDelete')->name('user.answers.requestDelete');
+Route::get('/user/answers/editGeneral/{id}', 'User\AnswerController@editGeneral')->name('user.answers.editGeneral');
+Route::get('/user/answers/editCollege/{id}', 'User\AnswerController@editCollege')->name('user.answers.editCollege');
+Route::get('/user/answers/editCourse/{id}', 'User\AnswerController@editCourse')->name('user.answers.editCourse');
+Route::get('/user/answers/editModule/{id}', 'User\AnswerController@editModule')->name('user.answers.editModule');
+Route::post('/user/answers/{id}/updateGeneral', 'User\AnswerController@updateGeneral')->name('user.answers.updateGeneral');
+Route::post('/user/answers/{id}/updateCollege', 'User\AnswerController@updateCollege')->name('user.answers.updateCollege');
+Route::post('/user/answers/{id}/updateCourse', 'User\AnswerController@updateCourse')->name('user.answers.updateCourse');
+Route::post('/user/answers/{id}/updateModule', 'User\AnswerController@updateModule')->name('user.answers.updateModule');
+
+
+
+Route::put('/user/{type}/answers/{id}/deleteModule', 'User\AnswerController@destroyModule')->name('user.answers.destroyModule');
+Route::put('/user/{type}/answers/{id}/deleteGeneral', 'User\AnswerController@destroyGeneral')->name('user.answers.destroyGeneral');
+Route::put('/user/{type}/answers/{id}/deleteCollege', 'User\AnswerController@destroyCollege')->name('user.answers.destroyCollege');
+Route::put('/user/{type}/answers/{id}/deleteCourse', 'User\AnswerController@destroyCourse')->name('user.answers.destroyCourse');
+
+
+//Route::get('/user/answers/{id}/edit', 'User\AnswerController@edit')->name('user.answers.edit');
+//Route::post('/user/answers/{id}', 'User\AnswerController@update')->name('user.answers.update');
+//Route::put('/user/answers/{id}', 'User\AnswerController@requestDelete')->name('user.answers.requestDelete');

@@ -33,8 +33,10 @@
                           <td><a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $questionsModule->student->user->name }}</a></td>
                           <td>
                             <a href="{{ route('user.questions.showModule', $questionsModule->id )}}" class="btn btn-primary">View</a>
-                        
+
                             <a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-success">Answer</a>
+
+                            <a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-Info" style="color:white;">View Answers</a>
                           </td>
                         </tr>
                         @endif

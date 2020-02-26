@@ -20,10 +20,10 @@ class ProfileController extends Controller
   public function index()
   {
     $user = Auth::user();
-    $questionsColleges = QuestionsCollege::all()->take(2);
-    $questionsCourses = QuestionsCourse::all()->take(2);
-    $questionsModules = QuestionsModule::all()->take(2);
-    $questionsGenerals = QuestionsGeneral::all()->take(2);
+    $questionsColleges = QuestionsCollege::all();
+    $questionsCourses = QuestionsCourse::all();
+    $questionsModules = QuestionsModule::all();
+    $questionsGenerals = QuestionsGeneral::all();
 
     return view('user.myProfile')->with([
       'user' => $user,
@@ -37,10 +37,10 @@ class ProfileController extends Controller
 
   public function viewUserProfile($name)
   {
-    $questionsColleges = QuestionsCollege::all()->take(2);
-    $questionsCourses = QuestionsCourse::all()->take(2);
-    $questionsModules = QuestionsModule::all()->take(2);
-    $questionsGenerals = QuestionsGeneral::all()->take(2);
+    $questionsColleges = QuestionsCollege::all();
+    $questionsCourses = QuestionsCourse::all();
+    $questionsModules = QuestionsModule::all();
+    $questionsGenerals = QuestionsGeneral::all();
 
     $user = User::where('name',$name)->first();
 
@@ -69,11 +69,6 @@ class ProfileController extends Controller
     $id = Auth::user()->id;
     $user = User::findOrFail($id);
 
-    $request->validate([
-      'name' => 'required|max:191'
-    ]);
-
-    $user->name = $request->input('name');
     $user->bio =  $request->input('bio');
     //img
     if($request->hasFile('image')){

@@ -22,7 +22,7 @@
           </div>
           @endif
 
-          <img src="{{asset('storage/img/'.$user->image)}}" height="275px" class="card-img-top" src="..." alt="Card image cap" style="margin-bottom:1em;">
+          <img src="{{asset('storage/img/'.$user->image)}}" height="275px" class="card-img-top" src="..." alt="No Profile Image" style="margin-bottom:1em;">
 
           <h2>Name</h2>
           <p>{{$user->name}}</p>
@@ -64,6 +64,7 @@
                   <th>Date Posted</th>
              </thead>
              <tbody>
+
                @foreach ($questionsColleges as $questionsCollege)
 
                @if($questionsCollege->student_id === Auth::user()->student->id)
@@ -77,6 +78,7 @@
                  </td>
                </tr>
             @endif
+
             @endforeach
 
             @foreach ($questionsCourses as $questionsCourse)
@@ -92,6 +94,7 @@
               </td>
             </tr>
          @endif
+
          @endforeach
 
          @foreach ($questionsModules as $questionsModule)
@@ -107,9 +110,11 @@
            </td>
          </tr>
       @endif
+
       @endforeach
 
       @foreach ($questionsGenerals as $questionsGeneral)
+
       @if($questionsGeneral->student_id === Auth::user()->student->id)
       <tr data-id="{{$questionsGeneral->id}}">
         <td>{{ substr($questionsGeneral->title,'0','20') }}</td>
@@ -121,6 +126,7 @@
         </td>
       </tr>
    @endif
+
    @endforeach
 
         @endif

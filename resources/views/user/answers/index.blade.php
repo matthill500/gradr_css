@@ -6,6 +6,52 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
+          Question  <a href="{{ route('user.answers.create', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}" class="btn btn-success float-right">Answer</a>
+        </div>
+        <div class="card-body">
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                @if ($type ==="questions_generals")
+                <td>Question Title</td>
+                <td>{{$questionsGeneral->title}}</td>
+              </tr>
+              <tr>
+                <td>Question Body</td>
+                <td>{{$questionsGeneral->info}}</td>
+             </tr>
+             @elseif ($type ==="questions_colleges")
+             <td>Question Title</td>
+             <td>{{$questionsCollege->title}}</td>
+           </tr>
+           <tr>
+             <td>Question Body</td>
+             <td>{{$questionsCollege->info}}</td>
+          </tr>
+          @elseif ($type ==="questions_courses")
+          <td>Question Title</td>
+          <td>{{$questionsCourse->title}}</td>
+        </tr>
+        <tr>
+          <td>Question Body</td>
+          <td>{{$questionsCourse->info}}</td>
+       </tr>
+       @elseif ($type === "questions_modules")
+       <td>Question Title</td>
+       <td>{{$questionsModule->title}}</td>
+     </tr>
+     <tr>
+       <td>Question Body</td>
+       <td>{{$questionsModule->info}}</td>
+    </tr>
+    @endif
+           </tbody>
+         </table>
+        </div>
+    </div>
+
+      <div class="card" style="margin-top:20px;">
+        <div class="card-header">
           Answers
         </div>
         <div class="card-body">
@@ -22,32 +68,81 @@
              @foreach ($answersColleges as $answersCollege)
              @if($answersCollege->question_id === $qid && $answersCollege->type === $type)
              <tr data-id="{{$answersCollege->id}}">
-               <td>{{ $answersCollege->student->user->name }}</td>
+               <td><a href="{{ route('user.profile', $answersCollege->student->user->name) }}">{{ $answersCollege->student->user->name }}</a></td>
                <td>{{ $answersCollege->answer }}</td>
+               <td>
+                 <a href="{{ route('user.answers.showCollege', $answersCollege->id )}}" class="btn btn-primary">View</a>
+                 @if($answersCollege->student_id === Auth::user()->student->id)
+                 <a href="{{ route('user.answers.editCollege', $answersCollege->id )}}" class="btn btn-warning">Edit</a>
+
+                 <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyCollege',  [$answersCollege->getTable(), $answersCollege->id])}}">
+                    <input type="hidden" name="_method" value="PUT">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="form-control btn btn-danger">Delete</a>
+                </form>
+                 @endif
+               </td>
               @endif
              @endforeach
 
              @foreach ($answersCourses as $answersCourse)
              @if($answersCourse->question_id === $qid && $answersCourse->type === $type)
              <tr data-id="{{$answersCourse->id}}">
-               <td>{{ $answersCourse->student->user->name }}</td>
+               <td><a href="{{ route('user.profile', $answersCourse->student->user->name) }}">{{ $answersCourse->student->user->name }}</a></td>
                <td>{{ $answersCourse->answer }}</td>
+               <td>
+                 <a href="{{ route('user.answers.showCourse', $answersCourse->id )}}" class="btn btn-primary">View</a>
+                 @if($answersCourse->student_id === Auth::user()->student->id)
+                 <a href="{{ route('user.answers.editCourse', $answersCourse->id )}}" class="btn btn-warning">Edit</a>
+
+                 <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyCourse',  [$answersCourse->getTable(), $answersCourse->id])}}">
+                    <input type="hidden" name="_method" value="PUT">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="form-control btn btn-danger">Delete</a>
+                </form>
+                 @endif
+               </td>
               @endif
              @endforeach
 
              @foreach ($answersModules as $answersModule)
              @if($answersModule->question_id === $qid && $answersModule->type === $type)
              <tr data-id="{{$answersModule->id}}">
-               <td>{{ $answersModule->student->user->name }}</td>
+               <td><a href="{{ route('user.profile', $answersModule->student->user->name) }}">{{ $answersModule->student->user->name }}</td>
                <td>{{ $answersModule->answer }}</td>
+               <td>
+                 <a href="{{ route('user.answers.showModule', $answersModule->id )}}" class="btn btn-primary">View</a>
+                 @if($answersModule->student_id === Auth::user()->student->id)
+                 <a href="{{ route('user.answers.editModule', $answersModule->id )}}" class="btn btn-warning">Edit</a>
+
+                 <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyModule',  [$answersModule->getTable(), $answersModule->id])}}">
+                    <input type="hidden" name="_method" value="PUT">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="form-control btn btn-danger">Delete</a>
+                </form>
+                 @endif
+               </td>
               @endif
              @endforeach
 
              @foreach ($answersGenerals as $answersGeneral)
              @if($answersGeneral->question_id === $qid && $answersGeneral->type === $type)
              <tr data-id="{{$answersGeneral->id}}">
-               <td>{{ $answersGeneral->student->user->name }}</td>
+               <td><a href="{{ route('user.profile', $answersGeneral->student->user->name) }}">{{ $answersGeneral->student->user->name }}</a></td>
                <td>{{ $answersGeneral->answer }}</td>
+               <td>
+                 <a href="{{ route('user.answers.showGeneral', $answersGeneral->id )}}" class="btn btn-primary">View</a>
+                 @if($answersGeneral->student_id === Auth::user()->student->id)
+                 <a href="{{ route('user.answers.editGeneral', $answersGeneral->id )}}" class="btn btn-warning">Edit</a>
+
+                 <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyGeneral',  [$answersGeneral->getTable(), $answersGeneral->id])}}">
+                    <input type="hidden" name="_method" value="PUT">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="form-control btn btn-danger">Delete</a>
+                </form>
+
+                 @endif
+               </td>
               @endif
              @endforeach
 

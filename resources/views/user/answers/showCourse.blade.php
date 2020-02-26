@@ -1,3 +1,4 @@
+@extends('layouts.appUser')
 @section('content')
 <div class="container">
   <div class="row">
@@ -10,12 +11,18 @@
           <table class="table table-hover">
             <tbody>
               <tr>
-                <td>{{ $answer->answer }}</td>
+                    User:<a href="{{ route('user.profile', $answersCourse->student->user->name) }}"> {{$answersCourse->student->user->name}}</a>
+                    <p style="float:right;">Date: {{$answersCourse->created_at}}</p>
+
+              </tr>
+              <th>Answer</th>
+              <tr>
+                <td>{{$answersCourse->answer}}</td>
               </tr>
            </tbody>
          </table>
 
-         <a href="{{ route('user.answers.index', $question->id )}}" class="btn btn-default">Back</a>
+
 
 
 

@@ -25,22 +25,75 @@ class AnswerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index($type, $id)
     {
-      $qid = (int)($id);
-      $answersColleges = AnswersCollege::all();
-      $answersCourses = AnswersCourse::all();
-      $answersModules = AnswersModule::all();
-      $answersGenerals = AnswersGeneral::all();
+        $qid = (int)($id);
+        $answersColleges = AnswersCollege::all();
+        $answersCourses = AnswersCourse::all();
+        $answersModules = AnswersModule::all();
+        $answersGenerals = AnswersGeneral::all();
 
-      return view('user.answers.index')->with([
-        'answersColleges' => $answersColleges,
-        'answersCourses' => $answersCourses,
-        'answersModules' => $answersModules,
-        'answersGenerals' => $answersGenerals,
-        'qid' => $qid,
-        'type' => $type
-      ]);
+      if ($type === "questions_generals"){
+          $questionsGeneral = questionsGeneral::findOrFail($id);
+
+          return view('user.answers.index')->with([
+            'qid' => $qid,
+            'type' => $type,
+            'questionsGeneral' => $questionsGeneral,
+            'answersColleges' => $answersColleges,
+            'answersCourses' => $answersCourses,
+            'answersModules' => $answersModules,
+            'answersGenerals' => $answersGenerals
+          ]);
+
+      }else if($type === "questions_colleges"){
+          $questionsCollege = questionsCollege::findOrFail($id);
+
+          return view('user.answers.index')->with([
+            'qid' => $qid,
+            'type' => $type,
+            'questionsCollege' => $questionsCollege,
+            'answersColleges' => $answersColleges,
+            'answersCourses' => $answersCourses,
+            'answersModules' => $answersModules,
+            'answersGenerals' => $answersGenerals
+          ]);
+
+      }else if($type === "questions_courses"){
+          $questionsCourse = questionsCourse::findOrFail($id);
+
+          return view('user.answers.index')->with([
+            'qid' => $qid,
+            'type' => $type,
+            'questionsCourse' => $questionsCourse,
+            'answersColleges' => $answersColleges,
+            'answersCourses' => $answersCourses,
+            'answersModules' => $answersModules,
+            'answersGenerals' => $answersGenerals
+          ]);
+      }else{
+          $questionsModule = questionsModule::findOrFail($id);
+
+          return view('user.answers.index')->with([
+            'qid' => $qid,
+            'type' => $type,
+            'questionsModule' => $questionsModule,
+            'answersColleges' => $answersColleges,
+            'answersCourses' => $answersCourses,
+            'answersModules' => $answersModules,
+            'answersGenerals' => $answersGenerals
+          ]);
+      }
+
+      // return view('user.answers.index')->with([
+      //   'answersColleges' => $answersColleges,
+      //   'answersCourses' => $answersCourses,
+      //   'answersModules' => $answersModules,
+      //   'answersGenerals' => $answersGenerals,
+      //   'qid' => $qid,
+      //   'type' => $type
+      // ]);
 
     }
 
@@ -149,9 +202,40 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+     public function showGeneral($id)
+     {
+         $answersGeneral = AnswersGeneral::findOrFail($id);
+
+         return view('user.answers.showGeneral')->with([
+           'answersGeneral' => $answersGeneral
+         ]);
+     }
+
+    public function showCollege($id)
     {
-        $question_id = $id;
+        $answersCollege = AnswersCollege::findOrFail($id);
+
+        return view('user.answers.showCollege')->with([
+          'answersCollege' => $answersCollege
+        ]);
+    }
+
+    public function showCourse($id)
+    {
+        $answersCourse = AnswersCourse::findOrFail($id);
+
+        return view('user.answers.showCourse')->with([
+          'answersCourse' => $answersCourse
+        ]);
+    }
+
+    public function showModule($id)
+    {
+        $answersModule = AnswersModule::findOrFail($id);
+
+        return view('user.answers.showModule')->with([
+          'answersModule' => $answersModule
+        ]);
     }
 
     /**
@@ -160,9 +244,40 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editGeneral($id)
     {
-        //
+      $answersGeneral = AnswersGeneral::findOrFail($id);
+
+      return view('user.answers.editGeneral')->with([
+        'answersGeneral' => $answersGeneral
+      ]);
+    }
+
+    public function editCollege($id)
+    {
+      $answersCollege = AnswersCollege::findOrFail($id);
+
+      return view('user.answers.editCollege')->with([
+        'answersCollege' => $answersCollege
+      ]);
+    }
+
+    public function editCourse($id)
+    {
+      $answersCourse = AnswersCourse::findOrFail($id);
+
+      return view('user.answers.editCourse')->with([
+        'answersCourse' => $answersCourse
+      ]);
+    }
+
+    public function editModule($id)
+    {
+      $answersModule = AnswersModule::findOrFail($id);
+
+      return view('user.answers.editModule')->with([
+        'answersModule' => $answersModule
+      ]);
     }
 
     /**
@@ -172,9 +287,66 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateGeneral(Request $request, $id)
     {
-        //
+      $answersGeneral = AnswersGeneral::findOrFail($id);
+
+      $request->validate([
+        'answer' => 'required|min:2|max:300',
+
+      ]);
+
+      $answersGeneral->answer = $request->input('answer');
+      $answersGeneral->save();
+
+      return redirect()->route('user.answers.showGeneral', $id);
+
+    }
+
+    public function updateCollege(Request $request, $id)
+    {
+      $answersCollege = AnswersCollege::findOrFail($id);
+
+      $request->validate([
+        'answer' => 'required|min:2|max:300',
+
+      ]);
+
+      $answersCollege->answer = $request->input('answer');
+      $answersCollege->save();
+
+      return redirect()->route('user.answers.showCollege', $id);
+
+    }
+    public function updateCourse(Request $request, $id)
+    {
+      $answersCourse = AnswersCourse::findOrFail($id);
+
+      $request->validate([
+        'answer' => 'required|min:2|max:300',
+
+      ]);
+
+      $answersCourse->answer = $request->input('answer');
+      $answersCourse->save();
+
+      return redirect()->route('user.answers.showCourse', $id);
+
+    }
+    public function updateModule(Request $request, $id)
+    {
+      $answersModule = AnswersModule::findOrFail($id);
+
+      $request->validate([
+        'answer' => 'required|min:2|max:300',
+
+      ]);
+
+      $answersModule->answer = $request->input('answer');
+      $answersModule->save();
+
+      return redirect()->route('user.answers.showModule', $id);
+
     }
 
     /**
@@ -183,8 +355,41 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroyGeneral($type, $id)
     {
+       $answersGeneral = AnswersGeneral::findOrFail($id);
+       $qId  = $answersGeneral->question_id;
+       $qType = $answersGeneral->type;
+       $answersGeneral->delete();
 
+       return redirect()->route('user.answers.index',[$qType, $qId]);
+    }
+
+    public function destroyCollege($type, $id)
+    {
+       $answersCollege = AnswersCollege::findOrFail($id);
+       $qId  = $answersCollege->question_id;
+       $qType = $answersCollege->type;
+       $answersCollege->delete();
+
+       return redirect()->route('user.answers.index',[$qType, $qId]);
+    }
+    public function destroyCourse($type, $id)
+    {
+       $answersCourse = AnswersCourse::findOrFail($id);
+       $qId  = $answersCourse->question_id;
+       $qType = $answersCourse->type;
+       $answersCourse->delete();
+
+       return redirect()->route('user.answers.index',[$qType, $qId]);
+    }
+    public function destroyModule($type, $id)
+    {
+       $answersModule = AnswersModule::findOrFail($id);
+       $qId  = $answersModule->question_id;
+       $qType = $answersModule->type;
+       $answersModule->delete();
+
+       return redirect()->route('user.answers.index',[$qType, $qId]);
     }
 }

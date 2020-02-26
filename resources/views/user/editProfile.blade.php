@@ -28,11 +28,6 @@
                 {{ csrf_field() }}
 
             <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" name="name" value="{{old('name', $user->name)}}" />
-            </div>
-
-            <div class="form-group">
               <label for="bio">Bio</label>
               <input type="text" class="form-control" id="bio" name="bio" value="{{old('bio', $user->bio)}}" />
             </div>
@@ -50,7 +45,7 @@
           <div class="imageUpload">
             <a href="{{route('user.home')}}" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn btn-primary float-right">Submit</button>
-          </div> 
+          </div>
           </form>
 
 

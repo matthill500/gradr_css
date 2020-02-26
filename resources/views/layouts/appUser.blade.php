@@ -7,6 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <script src="https://kit.fontawesome.com/2c0645eb19.js" crossorigin="anonymous"></script>
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
@@ -44,7 +46,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/user/home') }}">
-                    {{ config('app.name', 'Laravel') }}
+                  <i class="fas fa-home"></i>
+                  {{ config('app.name', 'Laravel') }}
                 </a>
 
                 <a class="navbar-brand" href="{{ url('/user/questions') }}">
@@ -81,7 +84,7 @@
 
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                  
+
                                     <a class="dropdown-item" href="{{ url('/user/profile') }}">
                                           My Profile
                                     </a>

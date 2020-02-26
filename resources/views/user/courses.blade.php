@@ -69,6 +69,8 @@
                             <a href="{{ route('user.questions.showCollege', $questionsCollege->id )}}" class="btn btn-primary">View</a>
 
                             <a href="{{ route('user.answers.create', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}" class="btn btn-success">Answer</a>
+
+                            <a href="{{ route('user.answers.index', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}" class="btn btn-Info" style="color:white;">View Answers</a>
                           </td>
                         </tr>
                         @endif
