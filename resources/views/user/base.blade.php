@@ -36,7 +36,7 @@
 
                             <a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-success">Answer</a>
 
-                            <a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-Info" style="color:white;">View Answers</a>
+                              <a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-info" style="color:white;">View Answers</a>
                           </td>
                         </tr>
                         @endif

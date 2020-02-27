@@ -48,7 +48,7 @@ class AnswerController extends Controller
           ]);
 
       }else if($type === "questions_colleges"){
-          $questionsCollege = questionsCollege::findOrFail($id);
+        $questionsCollege = QuestionsCollege::findOrFail($id);
 
           return view('user.answers.index')->with([
             'qid' => $qid,
@@ -61,7 +61,7 @@ class AnswerController extends Controller
           ]);
 
       }else if($type === "questions_courses"){
-          $questionsCourse = questionsCourse::findOrFail($id);
+        $questionsCourse = questionsCourse::findOrFail($id);
 
           return view('user.answers.index')->with([
             'qid' => $qid,
@@ -73,7 +73,7 @@ class AnswerController extends Controller
             'answersGenerals' => $answersGenerals
           ]);
       }else{
-          $questionsModule = questionsModule::findOrFail($id);
+        $questionsModule = questionsModule::findOrFail($id);
 
           return view('user.answers.index')->with([
             'qid' => $qid,

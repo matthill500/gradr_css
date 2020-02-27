@@ -7,6 +7,15 @@
       <div class="card">
         <div class="card-header">
           Question: {{$questionsCourse->title}}
+
+          <form style="display:inline-block" method="POST" action="" class="float-right">
+
+            <input type="hidden" name="_method" value="PUT">
+             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+               <button type="submit" class="form-control btn btn-success btn-sm">Up Vote</a>
+               <i class="fas fa-thumbs-up"></i>
+         </form>
+         
         </div>
         <div class="card-body">
           <table class="table table-hover">

@@ -6,7 +6,12 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          Question  <a href="{{ route('user.answers.create', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}" class="btn btn-success float-right">Answer</a>
+          Question  @if ($type === "questions_generals")<a href="{{ route('user.answers.create', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}" class="btn btn-success float-right">Answer</a>
+                    @elseif ($type === "questions_colleges")<a href="{{ route('user.answers.create', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}" class="btn btn-success float-right">Answer</a>
+                    @elseif ($type === "questions_courses")<a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" class="btn btn-success float-right">Answer</a>
+                    @elseif ($type === "questions_modules")<a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-success float-right">Answer</a>@endif
+
+
         </div>
         <div class="card-body">
           <table class="table table-hover">
