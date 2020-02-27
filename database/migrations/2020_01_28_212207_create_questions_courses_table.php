@@ -18,6 +18,7 @@ class CreateQuestionsCoursesTable extends Migration
           $table->string('title');
           $table->string('info');
           $table->boolean('delete')->default(0);
+          $table->integer('votes')->default(0);
           $table->bigInteger('student_id')->unsigned();
           $table->bigInteger('course_id')->unsigned();
           $table->timestamps();

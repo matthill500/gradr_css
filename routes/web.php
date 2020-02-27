@@ -126,6 +126,7 @@ Route::put('/user/{type}/answers/{id}/deleteGeneral', 'User\AnswerController@des
 Route::put('/user/{type}/answers/{id}/deleteCollege', 'User\AnswerController@destroyCollege')->name('user.answers.destroyCollege');
 Route::put('/user/{type}/answers/{id}/deleteCourse', 'User\AnswerController@destroyCourse')->name('user.answers.destroyCourse');
 
+Route::put('/user/questionsCourse/{id}/course', 'User\QuestionController@voteCourse')->name('user.questions.voteCourse');
 
 //Route::get('/user/answers/{id}/edit', 'User\AnswerController@edit')->name('user.answers.edit');
 //Route::post('/user/answers/{id}', 'User\AnswerController@update')->name('user.answers.update');

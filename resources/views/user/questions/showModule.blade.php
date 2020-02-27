@@ -15,7 +15,7 @@
                <button type="submit" class="form-control btn btn-success btn-sm">Up Vote</a>
                <i class="fas fa-thumbs-up"></i>
          </form>
-         
+
         </div>
         <div class="card-body">
           <table class="table table-hover">
@@ -31,9 +31,9 @@
            </tbody>
          </table>
 
-         <a href="{{ route('user.questions.index' )}}" class="btn btn-default">My Questions</a>
-         <a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-default">Answer</a>
-         <a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-default">View Answers</a>
+         <a href="{{ route('user.questions.index' )}}" class="btn btn-secondary">My Questions</a>
+         <a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-success">Answer</a>
+         <a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-info" style="color:white;">View Answers</a>
 
         </div>
       </div>

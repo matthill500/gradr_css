@@ -13,7 +13,9 @@ use App\Student;
 use App\College;
 use App\Course;
 use App\Module;
+use App\VotesCourse;
 use Auth;
+use DB;
 
 class QuestionController extends Controller
 {
@@ -110,6 +112,7 @@ class QuestionController extends Controller
         $questionsCourse->student_id = Auth::user()->student->id;
 
         $questionsCourse->save();
+
       }else if($about === "modules"){
         $questionsModule = new QuestionsModule();
         $questionsModule->title = $request->input('title');
@@ -352,6 +355,36 @@ class QuestionController extends Controller
                 return redirect()->route('user.questions.index')->with('status','Request withdrawn!');
                   }
          }
+
+         public function voteCourse($id)
+          {
+              $questionsCourse = QuestionsCourse::findOrFail($id);
+
+              $userId = Auth::user()->id;
+
+              $query = DB::table('votes_courses')->where('user_id', $userId)
+                                                 ->where('question_id', $id)
+                                                 ->get();
+
+              if(count($query) == 0){
+
+                $voteCourse = new VotesCourse();
+
+                $voteCourse->question_id = $id;
+                $voteCourse->voted = 1;
+                $voteCourse->user_id = Auth::user()->id;
+                $voteCourse->save();
+
+                $questionsCourse->votes += 1;
+                $questionsCourse->save();
+
+                return redirect()->route('user.questions.showCourse', $id)->with('status','You Voted!');
+
+              }else{
+
+                return redirect()->route('user.questions.showCourse', $id)->with('status','You Already Voted!');
+              }
+          }
 
 
 }
