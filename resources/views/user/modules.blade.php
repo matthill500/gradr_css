@@ -51,7 +51,7 @@
                     <table id="table-questions" class="table table-hover">
                       <thead>
                         <th>Title</th>
-                          <th>Info</th>
+                          <th>Up Votes</th>
                           <th>Category</th>
                           <th>User</th>
                       </thead>
@@ -59,8 +59,8 @@
                         @foreach ($questionsCourses as $questionsCourse)
                         @if($questionsCourse->course_id === $mid)
                         <tr data-id="{{$questionsCourse->id}}">
-                          <td>{{ substr($questionsCourse->title,'0','20') }}</td>
-                          <td>{{ substr($questionsCourse->info,'0','40') }}</td>
+                          <td>{{ substr($questionsCourse->title,'0','45') }}</td>
+                          <td>{{ $questionsCourse->votes }}</td>
                           <td>{{ substr($questionsCourse->course->course_name,'0','40') }}</td>
                           <td><a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">{{ $questionsCourse->student->user->name }}</a></td>
                           <td>

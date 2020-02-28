@@ -8,9 +8,14 @@ use App\QuestionsCollege;
 use App\QuestionsCourse;
 use App\QuestionsModule;
 use App\QuestionsGeneral;
+use App\VotesQuestionsGeneral;
+use App\VotesQuestionsCollege;
+use App\VotesQuestionsCourse;
+use App\VotesQuestionsModule;
 use App\Question;
 
 use Auth;
+use DB;
 
 class QuestionController extends Controller
 {
@@ -151,10 +156,18 @@ class QuestionController extends Controller
     {
       $questionsCollege = QuestionsCollege::findOrFail($id);
 
-      //$questionsCollege->answer()->delete();
-      $questionsCollege->delete();
+      $question_id = $id;
 
-      return redirect()->route('admin.questions.deleteRequests');
+      $votesCollege = DB::table('votes_questions_colleges')->where('question_id', $question_id)->get();
+
+      if(count($votesCollege) == 0){
+        $questionsCollege->delete();
+          return redirect()->route('admin.questions.deleteRequests');
+      }else{
+        $votesCollege->delete();
+        $questionsCollege->delete();
+          return redirect()->route('admin.questions.deleteRequests');
+      }
     }
 
 
@@ -162,10 +175,18 @@ class QuestionController extends Controller
     {
       $questionsCourse = QuestionsCourse::findOrFail($id);
 
-      //$questionsCollege->answer()->delete();
-      $questionsCourse->delete();
+      $question_id = $id;
 
-      return redirect()->route('admin.questions.deleteRequests');
+      $votesCourse = DB::table('votes_questions_courses')->where('question_id', $question_id)->get();
+
+      if(count($votesCourse) == 0){
+        $questionsCourse->delete();
+          return redirect()->route('admin.questions.deleteRequests');
+      }else{
+        $votesCourse->delete();
+        $questionsCourse->delete();
+          return redirect()->route('admin.questions.deleteRequests');
+      }
     }
 
 
@@ -173,18 +194,37 @@ class QuestionController extends Controller
     {
       $questionsModule = QuestionsModule::findOrFail($id);
 
-      //$questionsCollege->answer()->delete();
-      $questionsModule->delete();
+      $question_id = $id;
 
-      return redirect()->route('admin.questions.deleteRequests');
+      $votesModule = DB::table('votes_questions_modules')->where('question_id', $question_id)->get();
+
+      if(count($votesModule) == 0){
+        $questionsModule->delete();
+          return redirect()->route('admin.questions.deleteRequests');
+      }else{
+        $votesModule->delete();
+        $questionsModule->delete();
+          return redirect()->route('admin.questions.deleteRequests');
+      }
     }
+
     public function destroyGeneral($id)
     {
       $questionsGeneral = QuestionsGeneral::findOrFail($id);
 
-      //$questionsCollege->answer()->delete();
-      $questionsGeneral->delete();
+      $question_id = $id;
 
-      return redirect()->route('admin.questions.deleteRequests');
+      $votesGeneral = DB::table('votes_questions_generals')->where('question_id', $question_id)->get();
+
+
+
+      if(count($votesGeneral) == 0){
+        $questionsGeneral->delete();
+          return redirect()->route('admin.questions.deleteRequests');
+      }else{
+        $votesGeneral->delete();
+        $questionsGeneral->delete();
+          return redirect()->route('admin.questions.deleteRequests');
+      }
     }
 }

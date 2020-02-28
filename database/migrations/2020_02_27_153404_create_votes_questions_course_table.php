@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVotesCourseTable extends Migration
+class CreateVotesQuestionsCourseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateVotesCourseTable extends Migration
      */
     public function up()
     {
-        Schema::create('votes_courses', function (Blueprint $table) {
+        Schema::create('votes_questions_courses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('question_id')->unsigned();
             $table->boolean('voted');
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('question_id')->references('id')->on('questions_courses');
+            $table->foreign('question_id')->references('id')->on('questions_courses')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users');
         });
 
@@ -33,6 +33,6 @@ class CreateVotesCourseTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('votes_courses');
+        Schema::dropIfExists('votes_questions_courses');
     }
 }

@@ -18,8 +18,8 @@ class CreateQuestionsGeneralTable extends Migration
             $table->string('title');
             $table->string('info');
             $table->boolean('delete')->default(0);
-            $table->bigInteger('student_id')->unsigned();
             $table->integer('votes')->default(0);
+            $table->bigInteger('student_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');

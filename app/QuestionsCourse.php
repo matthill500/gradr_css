@@ -21,4 +21,7 @@ class QuestionsCourse extends Model
   public function answer(){
     return $this->hasMany('App\AnswersCourse');
   }
+  public function vote(){
+    return $this->hasMany('App\VotesQuestionsCourse');
+  }
 }

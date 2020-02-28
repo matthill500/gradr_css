@@ -127,6 +127,15 @@ Route::put('/user/{type}/answers/{id}/deleteCollege', 'User\AnswerController@des
 Route::put('/user/{type}/answers/{id}/deleteCourse', 'User\AnswerController@destroyCourse')->name('user.answers.destroyCourse');
 
 Route::put('/user/questionsCourse/{id}/course', 'User\QuestionController@voteCourse')->name('user.questions.voteCourse');
+Route::put('/user/questionsGeneral/{id}/general', 'User\QuestionController@voteGeneral')->name('user.questions.voteGeneral');
+Route::put('/user/questionsCollege/{id}/college', 'User\QuestionController@voteCollege')->name('user.questions.voteCollege');
+Route::put('/user/questionsModule/{id}/module', 'User\QuestionController@voteModule')->name('user.questions.voteModule');
+
+Route::put('/user/{type}/answers/{qId}/{aId}/general', 'User\AnswerController@voteGeneral')->name('user.answers.voteGeneral');
+Route::put('/user/{type}/answers/{qId}/{aId}/college', 'User\AnswerController@voteCollege')->name('user.answers.voteCollege');
+Route::put('/user/{type}/answers/{qId}/{aId}/course', 'User\AnswerController@voteCourse')->name('user.answers.voteCourse');
+Route::put('/user/{type}/answers/{qId}/{aId}/module', 'User\AnswerController@voteModule')->name('user.answers.voteModule');
+
 
 //Route::get('/user/answers/{id}/edit', 'User\AnswerController@edit')->name('user.answers.edit');
 //Route::post('/user/answers/{id}', 'User\AnswerController@update')->name('user.answers.update');

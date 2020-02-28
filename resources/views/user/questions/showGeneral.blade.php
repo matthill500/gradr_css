@@ -8,7 +8,7 @@
         <div class="card-header">
           Question: {{$questionsGeneral->title}}
 
-          <form style="display:inline-block" method="POST" action="" class="float-right">
+          <form style="display:inline-block" method="POST" action="{{route('user.questions.voteGeneral',$questionsGeneral->id)}}" class="float-right">
 
             <input type="hidden" name="_method" value="PUT">
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -21,8 +21,8 @@
           <table class="table table-hover">
             <tbody>
               <tr>
-                <td>Number of Votes</td>
-                <td>200</td>
+                <td>Number of Up Votes</td>
+                <td>{{ $questionsGeneral->votes }}</td>
               </tr>
               <tr>
                 <td>Title</td>

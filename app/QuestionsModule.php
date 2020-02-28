@@ -21,4 +21,7 @@ class QuestionsModule extends Model
   public function answer(){
     return $this->hasMany('App\AnswerModule');
   }
+  public function vote(){
+    return $this->hasMany('App\VotesQuestionsModule');
+  }
 }

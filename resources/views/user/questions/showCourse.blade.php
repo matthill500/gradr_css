@@ -20,6 +20,10 @@
           <table class="table table-hover">
             <tbody>
               <tr>
+                <td>Number of Up Votes</td>
+                <td>{{ $questionsCourse->votes }}</td>
+              </tr>
+              <tr>
                 <td>Title</td>
                 <td>{{ $questionsCourse->title }}</td>
               </tr>

@@ -11,10 +11,15 @@ use App\AnswersCourse;
 use App\AnswersModule;
 use App\AnswersGeneral;
 use Auth;
+use DB;
 use App\QuestionsModule;
 use App\QuestionsCourse;
 use App\QuestionsCollege;
 use App\QuestionsGeneral;
+use App\VotesAnswersGeneral;
+use App\VotesAnswersCollege;
+use App\VotesAnswersCourse;
+use App\VotesAnswersModule;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -392,4 +397,115 @@ class AnswerController extends Controller
 
        return redirect()->route('user.answers.index',[$qType, $qId]);
     }
+
+    public function voteGeneral($type, $qId, $aId)
+     {
+
+       $answersGeneral = AnswersGeneral::findOrFail($aId);
+       $userId = Auth::user()->id;
+
+       $query = DB::table('votes_answers_generals')->where('user_id', $userId)
+                                                    ->where('answer_id', $aId)
+                                                    ->get();
+      if(count($query) == 0){
+
+      $voteGeneral = new VotesAnswersGeneral();
+
+      $voteGeneral->answer_id = $aId;
+      $voteGeneral->voted = 1;
+      $voteGeneral->user_id = Auth::user()->id;
+      $voteGeneral->save();
+
+      $answersGeneral->votes += 1;
+      $answersGeneral->save();
+
+      return redirect()->route('user.answers.index',[$type, $qId])->with('status','You Voted!');
+      }else{
+
+      return redirect()->route('user.answers.index', [$type, $qId])->with('status','You Already Voted.');
+      }
+     }
+
+     public function voteCollege($type, $qId, $aId)
+      {
+
+        $answersCollege = AnswersCollege::findOrFail($aId);
+        $userId = Auth::user()->id;
+
+        $query = DB::table('votes_answers_colleges')->where('user_id', $userId)
+                                                     ->where('answer_id', $aId)
+                                                     ->get();
+       if(count($query) == 0){
+
+       $voteCollege = new VotesAnswersCollege();
+
+       $voteCollege->answer_id = $aId;
+       $voteCollege->voted = 1;
+       $voteCollege->user_id = Auth::user()->id;
+       $voteCollege->save();
+
+       $answersCollege->votes += 1;
+       $answersCollege->save();
+
+       return redirect()->route('user.answers.index',[$type, $qId])->with('status','You Voted!');
+       }else{
+
+       return redirect()->route('user.answers.index', [$type, $qId])->with('status','You Already Voted.');
+       }
+      }
+      public function voteCourse($type, $qId, $aId)
+       {
+
+         $answersCourse = AnswersCourse::findOrFail($aId);
+         $userId = Auth::user()->id;
+
+         $query = DB::table('votes_answers_courses')->where('user_id', $userId)
+                                                      ->where('answer_id', $aId)
+                                                      ->get();
+        if(count($query) == 0){
+
+        $voteCourse = new VotesAnswersCourse();
+
+        $voteCourse->answer_id = $aId;
+        $voteCourse->voted = 1;
+        $voteCourse->user_id = Auth::user()->id;
+        $voteCourse->save();
+
+        $answersCourse->votes += 1;
+        $answersCourse->save();
+
+        return redirect()->route('user.answers.index',[$type, $qId])->with('status','You Voted!');
+        }else{
+
+        return redirect()->route('user.answers.index', [$type, $qId])->with('status','You Already Voted.');
+        }
+       }
+       public function voteModule($type, $qId, $aId)
+        {
+
+          $answersModule = AnswersModule::findOrFail($aId);
+          $userId = Auth::user()->id;
+
+          $query = DB::table('votes_answers_modules')->where('user_id', $userId)
+                                                       ->where('answer_id', $aId)
+                                                       ->get();
+         if(count($query) == 0){
+
+         $voteModule = new VotesAnswersModule();
+
+         $voteModule->answer_id = $aId;
+         $voteModule->voted = 1;
+         $voteModule->user_id = Auth::user()->id;
+         $voteModule->save();
+
+         $answersModule->votes += 1;
+         $answersModule->save();
+
+         return redirect()->route('user.answers.index',[$type, $qId])->with('status','You Voted!');
+         }else{
+
+         return redirect()->route('user.answers.index', [$type, $qId])->with('status','You Already Voted.');
+         }
+        }
+
 }

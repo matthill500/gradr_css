@@ -8,7 +8,7 @@
         <div class="card-header">
           Question: {{$questionsModule->title}}
 
-          <form style="display:inline-block" method="POST" action="" class="float-right">
+          <form style="display:inline-block" method="POST" action="{{route('user.questions.voteModule',$questionsModule->id)}}" class="float-right">
 
             <input type="hidden" name="_method" value="PUT">
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -20,6 +20,10 @@
         <div class="card-body">
           <table class="table table-hover">
             <tbody>
+              <tr>
+                <td>Number of Up Votes</td>
+                <td>{{ $questionsModule->votes }}</td>
+              </tr>
               <tr>
                 <td>Title</td>
                 <td>{{ $questionsModule->title }}</td>

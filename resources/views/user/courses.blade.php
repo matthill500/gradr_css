@@ -52,8 +52,8 @@
 
                     <table id="table-questions" class="table table-hover">
                       <thead>
-                        <th>Title</th>
-                          <th>Info</th>
+                        <th>Question Title</th>
+                          <th>Up Votes</th>
                           <th>Category</th>
                           <th>User</th>
                       </thead>
@@ -61,8 +61,8 @@
                         @foreach ($questionsColleges as $questionsCollege)
                         @if($questionsCollege->college_id === $cid)
                         <tr data-id="{{$questionsCollege->id}}">
-                          <td>{{ substr($questionsCollege->title,'0','20') }}</td>
-                          <td>{{ substr($questionsCollege->info,'0','40') }}</td>
+                          <td>{{ substr($questionsCollege->title,'0','45') }}</td>
+                          <td>{{ $questionsCollege->votes }}</td>
                           <td>{{ substr($questionsCollege->college->name,'0','40') }}</td>
                           <td><a href="{{ route('user.profile', $questionsCollege->student->user->name) }}">{{ $questionsCollege->student->user->name }}</a></td>
                           <td>

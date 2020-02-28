@@ -49,16 +49,16 @@
 
                     <table id="table-questions" class="table table-hover">
                       <thead>
-                        <th>Title</th>
-                          <th>Info</th>
+                        <th>Question Title</th>
+                          <th>Up Votes</th>
                           <th>Category</th>
                           <th>User</th>
                       </thead>
                       <tbody>
                         @foreach ($questionsGenerals as $questionsGeneral)
                         <tr data-id="{{$questionsGeneral->id}}">
-                          <td>{{ substr($questionsGeneral->title,'0','20') }}</td>
-                          <td>{{ substr($questionsGeneral->info,'0','40') }}</td>
+                          <td>{{ substr($questionsGeneral->title,'0','50') }}</td>
+                          <td>{{ $questionsGeneral->votes }}</td>
                           <td>General</td>
                           <td><a href="{{ route('user.profile', $questionsGeneral->student->user->name) }}">{{ $questionsGeneral->student->user->name }}</a></td>
                           <td>

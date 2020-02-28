@@ -18,6 +18,7 @@ class CreateQuestionsModulesTable extends Migration
           $table->string('title');
           $table->string('info');
           $table->boolean('delete')->default(0);
+          $table->integer('votes')->default(0);
           $table->bigInteger('student_id')->unsigned();
           $table->bigInteger('module_id')->unsigned();
           $table->timestamps();

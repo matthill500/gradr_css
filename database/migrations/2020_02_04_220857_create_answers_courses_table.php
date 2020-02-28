@@ -17,12 +17,13 @@ class CreateAnswersCoursesTable extends Migration
             $table->bigIncrements('id');
             $table->string('answer');
             $table->boolean('delete')->default(0);
+            $table->integer('votes')->default(0);
             $table->bigInteger('question_id')->unsigned();
             $table->bigInteger('student_id')->unsigned();
             $table->string('type');
             $table->timestamps();
 
-            $table->foreign('question_id')->references('id')->on('questions_courses');
+            $table->foreign('question_id')->references('id')->on('questions_courses')->onDelete('cascade');
             $table->foreign('student_id')->references('id')->on('students');
         });
     }

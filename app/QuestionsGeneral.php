@@ -13,4 +13,7 @@ class QuestionsGeneral extends Model
   public function answer(){
     return $this->hasMany('App\AnswerGeneral');
   }
+  public function vote(){
+    return $this->hasMany('App\VotesQuestionsGeneral');
+  }
 }

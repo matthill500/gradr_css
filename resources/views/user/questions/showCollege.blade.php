@@ -8,8 +8,7 @@
         <div class="card-header">
           Question: {{$questionsCollege->title}}
 
-          <form style="display:inline-block" method="POST" action="" class="float-right">
-
+          <form style="display:inline-block" method="POST" action="{{route('user.questions.voteCollege',$questionsCollege->id)}}" class="float-right">
             <input type="hidden" name="_method" value="PUT">
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
                <button type="submit" class="form-control btn btn-success btn-sm">Up Vote</a>
@@ -20,6 +19,10 @@
         <div class="card-body">
           <table class="table table-hover">
             <tbody>
+              <tr>
+                <td>Number of Up Votes</td>
+                <td>{{ $questionsCollege->votes }}</td>
+              </tr>
               <tr>
                 <td>Title</td>
                 <td>{{ $questionsCollege->title }}</td>

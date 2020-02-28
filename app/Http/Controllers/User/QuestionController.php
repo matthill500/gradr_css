@@ -13,7 +13,10 @@ use App\Student;
 use App\College;
 use App\Course;
 use App\Module;
-use App\VotesCourse;
+use App\VotesQuestionsCourse;
+use App\VotesQuestionsGeneral;
+use App\VotesQuestionsCollege;
+use App\VotesQuestionsModule;
 use Auth;
 use DB;
 
@@ -362,13 +365,13 @@ class QuestionController extends Controller
 
               $userId = Auth::user()->id;
 
-              $query = DB::table('votes_courses')->where('user_id', $userId)
+              $query = DB::table('votes_questions_courses')->where('user_id', $userId)
                                                  ->where('question_id', $id)
                                                  ->get();
 
               if(count($query) == 0){
 
-                $voteCourse = new VotesCourse();
+                $voteCourse = new VotesQuestionsCourse();
 
                 $voteCourse->question_id = $id;
                 $voteCourse->voted = 1;
@@ -382,9 +385,97 @@ class QuestionController extends Controller
 
               }else{
 
-                return redirect()->route('user.questions.showCourse', $id)->with('status','You Already Voted!');
+                return redirect()->route('user.questions.showCourse', $id)->with('status','You Already Voted.');
               }
           }
+
+          public function voteGeneral($id)
+           {
+               $questionsGeneral = QuestionsGeneral::findOrFail($id);
+
+               $userId = Auth::user()->id;
+
+               $query = DB::table('votes_questions_generals')->where('user_id', $userId)
+                                                  ->where('question_id', $id)
+                                                  ->get();
+
+               if(count($query) == 0){
+
+                 $voteGeneral = new VotesQuestionsGeneral();
+
+                 $voteGeneral->question_id = $id;
+                 $voteGeneral->voted = 1;
+                 $voteGeneral->user_id = Auth::user()->id;
+                 $voteGeneral->save();
+
+                 $questionsGeneral->votes += 1;
+                 $questionsGeneral->save();
+
+                 return redirect()->route('user.questions.showGeneral', $id)->with('status','You Voted!');
+
+               }else{
+
+                 return redirect()->route('user.questions.showGeneral', $id)->with('status','You Already Voted.');
+               }
+           }
+           public function voteCollege($id)
+            {
+                $questionsCollege = QuestionsCollege::findOrFail($id);
+
+                $userId = Auth::user()->id;
+
+                $query = DB::table('votes_questions_colleges')->where('user_id', $userId)
+                                                   ->where('question_id', $id)
+                                                   ->get();
+
+                if(count($query) == 0){
+
+                  $voteCollege = new VotesQuestionsCollege();
+
+                  $voteCollege->question_id = $id;
+                  $voteCollege->voted = 1;
+                  $voteCollege->user_id = Auth::user()->id;
+                  $voteCollege->save();
+
+                  $questionsCollege->votes += 1;
+                  $questionsCollege->save();
+
+                  return redirect()->route('user.questions.showCollege', $id)->with('status','You Voted!');
+
+                }else{
+
+                  return redirect()->route('user.questions.showCollege', $id)->with('status','You Already Voted.');
+                }
+            }
+            public function voteModule($id)
+             {
+                 $questionsModule = QuestionsModule::findOrFail($id);
+
+                 $userId = Auth::user()->id;
+
+                 $query = DB::table('votes_questions_modules')->where('user_id', $userId)
+                                                    ->where('question_id', $id)
+                                                    ->get();
+
+                 if(count($query) == 0){
+
+                   $voteModule = new VotesQuestionsModule();
+
+                   $voteModule->question_id = $id;
+                   $voteModule->voted = 1;
+                   $voteModule->user_id = Auth::user()->id;
+                   $voteModule->save();
+
+                   $questionsModule->votes += 1;
+                   $questionsModule->save();
+
+                   return redirect()->route('user.questions.showModule', $id)->with('status','You Voted!');
+
+                 }else{
+
+                   return redirect()->route('user.questions.showModule', $id)->with('status','You Already Voted.');
+                 }
+             }
 
 
 }
