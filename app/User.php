@@ -11,7 +11,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Student;
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -46,7 +46,7 @@ class User extends Authenticatable
       return $this->id;
     }
 
-  
+
 
     public function roles(){
       return $this->belongsToMany('App\Role','user_role');
