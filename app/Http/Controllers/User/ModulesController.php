@@ -23,4 +23,27 @@ class ModulesController extends Controller
         'questionsCourses' => $questionsCourses
       ]);
   }
+
+  public function sort($id){
+
+    $mid = (int)($id);
+    $modules = Module::all();
+    $courses = Course::all();
+
+    $orderByArray = explode(' ', request('orderBy'));
+
+    $column = $orderByArray[0];
+    $direction = $orderByArray[1];
+
+
+    $questionsCourses = QuestionsCourse::orderBy($column, $direction)->get();
+
+    return view('user.modules')->with([
+      'modules' => $modules,
+      'courses' => $courses,
+      'mid' => $mid,
+      'questionsCourses' => $questionsCourses
+    ]);
+
+  }
 }

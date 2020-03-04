@@ -136,6 +136,12 @@ Route::put('/user/{type}/answers/{qId}/{aId}/college', 'User\AnswerController@vo
 Route::put('/user/{type}/answers/{qId}/{aId}/course', 'User\AnswerController@voteCourse')->name('user.answers.voteCourse');
 Route::put('/user/{type}/answers/{qId}/{aId}/module', 'User\AnswerController@voteModule')->name('user.answers.voteModule');
 
+Route::post('/user/home','User\HomeController@sort')->name('user.questions.sortGeneral');
+Route::post('/user/courses/{id}','User\CoursesController@sort')->name('user.questions.sortCollege');
+Route::post('/user/modules/{id}','User\ModulesController@sort')->name('user.questions.sortCourse');
+Route::post('/user/base/{id}','User\baseController@sort')->name('user.questions.sortModule');
+
+Route::post('/user/{type}/answers/{id}','User\AnswerController@sort')->name('user.answers.sort');
 
 //Route::get('/user/answers/{id}/edit', 'User\AnswerController@edit')->name('user.answers.edit');
 //Route::post('/user/answers/{id}', 'User\AnswerController@update')->name('user.answers.update');

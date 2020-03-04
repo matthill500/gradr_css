@@ -24,4 +24,27 @@ class CoursesController extends Controller
         'questionsColleges' => $questionsColleges
       ]);
   }
+
+    public function sort($id){
+
+      $cid = (int)($id);
+      $colleges = College::all();
+      $courses = Course::all();
+
+      $orderByArray = explode(' ', request('orderBy'));
+
+      $column = $orderByArray[0];
+      $direction = $orderByArray[1];
+
+
+      $questionsColleges = QuestionsCollege::orderBy($column, $direction)->get();
+
+      return view('user.courses')->with([
+        'colleges' => $colleges,
+        'courses' => $courses,
+        'cid' => $cid,
+        'questionsColleges' => $questionsColleges
+      ]);
+
+    }
 }

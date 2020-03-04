@@ -69,7 +69,7 @@
              </thead>
              <tbody>
 
-               @foreach ($questionsColleges as $questionsCollege)
+               @foreach ($questionsColleges->slice(0,3) as $questionsCollege)
 
                @if($questionsCollege->student_id === $user->student->id)
                <tr data-id="{{$questionsCollege->id}}">
@@ -86,7 +86,7 @@
             @endforeach
 
 
-            @foreach ($questionsCourses as $questionsCourse)
+            @foreach ($questionsCourses->slice(0,3) as $questionsCourse)
 
             @if($questionsCourse->student_id === $user->student->id)
             <tr data-id="{{$questionsCourse->id}}">
@@ -103,7 +103,7 @@
          @endforeach
 
 
-         @foreach ($questionsModules as $questionsModule)
+         @foreach ($questionsModules->slice(0,3) as $questionsModule)
 
          @if($questionsModule->student_id === $user->student->id)
          <tr data-id="{{$questionsModule->id}}">
@@ -120,7 +120,7 @@
       @endforeach
 
 
-      @foreach ($questionsGenerals as $questionsGeneral)
+      @foreach ($questionsGenerals->slice(0,3) as $questionsGeneral)
 
       @if($questionsGeneral->student_id === $user->student->id)
       <tr data-id="{{$questionsGeneral->id}}">

@@ -33,6 +33,7 @@ class AnswerController extends Controller
 
     public function index($type, $id)
     {
+
         $qid = (int)($id);
         $answersColleges = AnswersCollege::all();
         $answersCourses = AnswersCourse::all();
@@ -506,6 +507,77 @@ class AnswerController extends Controller
 
          return redirect()->route('user.answers.index', [$type, $qId])->with('status','You Already Voted.');
          }
+        }
+
+        public function sort($type, $id){
+
+          $orderByArray = explode(' ', request('orderBy'));
+
+          $column = $orderByArray[0];
+          $direction = $orderByArray[1];
+
+          $qid = (int)($id);
+          $answersColleges = AnswersCollege::all();
+          $answersCourses = AnswersCourse::all();
+          $answersModules = AnswersModule::all();
+          $answersGenerals = AnswersGeneral::all();
+
+        if ($type === "questions_generals"){
+            $questionsGeneral = questionsGeneral::findOrFail($id);
+            $answersGenerals = AnswersGeneral::orderBy($column, $direction)->get();
+
+            return view('user.answers.index')->with([
+              'qid' => $qid,
+              'type' => $type,
+              'questionsGeneral' => $questionsGeneral,
+              'answersColleges' => $answersColleges,
+              'answersCourses' => $answersCourses,
+              'answersModules' => $answersModules,
+              'answersGenerals' => $answersGenerals
+            ]);
+
+        }else if($type === "questions_colleges"){
+
+          $questionsCollege = questionsCollege::findOrFail($id);
+          $answersColleges = AnswersCollege::orderBy($column, $direction)->get();
+
+          return view('user.answers.index')->with([
+            'qid' => $qid,
+            'type' => $type,
+            'questionsCollege' => $questionsCollege,
+            'answersColleges' => $answersColleges,
+            'answersCourses' => $answersCourses,
+            'answersModules' => $answersModules,
+            'answersGenerals' => $answersGenerals
+          ]);
+
+        }else if($type === "questions_courses"){
+          $questionsCourse = questionsCourse::findOrFail($id);
+          $answersCourses = AnswersCourse::orderBy($column, $direction)->get();
+
+          return view('user.answers.index')->with([
+            'qid' => $qid,
+            'type' => $type,
+            'questionsCourse' => $questionsCourse,
+            'answersColleges' => $answersColleges,
+            'answersCourses' => $answersCourses,
+            'answersModules' => $answersModules,
+            'answersGenerals' => $answersGenerals
+          ]);
+        }else if($type === "questions_modules"){
+          $questionsModule = questionsModule::findOrFail($id);
+          $answersModules = AnswersModule::orderBy($column, $direction)->get();
+
+          return view('user.answers.index')->with([
+            'qid' => $qid,
+            'type' => $type,
+            'questionsModule' => $questionsModule,
+            'answersColleges' => $answersColleges,
+            'answersCourses' => $answersCourses,
+            'answersModules' => $answersModules,
+            'answersGenerals' => $answersGenerals
+          ]);
+        }
         }
 
 }

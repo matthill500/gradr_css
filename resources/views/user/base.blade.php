@@ -6,7 +6,26 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">@foreach ($modules as $module) @if($module->id === $bid) {{ $module->module_name }} @endif  @endforeach Questions <a href="{{ route('user.questions.create')}}" class="btn btn-primary float-right">Ask Question</a></div>
+                <div class="card-header">@foreach ($modules as $module) @if($module->id === $bid) {{ $module->module_name }} @endif  @endforeach Questions
+
+                  <div class="float-right">
+
+                    <form id="print" method="POST" action="{{route('user.questions.sortModule', $module->id)}}" target="blank">
+                     {{ csrf_field() }}
+                     <div class="input-field">
+                         <select name="orderBy">
+                             <option value="" disabled selected>Order by</option>
+                             <option value="votes desc">Popularity</option>
+                             <option value="created_at desc">Newest to Oldest</option>
+                             <option value="created_at asc">Oldest to Newest</option>
+                         </select>
+                         <button type="submit" class="btn-flat">Sort</button>
+                      </div>
+                    </form>
+
+                  </div>
+
+                </div>
 
 
                 <div class="card-body">
@@ -16,12 +35,17 @@
                         </div>
                     @endif
 
+                    @if (count($questionsModules) === 0)
+                    <p> There are no questions </p>
+                    @else
+
                     <table id="table-questions" class="table table-hover">
                       <thead>
                         <th>Title</th>
                         <th>Up votes</th>
                         <th>Category</th>
                         <th>User</th>
+                        <th>Date</th>
                       </thead>
                       <tbody>
                         @foreach ($questionsModules as $questionsModule)
@@ -31,6 +55,7 @@
                           <td>{{ $questionsModule->votes }}</td>
                           <td>{{ substr($questionsModule->module->module_name,'0','40') }}</td>
                           <td><a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $questionsModule->student->user->name }}</a></td>
+                          <td>{{ substr($questionsModule->created_at,'0','10')}}</td>
                           <td>
                             <a href="{{ route('user.questions.showModule', $questionsModule->id )}}" class="btn btn-primary">View</a>
 
@@ -44,9 +69,8 @@
                       </tbody>
                     </table>
 
+                    @endif
 
-                  </br>
-                <br />
 
                 </div>
             </div>

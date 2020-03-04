@@ -37,7 +37,7 @@
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div *ngIf="response" class="btn-group">
-                    <button type="submit" class="form-control btn btn-danger" onclick="return confirm('Are you sure you want to delete this college? this will delete all related courses and modules.')">Delete</a>
+                    <button type="submit" class="form-control btn btn-danger" onclick="return confirm('WARNING!!(I hope you know what you are doing?) Are you sure you want to delete this college? this will delete all related courses, modules, questions and answers')">Delete</a>
                     </div>
                   </form>
                 </td>

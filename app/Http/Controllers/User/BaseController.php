@@ -23,4 +23,28 @@ class BaseController extends Controller
         'questionsModules' => $questionsModules
       ]);
   }
+
+  public function sort($id){
+
+    $bid = (int)($id);
+
+    $modules = Module::all();
+    $courses = Course::all();
+
+    $orderByArray = explode(' ', request('orderBy'));
+
+    $column = $orderByArray[0];
+    $direction = $orderByArray[1];
+
+
+    $questionsModules = QuestionsModule::orderBy($column, $direction)->get();
+
+    return view('user.base')->with([
+      'modules' => $modules,
+      'courses' => $courses,
+      'bid' => $bid,
+      'questionsModules' => $questionsModules
+    ]);
+
+  }
 }

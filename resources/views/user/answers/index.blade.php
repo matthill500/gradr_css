@@ -6,18 +6,18 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
+
           Question  @if ($type === "questions_generals")<a href="{{ route('user.answers.create', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}" class="btn btn-success float-right">Answer</a>
                     @elseif ($type === "questions_colleges")<a href="{{ route('user.answers.create', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}" class="btn btn-success float-right">Answer</a>
                     @elseif ($type === "questions_courses")<a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" class="btn btn-success float-right">Answer</a>
                     @elseif ($type === "questions_modules")<a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-success float-right">Answer</a>@endif
-
 
         </div>
         <div class="card-body">
           <table class="table table-hover">
             <tbody>
               <tr>
-                @if ($type ==="questions_generals")
+                @if ($type === "questions_generals")
                 <tr>
                   <td>Number of Up Votes</td>
                   <td>{{ $questionsGeneral->votes }}</td>
@@ -29,7 +29,7 @@
                 <td>Question Body</td>
                 <td>{{$questionsGeneral->info}}</td>
              </tr>
-             @elseif ($type ==="questions_colleges")
+             @elseif ($type === "questions_colleges")
              <tr>
                <td>Number of Up Votes</td>
                <td>{{ $questionsCollege->votes }}</td>
@@ -41,7 +41,7 @@
              <td>Question Body</td>
              <td>{{$questionsCollege->info}}</td>
             </tr>
-            @elseif ($type ==="questions_courses")
+            @elseif ($type === "questions_courses")
             <tr>
               <td>Number of Up Votes</td>
               <td>{{ $questionsCourse->votes }}</td>
@@ -74,6 +74,63 @@
       <div class="card" style="margin-top:20px;">
         <div class="card-header">
           Answers
+
+          <div class="float-right">
+            @if($type === "questions_generals")
+            <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}" target="blank">
+             {{ csrf_field() }}
+             <div class="input-field">
+                 <select name="orderBy">
+                     <option value="" disabled selected>Order by</option>
+                     <option value="votes desc">Popularity</option>
+                     <option value="created_at asc">Newest to Oldest</option>
+                     <option value="created_at desc">Oldest to Newest</option>
+                 </select>
+                 <button type="submit" class="btn-flat">Sort</button>
+              </div>
+            </form>
+            @elseif($type === "questions_colleges")
+            <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}" target="blank">
+             {{ csrf_field() }}
+             <div class="input-field">
+                 <select name="orderBy">
+                     <option value="" disabled selected>Order by</option>
+                     <option value="votes desc">Popularity</option>
+                     <option value="created_at asc">Newest to Oldest</option>
+                     <option value="created_at desc">Oldest to Newest</option>
+                 </select>
+                 <button type="submit" class="btn-flat">Sort</button>
+              </div>
+            </form>
+            @elseif($type === "questions_courses")
+            <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" target="blank">
+             {{ csrf_field() }}
+             <div class="input-field">
+                 <select name="orderBy">
+                     <option value="" disabled selected>Order by</option>
+                     <option value="votes desc">Popularity</option>
+                     <option value="created_at asc">Newest to Oldest</option>
+                     <option value="created_at desc">Oldest to Newest</option>
+                 </select>
+                 <button type="submit" class="btn-flat">Sort</button>
+              </div>
+            </form>
+            @elseif($type === "questions_modules")
+            <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" target="blank">
+             {{ csrf_field() }}
+             <div class="input-field">
+                 <select name="orderBy">
+                     <option value="" disabled selected>Order by</option>
+                     <option value="votes desc">Popularity</option>
+                     <option value="created_at asc">Newest to Oldest</option>
+                     <option value="created_at desc">Oldest to Newest</option>
+                 </select>
+                 <button type="submit" class="btn-flat">Sort</button>
+              </div>
+            </form>
+            @endif
+          </div>
+
         </div>
         <div class="card-body">
           @if (count($answersColleges) === 0 && (count($answersCourses) === 0) && (count($answersModules) === 0) && (count($answersGenerals) === 0))
@@ -84,6 +141,7 @@
                 <th>Student Name</th>
                 <th>Answers</th>
                 <th>Up Votes</th>
+                <th>Date</th>
            </thead>
            <tbody>
 
@@ -93,6 +151,7 @@
                <td><a href="{{ route('user.profile', $answersCollege->student->user->name) }}">{{ $answersCollege->student->user->name }}</a></td>
                <td>{{ $answersCollege->answer }}</td>
                <td>{{ $answersCollege->votes }}</td>
+               <td>{{ substr($answersCollege->created_at,'0','10') }}</td>
                <td>
                  <a href="{{ route('user.answers.showCollege', $answersCollege->id )}}" class="btn btn-primary">View</a>
                  @if($answersCollege->student_id === Auth::user()->student->id)
@@ -122,6 +181,7 @@
                <td><a href="{{ route('user.profile', $answersCourse->student->user->name) }}">{{ $answersCourse->student->user->name }}</a></td>
                <td>{{ $answersCourse->answer }}</td>
                <td>{{ $answersCourse->votes }}</td>
+               <td>{{ substr($answersCourse->created_at,'0','10') }}</td>
                <td>
                  <a href="{{ route('user.answers.showCourse', $answersCourse->id )}}" class="btn btn-primary">View</a>
                  @if($answersCourse->student_id === Auth::user()->student->id)
@@ -152,6 +212,7 @@
                <td><a href="{{ route('user.profile', $answersModule->student->user->name) }}">{{ $answersModule->student->user->name }}</td>
                <td>{{ $answersModule->answer }}</td>
                <td>{{ $answersModule->votes }}</td>
+               <td>{{ substr($answersModule->created_at,'0','10') }}</td>
                <td>
                  <a href="{{ route('user.answers.showModule', $answersModule->id )}}" class="btn btn-primary">View</a>
                  @if($answersModule->student_id === Auth::user()->student->id)
@@ -182,6 +243,7 @@
                <td><a href="{{ route('user.profile', $answersGeneral->student->user->name) }}">{{ $answersGeneral->student->user->name }}</a></td>
                <td>{{ $answersGeneral->answer }}</td>
                <td>{{ $answersGeneral->votes }}</td>
+               <td>{{ substr($answersGeneral->created_at,'0','10') }}</td>
                <td>
 
                  <a href="{{ route('user.answers.showGeneral', $answersGeneral->id )}}" class="btn btn-primary">View</a>
