@@ -77,7 +77,7 @@
 
           <div class="float-right">
             @if($type === "questions_generals")
-            <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}" target="blank">
+            <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}">
              {{ csrf_field() }}
              <div class="input-field">
                  <select name="orderBy">
@@ -90,7 +90,7 @@
               </div>
             </form>
             @elseif($type === "questions_colleges")
-            <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}" target="blank">
+            <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}">
              {{ csrf_field() }}
              <div class="input-field">
                  <select name="orderBy">
@@ -103,7 +103,7 @@
               </div>
             </form>
             @elseif($type === "questions_courses")
-            <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" target="blank">
+            <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}">
              {{ csrf_field() }}
              <div class="input-field">
                  <select name="orderBy">
@@ -116,7 +116,7 @@
               </div>
             </form>
             @elseif($type === "questions_modules")
-            <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" target="blank">
+            <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}">
              {{ csrf_field() }}
              <div class="input-field">
                  <select name="orderBy">

@@ -45,7 +45,7 @@
 
                   <div class="float-right">
 
-                    <form id="print" method="POST" action="{{route('user.questions.sortCollege', $college->id)}}" target="blank">
+                    <form id="print" method="POST" action="{{route('user.questions.sortCollege', $college->id)}}">
                      {{ csrf_field() }}
                      <div class="input-field">
                          <select name="orderBy">
