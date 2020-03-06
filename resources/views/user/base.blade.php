@@ -13,13 +13,13 @@
                     <form id="print" method="POST" action="{{route('user.questions.sortModule', $module->id)}}">
                      {{ csrf_field() }}
                      <div class="input-field">
-                         <select name="orderBy">
+                         <select name="orderBy" onchange="this.form.submit()">
                              <option value="" disabled selected>Order by</option>
                              <option value="votes desc">Popularity</option>
                              <option value="created_at desc">Newest to Oldest</option>
                              <option value="created_at asc">Oldest to Newest</option>
                          </select>
-                         <button type="submit" class="btn-flat">Sort</button>
+                    
                       </div>
                     </form>
 

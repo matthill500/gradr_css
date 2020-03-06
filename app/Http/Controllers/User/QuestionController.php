@@ -383,9 +383,15 @@ class QuestionController extends Controller
 
                 return redirect()->route('user.questions.showCourse', $id)->with('status','You Voted!');
 
-              }else{
+              }else if(count($query) == 1){
 
-                return redirect()->route('user.questions.showCourse', $id)->with('status','You Already Voted.');
+                DB::table('votes_questions_courses')->where('user_id', $userId)
+                                                   ->where('question_id', $id)
+                                                   ->delete();
+                $questionsCourse->votes -= 1;
+                $questionsCourse->save();
+
+                return redirect()->route('user.questions.showCourse', $id)->with('status','You have withdrawn your vote.');
               }
           }
 
@@ -413,10 +419,18 @@ class QuestionController extends Controller
 
                  return redirect()->route('user.questions.showGeneral', $id)->with('status','You Voted!');
 
-               }else{
+               }else if(count($query) == 1){
 
-                 return redirect()->route('user.questions.showGeneral', $id)->with('status','You Already Voted.');
-               }
+                DB::table('votes_questions_generals')->where('user_id', $userId)
+                                                   ->where('question_id', $id)
+                                                   ->delete();
+
+
+                $questionsGeneral->votes -= 1;
+                $questionsGeneral->save();
+
+                return redirect()->route('user.questions.showGeneral', $id)->with('status','You have withdrawn your vote.');
+              }
            }
            public function voteCollege($id)
             {
@@ -442,10 +456,18 @@ class QuestionController extends Controller
 
                   return redirect()->route('user.questions.showCollege', $id)->with('status','You Voted!');
 
-                }else{
+                }else if(count($query) == 1){
 
-                  return redirect()->route('user.questions.showCollege', $id)->with('status','You Already Voted.');
-                }
+                DB::table('votes_questions_colleges')->where('user_id', $userId)
+                                                   ->where('question_id', $id)
+                                                   ->delete();
+
+
+                $questionsCollege->votes -= 1;
+                $questionsCollege->save();
+
+                return redirect()->route('user.questions.showCollege', $id)->with('status','You have withdrawn your vote.');
+              }
             }
             public function voteModule($id)
              {
@@ -471,10 +493,18 @@ class QuestionController extends Controller
 
                    return redirect()->route('user.questions.showModule', $id)->with('status','You Voted!');
 
-                 }else{
+                 }else if(count($query) == 1){
 
-                   return redirect()->route('user.questions.showModule', $id)->with('status','You Already Voted.');
-                 }
+                DB::table('votes_questions_modules')->where('user_id', $userId)
+                                                   ->where('question_id', $id)
+                                                   ->delete();
+
+
+                $questionsModule->votes -= 1;
+                $questionsModule->save();
+
+                return redirect()->route('user.questions.showModule', $id)->with('status','You have withdrawn your vote.');
+              }
              }
 
 

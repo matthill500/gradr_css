@@ -80,52 +80,52 @@
             <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}">
              {{ csrf_field() }}
              <div class="input-field">
-                 <select name="orderBy">
+                 <select name="orderBy" onchange="this.form.submit()">
                      <option value="" disabled selected>Order by</option>
                      <option value="votes desc">Popularity</option>
                      <option value="created_at asc">Newest to Oldest</option>
                      <option value="created_at desc">Oldest to Newest</option>
                  </select>
-                 <button type="submit" class="btn-flat">Sort</button>
+
               </div>
             </form>
             @elseif($type === "questions_colleges")
             <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}">
              {{ csrf_field() }}
              <div class="input-field">
-                 <select name="orderBy">
+                 <select name="orderBy" onchange="this.form.submit()">
                      <option value="" disabled selected>Order by</option>
                      <option value="votes desc">Popularity</option>
                      <option value="created_at asc">Newest to Oldest</option>
                      <option value="created_at desc">Oldest to Newest</option>
                  </select>
-                 <button type="submit" class="btn-flat">Sort</button>
+
               </div>
             </form>
             @elseif($type === "questions_courses")
             <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}">
              {{ csrf_field() }}
              <div class="input-field">
-                 <select name="orderBy">
+                 <select name="orderBy" onchange="this.form.submit()">
                      <option value="" disabled selected>Order by</option>
                      <option value="votes desc">Popularity</option>
                      <option value="created_at asc">Newest to Oldest</option>
                      <option value="created_at desc">Oldest to Newest</option>
                  </select>
-                 <button type="submit" class="btn-flat">Sort</button>
+
               </div>
             </form>
             @elseif($type === "questions_modules")
             <form id="print" method="POST" action="{{route('user.answers.sort', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}">
              {{ csrf_field() }}
              <div class="input-field">
-                 <select name="orderBy">
+                 <select name="orderBy" onchange="this.form.submit()">
                      <option value="" disabled selected>Order by</option>
                      <option value="votes desc">Popularity</option>
                      <option value="created_at asc">Newest to Oldest</option>
                      <option value="created_at desc">Oldest to Newest</option>
                  </select>
-                 <button type="submit" class="btn-flat">Sort</button>
+          
               </div>
             </form>
             @endif
