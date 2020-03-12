@@ -1,6 +1,6 @@
 <?php
 # @Date:   2019-11-21T07:44:46+00:00
-# @Last modified time: 2019-11-28T12:47:31+00:00
+# @Last modified time: 2020-03-10T17:10:33+00:00
 
 
 
@@ -32,7 +32,7 @@ Route::put('/user/updateProfile', 'User\ProfileController@update')->name('user.u
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/home', 'Admin\HomeController@index')->name('admin.home');
-Route::get('/user/home', 'User\HomeController@index')->name('user.home')->middleware('verified');
+Route::get('/user/home', 'User\HomeController@index')->name('user.home');
 
 Route::get('/admin/questions', 'Admin\QuestionController@index')->name('admin.questions.index');
 Route::get('/admin/deleteRequests', 'Admin\QuestionController@deleteRequests')->name('admin.questions.deleteRequests');
@@ -78,28 +78,28 @@ Route::get('/admin/modules/{id}/edit', 'Admin\ModuleController@edit')->name('adm
 Route::put('/admin/modules/{id}', 'Admin\ModuleController@update')->name('admin.modules.update');
 Route::delete('/admin/modules/{id}', 'Admin\ModuleController@destroy')->name('admin.modules.destroy');
 
-Route::get('/user/questions', 'User\QuestionController@index')->name('user.questions.index')->middleware('verified');
-Route::get('/user/questions/create', 'User\QuestionController@create')->name('user.questions.create')->middleware('verified');
-Route::get('/user/questionsCollege/{id}', 'User\QuestionController@showCollege')->name('user.questions.showCollege')->middleware('verified');
-Route::get('/user/questionsCourse/{id}', 'User\QuestionController@showCourse')->name('user.questions.showCourse')->middleware('verified');
-Route::get('/user/questionsModule/{id}', 'User\QuestionController@showModule')->name('user.questions.showModule')->middleware('verified');
-Route::get('/user/questionsGeneral/{id}', 'User\QuestionController@showGeneral')->name('user.questions.showGeneral')->middleware('verified');
-Route::post('/user/questions/store', 'User\QuestionController@store')->name('user.questions.store')->middleware('verified');
-Route::get('/user/questions/{id}/editCollege', 'User\QuestionController@editCollege')->name('user.questions.editCollege')->middleware('verified');
-Route::get('/user/questions/{id}/editCourse', 'User\QuestionController@editCourse')->name('user.questions.editCourse')->middleware('verified');
-Route::get('/user/questions/{id}/editModule', 'User\QuestionController@editModule')->name('user.questions.editModule')->middleware('verified');
-Route::get('/user/questions/{id}/editGeneral', 'User\QuestionController@editGeneral')->name('user.questions.editGeneral')->middleware('verified');
-Route::post('/user/questions/{id}/updateCollege', 'User\QuestionController@updateCollege')->name('user.questions.updateCollege')->middleware('verified');
-Route::post('/user/questions/{id}/updateCourse', 'User\QuestionController@updateCourse')->name('user.questions.updateCourse')->middleware('verified');
-Route::post('/user/questions/{id}/updateModule', 'User\QuestionController@updateModule')->name('user.questions.updateModule')->middleware('verified');
-Route::post('/user/questions/{id}/updateGeneral', 'User\QuestionController@updateGeneral')->name('user.questions.updateGeneral')->middleware('verified');
+Route::get('/user/questions', 'User\QuestionController@index')->name('user.questions.index');
+Route::get('/user/questions/create', 'User\QuestionController@create')->name('user.questions.create');
+Route::get('/user/questionsCollege/{id}', 'User\QuestionController@showCollege')->name('user.questions.showCollege');
+Route::get('/user/questionsCourse/{id}', 'User\QuestionController@showCourse')->name('user.questions.showCourse');
+Route::get('/user/questionsModule/{id}', 'User\QuestionController@showModule')->name('user.questions.showModule');
+Route::get('/user/questionsGeneral/{id}', 'User\QuestionController@showGeneral')->name('user.questions.showGeneral');
+Route::post('/user/questions/store', 'User\QuestionController@store')->name('user.questions.store');
+Route::get('/user/questions/{id}/editCollege', 'User\QuestionController@editCollege')->name('user.questions.editCollege');
+Route::get('/user/questions/{id}/editCourse', 'User\QuestionController@editCourse')->name('user.questions.editCourse');
+Route::get('/user/questions/{id}/editModule', 'User\QuestionController@editModule')->name('user.questions.editModule');
+Route::get('/user/questions/{id}/editGeneral', 'User\QuestionController@editGeneral')->name('user.questions.editGeneral');
+Route::post('/user/questions/{id}/updateCollege', 'User\QuestionController@updateCollege')->name('user.questions.updateCollege');
+Route::post('/user/questions/{id}/updateCourse', 'User\QuestionController@updateCourse')->name('user.questions.updateCourse');
+Route::post('/user/questions/{id}/updateModule', 'User\QuestionController@updateModule')->name('user.questions.updateModule');
+Route::post('/user/questions/{id}/updateGeneral', 'User\QuestionController@updateGeneral')->name('user.questions.updateGeneral');
 
-Route::put('/user/questions/{id}/college', 'User\QuestionController@requestDeleteCollege')->name('user.questions.requestDeleteCollege')->middleware('verified');
-Route::put('/user/questions/{id}/course', 'User\QuestionController@requestDeleteCourse')->name('user.questions.requestDeleteCourse')->middleware('verified');
-Route::put('/user/questions/{id}/module', 'User\QuestionController@requestDeleteModule')->name('user.questions.requestDeleteModule')->middleware('verified');
-Route::put('/user/questions/{id}/general', 'User\QuestionController@requestDeleteGeneral')->name('user.questions.requestDeleteGeneral')->middleware('verified');
+Route::put('/user/questions/{id}/college', 'User\QuestionController@requestDeleteCollege')->name('user.questions.requestDeleteCollege');
+Route::put('/user/questions/{id}/course', 'User\QuestionController@requestDeleteCourse')->name('user.questions.requestDeleteCourse');
+Route::put('/user/questions/{id}/module', 'User\QuestionController@requestDeleteModule')->name('user.questions.requestDeleteModule');
+Route::put('/user/questions/{id}/general', 'User\QuestionController@requestDeleteGeneral')->name('user.questions.requestDeleteGeneral');
 
-Route::get('/user/questions/redirect/{type}/{id}', 'User\QuestionController@redirect')->name('user.questions.redirect')->middleware('verified');
+Route::get('/user/questions/redirect/{type}/{id}', 'User\QuestionController@redirect')->name('user.questions.redirect');
 
 
 
