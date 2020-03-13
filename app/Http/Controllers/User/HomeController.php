@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\College;
 use App\QuestionsGeneral;
+use App\AnswersGeneral;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

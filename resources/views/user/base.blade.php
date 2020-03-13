@@ -2,6 +2,8 @@
 
 @section('content')
 
+<link rel="stylesheet" href="{{ URL::asset('css/base.css') }}" />
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -19,7 +21,7 @@
                              <option value="created_at desc">Newest to Oldest</option>
                              <option value="created_at asc">Oldest to Newest</option>
                          </select>
-                    
+
                       </div>
                     </form>
 
@@ -40,30 +42,21 @@
                     @else
 
                     <table id="table-questions" class="table table-hover">
-                      <thead>
-                        <th>Title</th>
-                        <th>Up votes</th>
-                        <th>Category</th>
-                        <th>User</th>
-                        <th>Date</th>
-                      </thead>
                       <tbody>
                         @foreach ($questionsModules as $questionsModule)
                         @if($questionsModule->module_id === $bid)
-                        <tr data-id="{{$questionsModule->id}}">
-                          <td>{{ substr($questionsModule->title,'0','45') }}</td>
-                          <td>{{ $questionsModule->votes }}</td>
-                          <td>{{ substr($questionsModule->module->module_name,'0','40') }}</td>
-                          <td><a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $questionsModule->student->user->name }}</a></td>
-                          <td>{{ substr($questionsModule->created_at,'0','10')}}</td>
-                          <td>
-                            <a href="{{ route('user.questions.showModule', $questionsModule->id )}}" class="btn btn-primary">View</a>
-
-                            <a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-success">Answer</a>
-
-                              <a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" class="btn btn-info" style="color:white;">View Answers</a>
-                          </td>
-                        </tr>
+                        <div class="card">
+                            <div class="card-body">
+                              <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                                <i class="fas fa-thumbs-up" style="margin-right:0.2em;"></i>{{ $questionsModule->votes }}
+                              </div>
+                              <div class="content">
+                                <h7><b>General</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $questionsModule->student->user->name }}</a></h7> · {{ substr($questionsModule->created_at,'0','10')}}<h7 class="float-right"><a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}">Answer</a></h7>
+                                <h2 style="margin-top:0.2em;"><a href="{{ route('user.questions.showModule', $questionsModule->id )}}" >{{ $questionsModule->title }}</a></h2>
+                                <h7><a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" > {{$questionsModule->answers}} Answer(s) </a></h7>
+                             </div>
+                            </div>
+                        </div>
                         @endif
                      @endforeach
                       </tbody>

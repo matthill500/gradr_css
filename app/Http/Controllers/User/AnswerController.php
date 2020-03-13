@@ -157,11 +157,14 @@ class AnswerController extends Controller
     {
 
 
+
       $request->validate([
         'answer' => 'required|min:2|max:300',
       ]);
 
       if($type === "questions_colleges"){
+        $questionsCollege = QuestionsCollege::findOrFail($id);
+
         $answer = new AnswersCollege();
 
         $answer->answer = $request->input('answer');
@@ -169,8 +172,11 @@ class AnswerController extends Controller
         $answer->type = $type;
         $answer->student_id = Auth::user()->student->id;
 
+        $questionsCollege->answers += 1;
+        $questionsCollege->save();
         $answer->save();
       }else if($type === "questions_courses"){
+        $questionsCourse = QuestionsCourse::findOrFail($id);
         $answer = new AnswersCourse();
 
         $answer->answer = $request->input('answer');
@@ -179,7 +185,11 @@ class AnswerController extends Controller
         $answer->student_id = Auth::user()->student->id;
 
         $answer->save();
+        $questionsCourse->answers += 1;
+        $questionsCourse->save();
+
       }else if($type === "questions_modules"){
+        $questionsModule = QuestionsModule::findOrFail($id);
         $answer = new AnswersModule();
 
         $answer->answer = $request->input('answer');
@@ -188,7 +198,12 @@ class AnswerController extends Controller
         $answer->student_id = Auth::user()->student->id;
 
         $answer->save();
+        $questionsModule->answers += 1;
+        $questionsModule->save();
+
       }else if($type === "questions_generals"){
+        $questionsGeneral = QuestionsGeneral::findOrFail($id);
+
         $answer = new AnswersGeneral();
 
         $answer->answer = $request->input('answer');
@@ -197,6 +212,9 @@ class AnswerController extends Controller
         $answer->student_id = Auth::user()->student->id;
 
         $answer->save();
+
+        $questionsGeneral->answers += 1;
+        $questionsGeneral->save();
       }
 
       return redirect()->route('user.answers.index',['type' => $type, 'id' => $id]);

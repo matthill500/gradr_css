@@ -52,7 +52,7 @@
                              <option value="created_at desc">Newest to Oldest</option>
                              <option value="created_at asc">Oldest to Newest</option>
                          </select>
-                        
+
                       </div>
                     </form>
 
@@ -72,30 +72,22 @@
                     @else
 
                     <table id="table-questions" class="table table-hover">
-                      <thead>
-                        <th>Title</th>
-                          <th>Up Votes</th>
-                          <th>Category</th>
-                          <th>User</th>
-                          <th>Date</th>
-                      </thead>
-                      <tbody>
+
+
                         @foreach ($questionsCourses as $questionsCourse)
                         @if($questionsCourse->course_id === $mid)
-                        <tr data-id="{{$questionsCourse->id}}">
-                          <td>{{ substr($questionsCourse->title,'0','45') }}</td>
-                          <td>{{ $questionsCourse->votes }}</td>
-                          <td>{{ substr($questionsCourse->course->course_name,'0','40') }}</td>
-                          <td><a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">{{ $questionsCourse->student->user->name }}</a></td>
-                          <td>{{ substr($questionsCourse->created_at,'0','10')}}</td>
-                          <td>
-                            <a href="{{ route('user.questions.showCourse', $questionsCourse->id )}}" class="btn btn-primary">View</a>
-
-                            <a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" class="btn btn-success">Answer</a>
-
-                            <a href="{{ route('user.answers.index', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" class="btn btn-Info" style="color:white;">View Answers</a>
-                          </td>
-                        </tr>
+                        <div class="card">
+                            <div class="card-body">
+                              <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                                <i class="fas fa-thumbs-up" style="margin-right:0.2em;"></i>{{ $questionsCourse->votes }}
+                              </div>
+                              <div class="content">
+                                <h7><b>General</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">{{ $questionsCourse->student->user->name }}</a></h7> · {{ substr($questionsCourse->created_at,'0','10')}}<h7 class="float-right"><a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}">Answer</a></h7>
+                                <h2 style="margin-top:0.2em;"><a href="{{ route('user.questions.showCourse', $questionsCourse->id )}}" >{{ $questionsCourse->title }}</a></h2>
+                                <h7><a href="{{ route('user.answers.index', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" > {{$questionsCourse->answers}} Answer(s) </a></h7>
+                             </div>
+                            </div>
+                        </div>
                         @endif
                      @endforeach
                       </tbody>
