@@ -92,7 +92,6 @@ class QuestionController extends Controller
     {
       $request->validate([
         'title' => 'required|max:191',
-        'info' => 'required|min:10|max:300',
         'category' => 'required|starts_with:co,mo,gen'
       ]);
 

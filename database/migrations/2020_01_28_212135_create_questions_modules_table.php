@@ -16,7 +16,7 @@ class CreateQuestionsModulesTable extends Migration
         Schema::create('questions_modules', function (Blueprint $table) {
           $table->bigIncrements('id');
           $table->string('title');
-          $table->string('info');
+          $table->text('info');
           $table->boolean('delete')->default(0);
           $table->integer('votes')->default(0);
           $table->integer('answers')->default(0);

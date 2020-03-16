@@ -82,7 +82,7 @@
                                 <i class="fas fa-thumbs-up" style="margin-right:0.2em;"></i>{{ $questionsCourse->votes }}
                               </div>
                               <div class="content">
-                                <h7><b>General</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">{{ $questionsCourse->student->user->name }}</a></h7> · {{ substr($questionsCourse->created_at,'0','10')}}<h7 class="float-right"><a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}">Answer</a></h7>
+                                <h7><b>{{$questionsCourse->course->course_name}}</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">{{ $questionsCourse->student->user->name }}</a></h7> · {{ substr($questionsCourse->created_at,'0','10')}}<h7 class="float-right"><a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}">Answer</a></h7>
                                 <h2 style="margin-top:0.2em;"><a href="{{ route('user.questions.showCourse', $questionsCourse->id )}}" >{{ $questionsCourse->title }}</a></h2>
                                 <h7><a href="{{ route('user.answers.index', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" > {{$questionsCourse->answers}} Answer(s) </a></h7>
                              </div>

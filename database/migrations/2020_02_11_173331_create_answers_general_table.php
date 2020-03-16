@@ -15,7 +15,7 @@ class CreateAnswersGeneralTable extends Migration
     {
         Schema::create('answers_generals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('answer');
+            $table->text('answer');
             $table->boolean('delete')->default(0);
             $table->integer('votes')->default(0);
             $table->bigInteger('question_id')->unsigned();

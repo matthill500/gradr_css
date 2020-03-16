@@ -7,7 +7,6 @@
       <div class="card">
         <div class="card-header">
           My Questions <a href="{{ route('user.questions.create')}}" class="btn btn-primary float-right">Ask Question</a>
-
         </div>
         <div class="card-body">
           @if ((count($questionsColleges) === 0) && (count($questionsCourses) === 0) && (count($questionsModules) === 0) && (count($questionsGenerals) === 0))
