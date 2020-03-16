@@ -175,6 +175,8 @@ class AnswerController extends Controller
         $questionsCollege->answers += 1;
         $questionsCollege->save();
         $answer->save();
+
+        return redirect()->route('user.answers.index',['type' => $type, 'id' => $id]);
       }else if($type === "questions_courses"){
         $questionsCourse = QuestionsCourse::findOrFail($id);
         $answer = new AnswersCourse();
@@ -188,6 +190,8 @@ class AnswerController extends Controller
         $questionsCourse->answers += 1;
         $questionsCourse->save();
 
+        return redirect()->route('user.answers.index',['type' => $type, 'id' => $id]);
+
       }else if($type === "questions_modules"){
         $questionsModule = QuestionsModule::findOrFail($id);
         $answer = new AnswersModule();
@@ -200,6 +204,8 @@ class AnswerController extends Controller
         $answer->save();
         $questionsModule->answers += 1;
         $questionsModule->save();
+
+        return redirect()->route('user.answers.index',['type' => $type, 'id' => $id]);
 
       }else if($type === "questions_generals"){
         $questionsGeneral = QuestionsGeneral::findOrFail($id);
@@ -215,9 +221,10 @@ class AnswerController extends Controller
 
         $questionsGeneral->answers += 1;
         $questionsGeneral->save();
+        return redirect()->route('user.answers.index',['type' => $type, 'id' => $id]);
       }
 
-      return redirect()->route('user.answers.index',['type' => $type, 'id' => $id]);
+
     }
 
     /**
