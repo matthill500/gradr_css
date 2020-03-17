@@ -39,6 +39,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('css/welcome.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('css/master.css') }}" />
 </head>
 <body>
     <div id="app">

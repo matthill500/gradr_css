@@ -1,0 +1,17 @@
+body {
+  background-color: #a6a6a6;
+}
+
+div.card{
+  border-radius: 120px;
+}
+div.card-header {
+  color: white;
+  background-color: #343a40;
+  text-align: center;
+}
+div.card-body  {
+    color: white;
+    background-color: #656569;
+    text-align: center;
+}

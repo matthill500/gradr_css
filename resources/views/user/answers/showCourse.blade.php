@@ -1,4 +1,5 @@
 @extends('layouts.appUser')
+<link rel="stylesheet" href="{{ URL::asset('css/master.css') }}" />
 @section('content')
 <div class="container">
   <div class="row">

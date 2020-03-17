@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <p>Ask the questions you need answered.
                       GRADR is the go to place to get clear and concise answer that you need to gain the best grade you can.
-                      Aimed for students who need specific questions answered, the app puts you in contact with students who have completed the same courses and modules your questions relate to. </p>
+                      Aimed for students who need specific questions answered, the app puts you in contact with students who have completed the same courses and modules your questions relate to. Your questions answered. </p>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 @extends('layouts.appUser')
-
+<link rel="stylesheet" href="{{ URL::asset('css/master.css') }}" />
 <link rel="stylesheet" href="{{ URL::asset('css/showcourse.css') }}" />
 
 @section('content')
