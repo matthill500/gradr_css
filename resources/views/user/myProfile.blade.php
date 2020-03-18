@@ -6,11 +6,11 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-      <div class="card">
+      <div class="card card-question">
         <div class="card-header">
           My Profile
         </div>
-        <div class="card-body">
+        <div class="card-body card-question">
 
           @if ($errors->any())
           <div class="alert alert-danger">
@@ -36,7 +36,7 @@
     </div>
 
     <div class="col-sm-8 col-md-offset-2">
-      <div class="card">
+      <div class="card card-question">
         <div class="card-header">
           Activity
         </div>
@@ -57,11 +57,12 @@
             <p> There are no questions </p>
             @else
             <table id="table-questions" class="table table-hover">
-              <thead>
+              <thead class="table-head">
                 <th>Title</th>
-                  <th>Info</th>
-                  <th>Category</th>
-                  <th>Date Posted</th>
+                <th>Info</th>
+                <th>Category</th>
+                <th>Date Posted</th>
+                <th></th>
              </thead>
              <tbody>
 

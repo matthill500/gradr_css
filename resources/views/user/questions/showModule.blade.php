@@ -9,7 +9,7 @@
       <div class="container questions">
           <div class="row justify-content-center">
               <div class="col-md-12">
-                  <div class="card">
+                  <div class="card card-question">
                       <div class="card-body">
                           <table id="table-questions" class="table table-hover">
                             <tbody>
@@ -21,7 +21,7 @@
                                      </form>
                                     </div>
                                     <div class="content">
-                                      <h7><b></b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $questionsModule->student->user->name }}</a></h7> · {{ substr($questionsModule->created_at,'0','10')}}<h7 class="float-right"><a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}">Answer</a></h7>
+                                      <h7><b></b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $questionsModule->student->user->name }}</a></h7> · {{ substr($questionsModule->created_at,'0','10')}}<h7 class="float-right btn-submit"><a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}">Answer</a></h7>
                                       <h2 style="margin-top:0.2em;">{{ $questionsModule->title }}</h2>
                                       <p>{{ $questionsModule->info }}</p>
                                       <h7 style="margin-left:3.8em;"><a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" > {{$questionsModule->answers}} Answer(s) </a></h7>

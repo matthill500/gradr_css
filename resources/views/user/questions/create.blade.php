@@ -6,8 +6,8 @@
 
   <div class="container">
     <div class="row">
-      <div class ="col-md-12 col-md-offset-2">
-        <div class = "card">
+      <div class="col-md-12 col-md-offset-2">
+        <div class= "card card-question">
           <div class="card-header">
             Add new question
           </div>

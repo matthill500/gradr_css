@@ -1,27 +1,41 @@
 body {
-  background-color: #a6a6a6;
+   background-color: #a6a6a6;
 }
 
-div.card{
- border-radius: 20px;
- background-color: #a6a6a6;
-
-}
-div.card-header {
-  color: white;
+.card{
+  margin-top:1em;
+  border-radius:10px 10px 10px 10px;
   background-color: #343a40;
-  /* text-align: center; */
-  border-radius: 50px;
-}
+ /* border-radius: 20px; */
+ /* background-color: #a6a6a6; */
 
-div.card-body  {
+}
+.item{
+  color:black;
+}
+.card-header {
+   border-radius: 10px 10px 10px 10px;
+   color: white;
+   background-color: #343a40;
+  /* text-align: center; */
+  /* border-radius: 50px; */
+}
+.card-question{
+  background-color:#343a40;
+  padding:10px 10px 10px 10px;
+  border-radius: 10px;
+}
+.card-body  {
     align-items: center;
-    color: white;
-    background-color: #656569;
+     color: white;
+     background-color: #656569;
+     border-radius: 10px 10px 10px 10px;
     /* text-align: center; */
     /* border-radius: 0px 0px 20px 20px; */
 }
-
+.drop-item{
+  color:black!important;
+}
 .link{
   color: white;
 }
@@ -36,9 +50,11 @@ div.card-body  {
   align-items: center;
 }
 
+
 .cancel{
   background-color: red;
   align-items: center;
+  color:white;
 }
 a { color: white!important;
 text-decoration:none;

@@ -10,8 +10,8 @@
               <div class="col-md-12">
 
 
-                  <div class="card">
-                      <div class="card-body">
+                  <div class="card card-question">
+                      <div class="card-body card-question">
                           <table id="table-questions" class="table table-hover">
                             <tbody>
                                 @if ($type === "questions_colleges")
@@ -64,25 +64,25 @@
                                       <h7>Posted by: <a href="{{ route('user.profile', $questionsGeneral->student->user->name) }}">
                                         {{ $questionsGeneral->student->user->name }}</a></h7> · {{ substr($questionsGeneral->created_at,'0','10')}}
                                         <h7><a href="{{ route('user.answers.create', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}"
-                                           class="float-right">Answer</a>
+                                           class="float-right btn submit">Answer</a>
                                       @elseif ($type === "questions_colleges")
                                     </b></h7> ·
                                     <h7>Posted by: <a href="{{ route('user.profile', $questionsCollege->student->user->name) }}">
                                       {{ $questionsCollege->student->user->name }}</a></h7> · {{ substr($questionsCollege->created_at,'0','10')}}
                                       <h7><a href="{{ route('user.answers.create', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}"
-                                         class="float-right">Answer</a>
+                                         class="float-right btn submit">Answer</a>
                                       @elseif ($type === "questions_courses")
                                       </b></h7> ·
                                       <h7>Posted by: <a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">
                                         {{ $questionsCourse->student->user->name }}</a></h7> · {{ substr($questionsCourse->created_at,'0','10')}}
                                         <h7><a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}"
-                                           class="float-right">Answer</a>
+                                           class="float-right btn submit">Answer</a>
                                       @elseif ($type === "questions_modules")
                                     </b></h7> ·
                                     <h7>Posted by: <a href="{{ route('user.profile', $questionsModule->student->user->name) }}">
                                       {{ $questionsModule->student->user->name }}</a></h7> · {{ substr($questionsModule->created_at,'0','10')}}
                                       <h7><a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}"
-                                         class="float-right">Answer</a>
+                                         class="float-right btn submit">Answer</a>
                                      @endif
 
 
@@ -106,7 +106,7 @@
                       </div>
                   </div>
 
-                  <div class="card" style="margin-top:20px;">
+                  <div class="card card-question" style="margin-top:20px;">
                     <div class="card-header">
                       Answers
 
@@ -174,8 +174,8 @@
                       <!-- college answer -->
                       @foreach ($answersColleges as $answersCollege)
                       @if($answersCollege->question_id === $qid && $answersCollege->type === $type)
-                      <div class="card">
-                          <div class="card-body">
+                      <div class="card card-question">
+                          <div class="card-tbody card-question">
                               <table id="table-questions" class="table table-hover">
                                 <tbody>
                                         <div class="sideBar float-left" style="margin-right:1em; height:75px">
@@ -189,11 +189,11 @@
                                           <h7>Posted by: <a href="{{ route('user.profile', $questionsCollege->student->user->name) }}">{{ $answersCollege->student->user->name }}</a></h7> · {{ substr($answersCollege->created_at,'0','10') }}
                                           <h7 class="float-right">
                                             @if($answersCollege->student_id === Auth::user()->student->id)
-                                            <a href="{{ route('user.answers.editCollege', $answersCollege->id )}}" class="btn">Edit</a>
+                                            <a href="{{ route('user.answers.editCollege', $answersCollege->id )}}" class="btn submit">Edit</a>
                                             <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyCollege',  [$answersCollege->getTable(), $answersCollege->id])}}">
                                                <input type="hidden" name="_method" value="PUT">
                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <button type="submit">Delete</button></a>
+                                                <button type="submit" class="btn cancel">Delete</button></a>
                                            </form>
                                             @endif
                                           </h7>
@@ -211,7 +211,7 @@
                       @foreach ($answersCourses as $answersCourse)
                       @if($answersCourse->question_id === $qid && $answersCourse->type === $type)
                       <div class="card">
-                          <div class="card-body">
+                          <div class="card-tbody card-question">
                               <table id="table-questions" class="table table-hover">
                                 <tbody>
                                         <div class="sideBar float-left" style="margin-right:1em; height:75px">
@@ -225,11 +225,11 @@
                                           <h7>Posted by: <a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">{{ $answersCourse->student->user->name }}</a></h7> · {{ substr($answersCourse->created_at,'0','10') }}
                                           <h7 class="float-right">
                                             @if($answersCourse->student_id === Auth::user()->student->id)
-                                            <a href="{{ route('user.answers.editCourse', $answersCourse->id )}}" class="btn">Edit</a>
+                                            <a href="{{ route('user.answers.editCourse', $answersCourse->id )}}" class="btn submit">Edit</a>
                                             <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyCourse',  [$answersCourse->getTable(), $answersCourse->id])}}">
                                                <input type="hidden" name="_method" value="PUT">
                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <button type="submit">Delete</button></a>
+                                                <button type="submit" class="btn cancel">Delete</button></a>
                                            </form>
                                             @endif
                                           </h7>
@@ -247,7 +247,7 @@
                       @foreach ($answersModules as $answersModule)
                       @if($answersModule->question_id === $qid && $answersModule->type === $type)
                       <div class="card">
-                          <div class="card-body">
+                          <div class="card-tbody card-question">
                               <table id="table-questions" class="table table-hover">
                                 <tbody>
                                         <div class="sideBar float-left" style="margin-right:1em; height:75px">
@@ -261,11 +261,11 @@
                                           <h7>Posted by: <a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $answersModule->student->user->name }}</a></h7> · {{ substr($answersModule->created_at,'0','10') }}
                                           <h7 class="float-right">
                                             @if($answersModule->student_id === Auth::user()->student->id)
-                                            <a href="{{ route('user.answers.editModule', $answersModule->id )}}" class="btn">Edit</a>
+                                            <a href="{{ route('user.answers.editModule', $answersModule->id )}}" class="btn submit">Edit</a>
                                             <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyModule',  [$answersModule->getTable(), $answersModule->id])}}">
                                                <input type="hidden" name="_method" value="PUT">
                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <button type="submit">Delete</button></a>
+                                                <button type="submit" class="btn cancel">Delete</button></a>
                                            </form>
                                             @endif
                                           </h7>
@@ -284,7 +284,7 @@
                       @foreach ($answersGenerals as $answersGeneral)
                       @if($answersGeneral->question_id === $qid && $answersGeneral->type === $type)
                       <div class="card">
-                          <div class="card-body">
+                          <div class="card-tbody card-question">
                               <table id="table-questions" class="table table-hover">
                                 <tbody>
                                         <div class="sideBar float-left" style="margin-right:1em; height:75px">
@@ -298,11 +298,11 @@
                                           <h7>Posted by: <a href="{{ route('user.profile', $questionsGeneral->student->user->name) }}">{{ $answersGeneral->student->user->name }}</a></h7> · {{ substr($answersGeneral->created_at,'0','10') }}
                                           <h7 class="float-right">
                                             @if($answersGeneral->student_id === Auth::user()->student->id)
-                                            <a href="{{ route('user.answers.editGeneral', $answersGeneral->id )}}" class="btn">Edit</a>
+                                            <a href="{{ route('user.answers.editGeneral', $answersGeneral->id )}}" class="btn submit">Edit</a>
                                             <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyGeneral',  [$answersGeneral->getTable(), $answersGeneral->id])}}">
                                                <input type="hidden" name="_method" value="PUT">
                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <button type="submit">Delete</button></a>
+                                                <button type="submit" class="btn cancel">Delete</button></a>
                                            </form>
                                             @endif
                                           </h7>

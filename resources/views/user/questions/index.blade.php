@@ -17,6 +17,7 @@
               <th>Title</th>
                 <th>Info</th>
                 <th>Category</th>
+                <th></th>
            </thead>
            <tbody>
              @foreach ($questionsColleges as $questionsCollege)

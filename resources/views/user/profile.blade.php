@@ -66,6 +66,7 @@
                   <th>Info</th>
                   <th>Category</th>
                   <th>Date Posted</th>
+                  <th></th>
              </thead>
              <tbody>
 
