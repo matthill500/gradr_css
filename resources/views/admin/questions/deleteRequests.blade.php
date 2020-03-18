@@ -24,8 +24,8 @@
                <td>{{ substr($questionsCollege->title,'0','20') }}</td>
                <td>{{ substr($questionsCollege->info,'0','40') }}</td>
                <td>
-                 <a href="{{ route('admin.questions.show', $questionsCollege->id )}}" class="btn btn-default">View</a>
-                 <a href="{{route('admin.questions.edit', $questionsCollege->id )}}" class="btn btn-warning">Edit</a>
+                 <a href="{{ route('admin.questions.show', $questionsCollege->id )}}" class="btn submit">View</a>
+                 <a href="{{route('admin.questions.edit', $questionsCollege->id )}}" class="btn submit">Edit</a>
                   <form style="display:inline-block" method="POST" action="{{route('admin.questions.destroyCollege',$questionsCollege->id)}}">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -41,8 +41,8 @@
                <td>{{ substr($questionsCourse->title,'0','20') }}</td>
                <td>{{ substr($questionsCourse->info,'0','40') }}</td>
                <td>
-                 <a href="{{ route('admin.questions.show', $questionsCourse->id )}}" class="btn btn-default">View</a>
-                 <a href="{{route('admin.questions.edit', $questionsCourse->id )}}" class="btn btn-warning">Edit</a>
+                 <a href="{{ route('admin.questions.show', $questionsCourse->id )}}" class="btn submit">View</a>
+                 <a href="{{route('admin.questions.edit', $questionsCourse->id )}}" class="btn submit">Edit</a>
                   <form style="display:inline-block" method="POST" action="{{route('admin.questions.destroyCourse',$questionsCourse->id)}}">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -58,8 +58,8 @@
                <td>{{ substr($questionsModule->title,'0','20') }}</td>
                <td>{{ substr($questionsModule->info,'0','40') }}</td>
                <td>
-                 <a href="{{ route('admin.questions.show', $questionsModule->id )}}" class="btn btn-default">View</a>
-                 <a href="{{route('admin.questions.edit', $questionsModule->id )}}" class="btn btn-warning">Edit</a>
+                 <a href="{{ route('admin.questions.show', $questionsModule->id )}}" class="btn submit">View</a>
+                 <a href="{{route('admin.questions.edit', $questionsModule->id )}}" class="btn submit">Edit</a>
                   <form style="display:inline-block" method="POST" action="{{route('admin.questions.destroyModule',$questionsModule->id)}}">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -76,8 +76,8 @@
                <td>{{ substr($questionsGeneral->title,'0','20') }}</td>
                <td>{{ substr($questionsGeneral->info,'0','40') }}</td>
                <td>
-                 <a href="{{ route('admin.questions.show', $questionsGeneral->id )}}" class="btn btn-default">View</a>
-                 <a href="{{route('admin.questions.edit', $questionsGeneral->id )}}" class="btn btn-warning">Edit</a>
+                 <a href="{{ route('admin.questions.show', $questionsGeneral->id )}}" class="btn submit">View</a>
+                 <a href="{{route('admin.questions.edit', $questionsGeneral->id )}}" class="btn submit">Edit</a>
                   <form style="display:inline-block" method="POST" action="{{route('admin.questions.destroyGeneral',$questionsGeneral->id)}}">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

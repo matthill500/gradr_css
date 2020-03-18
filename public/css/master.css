@@ -3,15 +3,47 @@ body {
 }
 
 div.card{
-  border-radius: 120px;
+ border-radius: 20px;
+ background-color: #a6a6a6;
+
 }
 div.card-header {
   color: white;
   background-color: #343a40;
-  text-align: center;
+  /* text-align: center; */
+  border-radius: 50px;
 }
+
 div.card-body  {
+    align-items: center;
     color: white;
     background-color: #656569;
-    text-align: center;
+    /* text-align: center; */
+    /* border-radius: 0px 0px 20px 20px; */
+}
+
+.link{
+  color: white;
+}
+
+.table{
+  color: white;
+}
+
+.submit{
+  background-color: #25235e;
+  color: white;
+  align-items: center;
+}
+
+.cancel{
+  background-color: red;
+  align-items: center;
+}
+a { color: white!important;
+text-decoration:none;
+}
+a:hover {
+color:#000000!important;
+text-decoration : none!important;
 }

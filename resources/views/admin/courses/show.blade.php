@@ -32,8 +32,8 @@
           </tbody>
         </table>
 
-        <a href="{{ route('admin.courses.index') }}" class="btn btn-default">Back</a>
-        <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-warning">Edit</a>
+        <a href="{{ route('admin.courses.index') }}" class="btn submit">Back</a>
+        <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn submit">Edit</a>
         <form style="display:inline-block" method="POST" action ="{{ route('admin.courses.destroy', $course->id) }}">
           <input type="hidden" name="_method" value="DELETE">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">

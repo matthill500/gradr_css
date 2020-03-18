@@ -44,7 +44,7 @@
           </div>
           <div class="imageUpload">
             <a href="{{route('user.home')}}" class="btn btn-danger">Cancel</a>
-            <button type="submit" class="btn btn-primary float-right">Submit</button>
+            <button type="submit" class="btn submit float-right">Submit</button>
           </div>
           </form>
 

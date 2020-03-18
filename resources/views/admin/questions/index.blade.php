@@ -7,7 +7,7 @@
       <div class="card">
         <div class="card-header">
           My Questions
-          <a href="{{route('admin.questions.create')}}" class="btn btn-primary float-right">Add</a>
+          <a href="{{route('admin.questions.create')}}" class="btn submit float-right">Add</a>
         </div>
         <div class="card-body">
           @if (count($questions) === 0)
@@ -25,8 +25,8 @@
                <td>{{ substr($question->title,'0','20') }}</td>
                <td>{{ substr($question->info,'0','40') }}</td>
                <td>
-                 <a href="{{ route('admin.questions.show', $question->id )}}" class="btn btn-default">View</a>
-                 <a href="{{route('admin.questions.edit', $question->id )}}" class="btn btn-warning">Edit</a>
+                 <a href="{{ route('admin.questions.show', $question->id )}}" class="btn submit">View</a>
+                 <a href="{{route('admin.questions.edit', $question->id )}}" class="btn submit">Edit</a>
                   <form style="display:inline-block" method="POST" action="{{route('admin.questions.destroy',$question->id)}}">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

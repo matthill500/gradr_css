@@ -8,7 +8,7 @@
       <div class="card">
         <div class="card-header">
           Colleges
-          <a href="{{route('admin.colleges.create')}}" class="btn btn-primary float-right">Add</a>
+          <a href="{{route('admin.colleges.create')}}" class="btn submit float-right">Add</a>
         </div>
         @if (count($colleges) === 0)
         <p> There are no colleges</p>
@@ -30,8 +30,8 @@
 
 
                 <td>
-                  <a href="{{ route('admin.colleges.show', $college->id) }}" class="btn btn-default" >View</a>
-                  <a href="{{ route('admin.colleges.edit', $college->id) }}" class="btn btn-warning" value="edit" >Edit</a>
+                  <a href="{{ route('admin.colleges.show', $college->id) }}" class="btn submit" >View</a>
+                  <a href="{{ route('admin.colleges.edit', $college->id) }}" class="btn submit" value="edit" >Edit</a>
 
                   <form style="display:inline-block" method="POST" action ="{{ route('admin.colleges.destroy', $college->id) }}">
                     <input type="hidden" name="_method" value="DELETE">

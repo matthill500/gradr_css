@@ -19,7 +19,7 @@
                                       <form style="display:inline-block" method="POST" action="{{route('user.questions.voteCollege',$questionsCollege->id)}}" class="float-right">
                                         <input type="hidden" name="_method" value="PUT">
                                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                           <button type="submit" class="form-control btn btn-sm"><i class="fas fa-thumbs-up" style="margin-right:0.2em;"></i>{{$questionsCollege->votes}}</a>
+                                           <button type="submit" class="form-control btn btn-sm" style="color: white"><i class="fas fa-thumbs-up" style="margin-right:0.2em; color: white;"></i>{{$questionsCollege->votes}}</a>
                                      </form>
                                     </div>
                                @elseif ($type === "questions_courses")
@@ -27,7 +27,7 @@
                                      <form style="display:inline-block" method="POST" action="{{route('user.questions.voteCourse',$questionsCourse->id)}}" class="float-right">
                                        <input type="hidden" name="_method" value="PUT">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                          <button type="submit" class="form-control btn btn-sm"><i class="fas fa-thumbs-up" style="margin-right:0.2em;"></i>{{$questionsCourse->votes}}</a>
+                                          <button type="submit" class="form-control btn btn-sm" style="color: white"><i class="fas fa-thumbs-up" style="margin-right:0.2em; color: white;"></i>{{$questionsCourse->votes}}</a>
                                     </form>
                                    </div>
                               @elseif($type === "questions_modules")
@@ -35,7 +35,7 @@
                                      <form style="display:inline-block" method="POST" action="{{route('user.questions.voteModule',$questionsModule->id)}}" class="float-right">
                                        <input type="hidden" name="_method" value="PUT">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                          <button type="submit" class="form-control btn btn-sm"><i class="fas fa-thumbs-up" style="margin-right:0.2em;"></i>{{$questionsModule->votes}}</a>
+                                          <button type="submit" class="form-control btn btn-sm" style="color: white"><i class="fas fa-thumbs-up" style="margin-right:0.2em; color: white;"></i>{{$questionsModule->votes}}</a>
                                     </form>
                                    </div>
                                    @elseif($type === "questions_generals")
@@ -43,7 +43,7 @@
                                      <form style="display:inline-block" method="POST" action="{{route('user.questions.voteGeneral',$questionsGeneral->id)}}" class="float-right">
                                        <input type="hidden" name="_method" value="PUT">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                          <button type="submit" class="form-control btn btn-sm"><i class="fas fa-thumbs-up" style="margin-right:0.2em;"></i>{{$questionsGeneral->votes}}</a>
+                                          <button type="submit" class="form-control btn btn-sm" style="color: white"><i class="fas fa-thumbs-up" style="margin-right:0.2em; color: white;"></i>{{$questionsGeneral->votes}}</a>
                                     </form>
                                    </div>
                                    @endif
@@ -182,7 +182,7 @@
                                           <form style="display:inline-block" method="POST" action="{{route('user.answers.voteCollege', [$questionsCollege->getTable(), $questionsCollege->id, $answersCollege->id])}}" class="float-right">
                                             <input type="hidden" name="_method" value="PUT">
                                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                               <button type="submit" class="form-control btn btn-sm"><i class="fas fa-thumbs-up" style="margin-right:0.2em;"></i>{{$answersCollege->votes}}</a>
+                                               <button type="submit" class="form-control btn btn-sm" style="color: white"><i class="fas fa-thumbs-up" style="margin-right:0.2em; color: white;"></i>{{$answersCollege->votes}}</a>
                                          </form>
                                         </div>
                                         <div class="content">
@@ -218,7 +218,7 @@
                                           <form style="display:inline-block" method="POST" action="{{route('user.answers.voteCourse', [$questionsCourse->getTable(), $questionsCourse->id, $answersCourse->id])}}" class="float-right">
                                             <input type="hidden" name="_method" value="PUT">
                                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                               <button type="submit" class="form-control btn btn-sm"><i class="fas fa-thumbs-up" style="margin-right:0.2em;"></i>{{$answersCourse->votes}}</a>
+                                               <button type="submit" class="form-control btn btn-sm" style="color: white"><i class="fas fa-thumbs-up" style="margin-right:0.2em; color: white;"></i>{{$answersCourse->votes}}</a>
                                          </form>
                                         </div>
                                         <div class="content">
@@ -254,7 +254,7 @@
                                           <form style="display:inline-block" method="POST" action="{{route('user.answers.voteModule', [$questionsModule->getTable(), $questionsModule->id, $answersModule->id])}}" class="float-right">
                                             <input type="hidden" name="_method" value="PUT">
                                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                               <button type="submit" class="form-control btn btn-sm"><i class="fas fa-thumbs-up" style="margin-right:0.2em;"></i>{{$answersModule->votes}}</a>
+                                               <button type="submit" class="form-control btn btn-sm" style="color: white"><i class="fas fa-thumbs-up" style="margin-right:0.2em; color: white;"></i>{{$answersModule->votes}}</a>
                                          </form>
                                         </div>
                                         <div class="content">
@@ -291,7 +291,7 @@
                                           <form style="display:inline-block" method="POST" action="{{route('user.answers.voteGeneral', [$questionsGeneral->getTable(), $questionsGeneral->id, $answersGeneral->id])}}" class="float-right">
                                             <input type="hidden" name="_method" value="PUT">
                                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                               <button type="submit" class="form-control btn btn-sm"><i class="fas fa-thumbs-up" style="margin-right:0.2em;"></i>{{$answersGeneral->votes}}</a>
+                                               <button type="submit" class="form-control btn btn-sm" style="color: white"><i class="fas fa-thumbs-up" style="margin-right:0.2em; color: white;"></i>{{$answersGeneral->votes}}</a>
                                          </form>
                                         </div>
                                         <div class="content">

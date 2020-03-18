@@ -6,7 +6,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          My Questions <a href="{{ route('user.questions.create')}}" class="btn btn-primary float-right">Ask Question</a>
+          My Questions <a href="{{ route('user.questions.create')}}" class="btn submit float-right">Ask Question</a>
         </div>
         <div class="card-body">
           @if ((count($questionsColleges) === 0) && (count($questionsCourses) === 0) && (count($questionsModules) === 0) && (count($questionsGenerals) === 0))
@@ -27,8 +27,8 @@
                <td>{{ substr($questionsCollege->info,'0','40') }}</td>
                <td>{{ substr($questionsCollege->college->name,'0','40') }}</td>
                <td>
-                 <a href="{{ route('user.questions.showCollege', $questionsCollege->id )}}" class="btn btn-primary">View</a>
-                 <a href="{{ route('user.questions.editCollege', $questionsCollege->id )}}" class="btn btn-warning">Edit</a>
+                 <a href="{{ route('user.questions.showCollege', $questionsCollege->id )}}" class="btn submit">View</a>
+                 <a href="{{ route('user.questions.editCollege', $questionsCollege->id )}}" class="btn submit">Edit</a>
 
                  <form style="display:inline-block" method="POST" action="{{route('user.questions.requestDeleteCollege',$questionsCollege->id)}}">
                    <input type="hidden" name="_method" value="PUT">
@@ -36,7 +36,7 @@
                    @if ($questionsCollege->delete === 0)
                    <button type="submit" class="form-control btn btn-danger">Request Delete</a>
                   @else ($questionsCollege->delete === 1)
-                  <button type="submit" class="form-control btn btn-danger">Withdraw Request Delete</a>
+                  <button type="submit" class="form-control btn btn-danger cancel">Withdraw Request Delete</a>
                   @endif
                 </form>
 
@@ -53,14 +53,14 @@
             <td>{{ substr($questionsCourse->info,'0','40') }}</td>
             <td>{{ substr($questionsCourse->course->course_name,'0','40') }}</td>
             <td>
-              <a href="{{ route('user.questions.showCourse', $questionsCourse->id )}}" class="btn btn-primary">View</a>
-              <a href="{{ route('user.questions.editCourse', $questionsCourse->id )}}" class="btn btn-warning">Edit</a>
+              <a href="{{ route('user.questions.showCourse', $questionsCourse->id )}}" class="btn submit">View</a>
+              <a href="{{ route('user.questions.editCourse', $questionsCourse->id )}}" class="btn submit">Edit</a>
 
                <form style="display:inline-block" method="POST" action="{{route('user.questions.requestDeleteCourse',$questionsCourse->id)}}">
                 <input type="hidden" name="_method" value="PUT">
                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 @if ($questionsCourse->delete === 0)
-                <button type="submit" class="form-control btn btn-danger">Request Delete</a>
+                <button type="submit" class="form-control btn cancel">Request Delete</a>
                @else ($questionsCourse->delete === 1)
                <button type="submit" class="form-control btn btn-danger">Withdraw Request Delete</a>
                @endif
@@ -79,8 +79,8 @@
          <td>{{ substr($questionsModule->info,'0','40') }}</td>
          <td>{{ substr($questionsModule->module->module_name,'0','40') }}</td>
          <td>
-           <a href="{{ route('user.questions.showModule', $questionsModule->id )}}" class="btn btn-primary">View</a>
-           <a href="{{ route('user.questions.editModule', $questionsModule->id )}}" class="btn btn-warning">Edit</a>
+           <a href="{{ route('user.questions.showModule', $questionsModule->id )}}" class="btn submit">View</a>
+           <a href="{{ route('user.questions.editModule', $questionsModule->id )}}" class="btn submit">Edit</a>
 
             <form style="display:inline-block" method="POST" action="{{route('user.questions.requestDeleteModule',$questionsModule->id)}}">
              <input type="hidden" name="_method" value="PUT">
@@ -104,8 +104,8 @@
       <td>{{ substr($questionsGeneral->info,'0','40') }}</td>
       <td>General</td>
       <td>
-        <a href="{{ route('user.questions.showGeneral', $questionsGeneral->id )}}" class="btn btn-primary">View</a>
-        <a href="{{ route('user.questions.editGeneral', $questionsGeneral->id )}}" class="btn btn-warning">Edit</a>
+        <a href="{{ route('user.questions.showGeneral', $questionsGeneral->id )}}" class="btn submit">View</a>
+        <a href="{{ route('user.questions.editGeneral', $questionsGeneral->id )}}" class="btn submit">Edit</a>
 
          <form style="display:inline-block" method="POST" action="{{route('user.questions.requestDeleteGeneral',$questionsGeneral->id)}}">
           <input type="hidden" name="_method" value="PUT">

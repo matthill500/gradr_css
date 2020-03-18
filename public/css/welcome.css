@@ -6,9 +6,9 @@ body {
   background-color: #a6a6a6;
 }
 .about {
-  margin-top:-7em;
+    margin-top:-7em;
     margin-bottom: 1em;
-    border-radius: 20px;
+    border-radius: 200px;
 }
 
 div.card-header {
@@ -20,6 +20,7 @@ div.card-body  {
     color: white;
     background-color: #656569;
     text-align: center;
+
 }
 
 div.title{

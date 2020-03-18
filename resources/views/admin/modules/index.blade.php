@@ -8,7 +8,7 @@
       <div class="card">
         <div class="card-header">
           Modules
-          <a href="{{route('admin.modules.create')}}" class="btn btn-primary float-right">Add</a>
+          <a href="{{route('admin.modules.create')}}" class="btn submit float-right">Add</a>
         </div>
         @if (count($modules) === 0)
         <p> There are no modules</p>
@@ -30,8 +30,8 @@
 
 
                 <td>
-                  <a href="{{ route('admin.modules.show', $module->id) }}" class="btn btn-default" >View</a>
-                  <a href="{{ route('admin.modules.edit', $module->id) }}" class="btn btn-warning" value="edit" >Edit</a>
+                  <a href="{{ route('admin.modules.show', $module->id) }}" class="btn submit" >View</a>
+                  <a href="{{ route('admin.modules.edit', $module->id) }}" class="btn submit" value="edit" >Edit</a>
 
                   <form style="display:inline-block" method="POST" action ="{{ route('admin.modules.destroy', $module->id) }}">
                     <input type="hidden" name="_method" value="DELETE">

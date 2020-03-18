@@ -17,14 +17,14 @@
                                       <form style="display:inline-block" method="POST" action="{{route('user.questions.voteModule',$questionsModule->id)}}" class="float-right">
                                         <input type="hidden" name="_method" value="PUT">
                                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                           <button type="submit" class="form-control btn btn-sm"><i class="fas fa-thumbs-up" style="margin-right:0.2em;"></i>{{$questionsModule->votes}}</a>
+                                           <button type="submit" class="form-control btn btn-sm" style="color: white"><i class="fas fa-thumbs-up" style="margin-right:0.2em; color: white;"></i>{{$questionsModule->votes}}</a>
                                      </form>
                                     </div>
                                     <div class="content">
                                       <h7><b></b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $questionsModule->student->user->name }}</a></h7> · {{ substr($questionsModule->created_at,'0','10')}}<h7 class="float-right"><a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}">Answer</a></h7>
                                       <h2 style="margin-top:0.2em;">{{ $questionsModule->title }}</h2>
                                       <p>{{ $questionsModule->info }}</p>
-                                      <h7><a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" > {{$questionsModule->answers}} Answer(s) </a></h7>
+                                      <h7 style="margin-left:3.8em;"><a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" > {{$questionsModule->answers}} Answer(s) </a></h7>
                                    </div>
                             </tbody>
                           </table>

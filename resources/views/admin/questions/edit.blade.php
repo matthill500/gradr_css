@@ -31,7 +31,7 @@
                   <textarea class="form-control" rows="5" id="title" name="info" value="{{old('info', $question->info)}}"></textarea>
                 </div>
                 <a href="{{route('admin.questions.index')}}" class="btn btn-link">Cancel</a>
-                <button type="submit" class="btn btn-primary float-right">Submit</button>
+                <button type="submit" class="btn submit float-right">Submit</button>
 
             </form>
           </div>

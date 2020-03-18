@@ -74,7 +74,7 @@
                   <textarea class="form-control" rows="5" id="answer" name="answer" value="{{old('answer')}}"></textarea>
                 </div>
                 <a href="{{route('user.questions.redirect', ['type' => $type, 'id' => $id] )}}" class="btn btn-link">Cancel</a>
-                <button type="submit" class="btn btn-primary float-right">Submit</button>
+                <button type="submit" class="btn submit float-right">Submit</button>
 
             </form>
           </div>

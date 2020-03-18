@@ -8,7 +8,7 @@
         <div class="col-md-12">
             <div class="card">
 
-                <div class="card-header">@foreach ($colleges as $college) @if($college->id === $cid) {{ $college->name }} @endif  @endforeach   <a href="{{ route('user.questions.create')}}" class="btn btn-primary float-right">Ask Question</a></div>
+                <div class="card-header">@foreach ($colleges as $college) @if($college->id === $cid) {{ $college->name }} @endif  @endforeach   <a href="{{ route('user.questions.create')}}" class="btn submit float-right">Ask Question</a></div>
 
 
 
@@ -26,7 +26,7 @@
                       <div class="card-body">
                         <h5 class="card-title">{{ $course->course_name }}</h5>
                         <p class="card-text">Course Code: {{ $course->course_code }}<br />CAO Points: {{$course->cao_points}}</p>
-                        <a href="{{ route('user.modules', $course->id) }}" class="btn btn-primary">{{$course->course_name}} Modules</a>
+                        <a href="{{ route('user.modules', $course->id) }}" class="btn submit">{{$course->course_name}} Modules</a>
                       </div>
                     </div>
                   @endif

@@ -1,5 +1,5 @@
 @extends('layouts.appUser')
-<link rel="stylesheet" href="{{ URL::asset('css/master.css') }}" />
+
 <link rel="stylesheet" href="{{ URL::asset('css/imageUpload.css') }}" />
 
 @section('content')
@@ -31,7 +31,7 @@
 
           @if($user->name === Auth::user()->name)
 
-          <a href="{{ url('/user/editProfile') }}" class="btn btn-primary">Edit Profile</a>
+          <a href="{{ url('/user/editProfile') }}" class="btn submit">Edit Profile</a>
 
           @endif
 
@@ -78,7 +78,7 @@
                  <td>{{ substr($questionsCollege->college->name,'0','40') }}</td>
                  <td>{{ $questionsCollege->created_at }}</td>
                  <td>
-                   <a href="{{ route('user.questions.showCollege', $questionsCollege->id )}}" class="btn btn-primary">View</a>
+                   <a href="{{ route('user.questions.showCollege', $questionsCollege->id )}}" class="btn submit">View</a>
                  </td>
                </tr>
             @endif
@@ -95,7 +95,7 @@
               <td>{{ substr($questionsCourse->course->course_name,'0','40') }}</td>
               <td>{{ $questionsCourse->created_at }}</td>
               <td>
-                <a href="{{ route('user.questions.showCourse', $questionsCourse->id )}}" class="btn btn-primary">View</a>
+                <a href="{{ route('user.questions.showCourse', $questionsCourse->id )}}" class="btn submit">View</a>
               </td>
             </tr>
          @endif
@@ -112,7 +112,7 @@
            <td>{{ substr($questionsModule->module->module_name,'0','40') }}</td>
            <td>{{ $questionsModule->created_at }}</td>
            <td>
-             <a href="{{ route('user.questions.showModule', $questionsModule->id )}}" class="btn btn-primary">View</a>
+             <a href="{{ route('user.questions.showModule', $questionsModule->id )}}" class="btn submit">View</a>
            </td>
          </tr>
       @endif
@@ -130,7 +130,7 @@
         <td>{{ $questionsGeneral->created_at }}</td>
 
         <td>
-          <a href="{{ route('user.questions.showGeneral', $questionsGeneral->id )}}" class="btn btn-primary">View</a>
+          <a href="{{ route('user.questions.showGeneral', $questionsGeneral->id )}}" class="btn submit">View</a>
         </td>
       </tr>
    @endif

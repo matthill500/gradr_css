@@ -1,5 +1,5 @@
 @extends('layouts.appUser')
-<link rel="stylesheet" href="{{ URL::asset('css/master.css') }}" />
+
 <link rel="stylesheet" href="{{ URL::asset('css/createQuestionForm.css') }}" />
 
 @section('content')
@@ -7,7 +7,7 @@
   <div class="container">
     <div class="row">
       <div class ="col-md-12 col-md-offset-2">
-        <div class="card">
+        <div class = "card">
           <div class="card-header">
             Add new question
           </div>
@@ -22,7 +22,6 @@
             </div>
             @endif
             <form method="POST" action="{{route('user.questions.store')}}">
-
                 <div class="form-group">
                   <input type="hidden" name="_token">
                         {{ csrf_field() }}
@@ -82,18 +81,8 @@
               @endforeach
             </select>
           </div>
-
-
-
-
-
-
-
-
-
-                <a href="{{route('user.questions.index')}}" class="btn btn-link">Cancel</a>
-                <button type="submit" class="btn btn-primary float-right">Submit</button>
-
+                <a href="{{route('user.questions.index')}}" class="btn btn-primary cancel">Cancel</a>
+                <button type="submit" class="btn btn-primary submit">Submit</button>
             </form>
           </div>
         </div>

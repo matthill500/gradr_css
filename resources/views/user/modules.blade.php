@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">@foreach ($courses as $course) @if($course->id === $mid) {{ $course->course_name }} @endif  @endforeach <a href="{{ route('user.questions.create')}}" class="btn btn-primary float-right">Ask Question</a></div>
+                <div class="card-header">@foreach ($courses as $course) @if($course->id === $mid) {{ $course->course_name }} @endif  @endforeach <a href="{{ route('user.questions.create')}}" class="btn submit float-right">Ask Question</a></div>
 
 
                 <div class="card-body">
@@ -24,7 +24,7 @@
                       <div class="card-body">
                         <h5 class="card-title">{{ $module->module_name }}</h5>
 
-                        <a href="{{ route('user.base', $module->id) }}" class="btn btn-primary">{{$module->module_name}} Modules</a>
+                        <a href="{{ route('user.base', $module->id) }}" class="btn submit">{{$module->module_name}} Modules</a>
                       </div>
                     </div>
                   @endif
