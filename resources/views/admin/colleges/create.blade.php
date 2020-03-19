@@ -22,17 +22,17 @@
             <input type="hidden" name="_token" value ="{{ csrf_token() }}">
 
             <div class="form-group">
-              <label for="name">name</label>
+              <label for="name">Name</label>
               <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" />
             </div>
 
             <div class="form-group">
-              <label for="info">info</label>
+              <label for="info">Information</label>
               <input type="text" class="form-control" id="info" name="info" value="{{old('info')}}" />
             </div>
 
             <div class="form-group">
-              <label for="address">address</label>
+              <label for="address">Address</label>
               <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}" />
             </div>
 
@@ -46,11 +46,9 @@
                 </span>
             @endif
           </div>
-
-
-            <a href="{{route('admin.colleges.index')}}" class="btn btn-danger">Cancel</a>
-            <button type="submit" class="btn submit float-right">Submit</button>
-
+          <br>
+          <a href="{{route('admin.colleges.index')}}" class="btn btn-danger">Cancel</a>
+          <button type="submit" class="btn submit float-right">Submit</button>
           </form>
         </div>
       </div>

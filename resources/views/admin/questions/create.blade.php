@@ -29,6 +29,7 @@
                   <label for="info">Info</label>
                   <textarea class="form-control" rows="5" id="title" name="info" value="{{old('info')}}"></textarea>
                 </div>
+                <br>
                 <a href="{{route('admin.questions.index')}}" class="btn btn-link">Cancel</a>
                 <button type="submit" class="btn submit float-right">Submit</button>
 

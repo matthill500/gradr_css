@@ -45,7 +45,7 @@
               <label for="address">Address</label>
               <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}" />
             </div>
-
+            <br>
 
             <a href="{{route('admin.students.index')}}" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn submit float-right">Submit</button>

@@ -17,8 +17,8 @@
               <td>{{ $college->name }}</td>
             </tr>
             <tr>
-              <td>Phone</td>
-              <td>{{ $college->address }}</td>
+              <td>Information</td>
+              <td>{{ $college->info }}</td>
             </tr>
 
           </tbody>

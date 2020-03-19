@@ -46,7 +46,7 @@
                 @endforeach
               </select>
             </div>
-
+            <br>
 
             <a href="{{route('admin.colleges.index')}}" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn submit float-right">Submit</button>

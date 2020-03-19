@@ -1,24 +1,27 @@
 body {
-   background-color: #a6a6a6;
+   background-color: #a6a6a6!important;
 }
 
 .card{
   margin-top:1em;
   border-radius:10px 10px 10px 10px;
-  background-color: #343a40;
+  background-color: #a6a6a6!important;
  /* border-radius: 20px; */
  /* background-color: #a6a6a6; */
 
+}
+.table{
+  color: white!important;
 }
 .item{
   color:black;
 }
 .card-header {
-   border-radius: 10px 10px 10px 10px;
+  border-radius: 15px!important 15px!important 0px!important 0px!important;
    color: white;
-   background-color: #343a40;
+   background-color: #343a40!important;
   /* text-align: center; */
-  /* border-radius: 50px; */
+
 }
 .card-question{
   background-color:#343a40;
@@ -26,10 +29,10 @@ body {
   border-radius: 10px;
 }
 .card-body  {
-    align-items: center;
+     align-items: center;
      color: white;
      background-color: #656569;
-     border-radius: 10px 10px 10px 10px;
+     border-radius: 0px 0px 10px 10px;
     /* text-align: center; */
     /* border-radius: 0px 0px 20px 20px; */
 }
@@ -45,11 +48,11 @@ body {
 }
 
 .submit{
-  background-color: #25235e;
-  color: white;
+  background-color: #25235e!important;
+  color: white!important;
   align-items: center;
-}
 
+}
 
 .cancel{
   background-color: red;
