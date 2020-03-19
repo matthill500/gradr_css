@@ -7,7 +7,7 @@
     <div class="row">
       <div class ="col-md-12 col-md-offset-2">
 
-        <div class="card card-question">
+        <div class="card ">
           <div class="card-body">
             @if($type === "questions_colleges")
             <table id="table-questions" class="table table-hover">
@@ -86,7 +86,7 @@
           </div>
         </div>
 
-        <div class="card answer card-question">
+        <div class="card answer">
           <div class="card-header">
             Add new answer
           </div>

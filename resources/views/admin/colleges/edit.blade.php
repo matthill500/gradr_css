@@ -49,9 +49,10 @@
                 </span>
             @endif
           </div>
+          <a href="{{route('admin.colleges.index')}}" class="btn btn-danger" style="margin-top:2em;">Cancel</a>
+          <button type="submit" class="btn submit float-right" style="margin-top:2em;">Submit</button>
           </form>
-          <a href="{{route('admin.colleges.index')}}" class="btn btn-danger">Cancel</a>
-          <button type="submit" class="btn submit float-right">Submit</button>
+
         </div>
       </div>
     </div>

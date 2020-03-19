@@ -18,12 +18,9 @@
           <thead>
             <th>Module Name</th>
             <th>Course</th>
-
-
+            <th></th>
           </thead>
-
           <tbody>
-
             @foreach ($modules as $module)
               <tr data-id="{{$module->id}}">
                 <td>{{ $module->module_name }}</td>

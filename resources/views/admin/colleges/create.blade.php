@@ -40,15 +40,16 @@
               <label for="address">Image</label>
             <input type="file" name="image" class="custom-file-input {{$errors->has('image') ? 'is-invalid' : ''}}" id="image">
             <label class="custom-file-label" for="image">College Image</label>
-            @if($errors->has('image'))
+             @if($errors->has('image'))
                 <span class="invalid-feedback">
                     {{$errors->first('image')}}
                 </span>
             @endif
           </div>
-          <br>
-          <a href="{{route('admin.colleges.index')}}" class="btn btn-danger">Cancel</a>
-          <button type="submit" class="btn submit float-right">Submit</button>
+
+          <a href="{{route('admin.colleges.index')}}" class="btn btn-danger" style="margin-top:2em;">Cancel</a>
+          <button type="submit" class="btn submit float-right" style="margin-top:2em;">Submit</button>
+
           </form>
         </div>
       </div>

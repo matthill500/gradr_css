@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card card-question">
+            <div class="card ">
                 <div class="card-header">Dashboard <a href="{{ route('user.questions.create')}}" class="btn submit float-right">Ask Question</a></div>
 
                 <div class="card-body">
@@ -17,7 +17,7 @@
                     @endif
                 <br />
                   @foreach ($colleges as $college)
-                    <div class="card float-left" style="width: 14rem; margin-left:38px; margin-bottom:18px;">
+                    <div class="float-left" style="width: 14rem; margin-left:38px; margin-bottom:18px;">
                       <a href="{{ route('user.courses', $college->id) }}">
                         <img src="{{asset('storage/img/'.$college->image)}}" height="160px" class="card-img-top" src="..." alt="Card image cap">
                       </a>
@@ -33,7 +33,7 @@
 <div class="container questions">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card card-question">
+            <div class="card ">
                 <div class="card-header">General Questions
 
                    <div class="float-right">

@@ -9,7 +9,7 @@
       <div class="container questions">
           <div class="row justify-content-center">
               <div class="col-md-12">
-                  <div class="card card-question">
+                  <div class="card ">
                       <div class="card-body">
                           <table id="table-questions" class="table table-hover">
                             <tbody>

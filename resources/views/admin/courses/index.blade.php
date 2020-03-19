@@ -20,6 +20,7 @@
             <th>Course Code</th>
             <th>Cao Points</th>
             <th>College</th>
+            <th></th>
           </thead>
 
           <tbody>

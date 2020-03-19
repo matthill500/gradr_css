@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card card-question">
+            <div class="card ">
                 <div class="card-header">@foreach ($colleges as $college) @if($college->id === $cid) {{ $college->name }} @endif  @endforeach   <a href="{{ route('user.questions.create')}}" class="btn submit float-right">Ask Question</a></div>
                 <div class="card-body">
                     @if (session('status'))
@@ -18,7 +18,7 @@
                   @foreach ($courses as $course)
                   @if($course->college_id === $cid)
                     <div class="card card-question float-left" style="width: 18rem; margin-left:38px; margin-bottom:1px; text-align:center;">
-                      <div class="card-tbody card-question">
+                      <div class="card-tbody">
                         <h5 class="card-title">{{ $course->course_name }}</h5>
                         <p class="card-text">Course Code: {{ $course->course_code }}<br />CAO Points: {{$course->cao_points}}</p>
                         <a href="{{ route('user.modules', $course->id) }}" class="btn submit">{{$course->course_name}} Modules</a>
@@ -35,7 +35,7 @@
 <div class="container questions">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card card-question">
+            <div class="card ">
                 <div class="card-header">@foreach ($colleges as $college) @if($college->id === $cid) {{ $college->name }} @endif  @endforeach Questions
 
                   <div class="float-right">

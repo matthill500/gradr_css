@@ -5,12 +5,12 @@
   <div class="row">
     <div class="col-md-12">
 
-      <div class="container questions">
+      <div class="container ">
           <div class="row justify-content-center">
               <div class="col-md-12">
 
 
-                  <div class="card card-question">
+                  <div class="card ">
                       <div class="card-body card-question">
                           <table id="table-questions" class="table table-hover">
                             <tbody>
@@ -106,7 +106,7 @@
                       </div>
                   </div>
 
-                  <div class="card card-question" style="margin-top:20px;">
+                  <div class="card " style="margin-top:20px;">
                     <div class="card-header">
                       Answers
 
