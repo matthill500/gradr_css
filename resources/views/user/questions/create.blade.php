@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" href="{{ URL::asset('css/createQuestionForm.css') }}" />
 
+
 @section('content')
 
   <div class="container">
@@ -90,5 +91,11 @@
     </div>
   </div>
 
+
+
   <script type="text/javascript" src="{{ URL::asset('js/createQuestionForm.js') }}"></script>
+  <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script>
+    CKEDITOR.replace( 'info' );
+</script>
 @endsection

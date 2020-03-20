@@ -4,8 +4,61 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac11e4988ca58ffda01c9f2f9fea45dd",
+    "content-hash": "3f47169ee76006f7f8431148c402215d",
     "packages": [
+        {
+            "name": "cebe/markdown",
+            "version": "0.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cebe/markdown.git",
+                "reference": "70d24fe88e3cb2795d2a422f3dffd264861bca20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cebe/markdown/zipball/70d24fe88e3cb2795d2a422f3dffd264861bca20",
+                "reference": "70d24fe88e3cb2795d2a422f3dffd264861bca20",
+                "shasum": ""
+            },
+            "require": {
+                "lib-pcre": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "bin": [
+                "bin/markdown"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "cebe\\markdown\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc",
+                    "homepage": "http://cebe.cc/",
+                    "role": "Core framework development"
+                }
+            ],
+            "description": "A super fast highly extensible markdown parser for PHP",
+            "homepage": "http://www.cebe.cc/markdown",
+            "keywords": [
+                "extensible",
+                "fast",
+                "gfm",
+                "markdown",
+                "markdown-extra"
+            ],
+            "time": "2014-02-18T15:53:17+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -325,6 +378,50 @@
                 "parser"
             ],
             "time": "2019-03-17T18:48:37+00:00"
+        },
+        {
+            "name": "ezyang/htmlpurifier",
+            "version": "v4.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezyang/htmlpurifier.git",
+                "reference": "6f389f0f25b90d0b495308efcfa073981177f0fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/6f389f0f25b90d0b495308efcfa073981177f0fd",
+                "reference": "6f389f0f25b90d0b495308efcfa073981177f0fd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTMLPurifier": "library/"
+                },
+                "files": [
+                    "library/HTMLPurifier.composer.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Edward Z. Yang",
+                    "email": "admin@htmlpurifier.org",
+                    "homepage": "http://ezyang.com"
+                }
+            ],
+            "description": "Standards compliant HTML filter written in PHP",
+            "homepage": "http://htmlpurifier.org/",
+            "keywords": [
+                "html"
+            ],
+            "time": "2013-11-30T08:25:19+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -3136,6 +3233,59 @@
             "time": "2019-10-04T19:48:13+00:00"
         },
         {
+            "name": "te7a-houdini/laravel-trix",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Te7a-Houdini/laravel-trix.git",
+                "reference": "495c4637eafc549a3933f9d9d11f4703e9b75967"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Te7a-Houdini/laravel-trix/zipball/495c4637eafc549a3933f9d9d11f4703e9b75967",
+                "reference": "495c4637eafc549a3933f9d9d11f4703e9b75967",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.8.0|~6.0|~7.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.5|~4.0|~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Te7aHoudini\\LaravelTrix\\LaravelTrixServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Te7aHoudini\\LaravelTrix\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ahmed Abd El Ftah",
+                    "email": "ahmedabdelftah95165@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "trix editor for laravel inspired by ActionText for rails",
+            "homepage": "https://github.com/te7ahoudini/laravel-trix",
+            "keywords": [
+                "laravel-trix",
+                "te7a-houdini"
+            ],
+            "time": "2020-03-06T15:33:35+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.1",
             "source": {
@@ -3238,6 +3388,275 @@
                 "environment"
             ],
             "time": "2019-09-10T21:37:39+00:00"
+        },
+        {
+            "name": "xz1mefx/yii2-base",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xZ1mEFx/yii2-base.git",
+                "reference": "f6633c08ccccb7eb5ac000dfae0db26cb2e0a76a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xZ1mEFx/yii2-base/zipball/f6633c08ccccb7eb5ac000dfae0db26cb2e0a76a",
+                "reference": "f6633c08ccccb7eb5ac000dfae0db26cb2e0a76a",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "xz1mefx\\base\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vitalii Zagorodniuk",
+                    "email": "vitaliizagorodniuk@gmail.com"
+                }
+            ],
+            "description": "Base tools package",
+            "keywords": [
+                "base",
+                "helpers",
+                "tool",
+                "xZ1mEFx",
+                "yii2"
+            ],
+            "time": "2017-01-17T12:26:29+00:00"
+        },
+        {
+            "name": "xz1mefx/yii2-wysihtml5",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xZ1mEFx/yii2-wysihtml5.git",
+                "reference": "bd9adb8d3fe46ca7112c11ae5b106bd5f20956fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xZ1mEFx/yii2-wysihtml5/zipball/bd9adb8d3fe46ca7112c11ae5b106bd5f20956fa",
+                "reference": "bd9adb8d3fe46ca7112c11ae5b106bd5f20956fa",
+                "shasum": ""
+            },
+            "require": {
+                "xz1mefx/yii2-base": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "xz1mefx\\wysihtml5\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vitalii Zagorodniuk",
+                    "email": "vitaliizagorodniuk@gmail.com"
+                }
+            ],
+            "description": "Yii2 wysihtml5 widget",
+            "keywords": [
+                "widget",
+                "wysihtml5",
+                "xZ1mEFx",
+                "yii2"
+            ],
+            "time": "2017-01-11T12:52:58+00:00"
+        },
+        {
+            "name": "yiisoft/jquery",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/jquery.git",
+                "reference": "bc09bbbc8b40cf89812036188b6f94ae7627c73c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/jquery/zipball/bc09bbbc8b40cf89812036188b6f94ae7627c73c",
+                "reference": "bc09bbbc8b40cf89812036188b6f94ae7627c73c",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "jQuery JavaScript Library",
+            "homepage": "http://jquery.com",
+            "abandoned": true,
+            "time": "2014-05-07T05:00:09+00:00"
+        },
+        {
+            "name": "yiisoft/jquery-pjax",
+            "version": "v2.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/jquery-pjax.git",
+                "reference": "6818718408086db6bdcf33649cecb86b6b4f9b67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/6818718408086db6bdcf33649cecb86b6b4f9b67",
+                "reference": "6818718408086db6bdcf33649cecb86b6b4f9b67",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/jquery": ">=1.8"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "pushState + ajax = pjax, a forked maintainted by the Yii Framework core developers",
+            "homepage": "https://github.com/yiisoft/jquery-pjax#readme",
+            "abandoned": "install via bower instead",
+            "time": "2015-11-10T10:06:36+00:00"
+        },
+        {
+            "name": "yiisoft/yii2",
+            "version": "2.0.0-beta",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-framework.git",
+                "reference": "2a71e361b3cebf872ecaba45feaf23a7d2a1491d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/2a71e361b3cebf872ecaba45feaf23a7d2a1491d",
+                "reference": "2a71e361b3cebf872ecaba45feaf23a7d2a1491d",
+                "shasum": ""
+            },
+            "require": {
+                "cebe/markdown": "0.9.*",
+                "ext-mbstring": "*",
+                "ezyang/htmlpurifier": "4.6.*",
+                "lib-pcre": "*",
+                "php": ">=5.4.0",
+                "yiisoft/jquery": "~2.0 | ~1.10",
+                "yiisoft/jquery-pjax": "*",
+                "yiisoft/yii2-composer": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "yii\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Qiang Xue",
+                    "email": "qiang.xue@gmail.com",
+                    "homepage": "http://www.yiiframework.com/",
+                    "role": "Founder and project lead"
+                },
+                {
+                    "name": "Alexander Makarov",
+                    "email": "sam@rmcreative.ru",
+                    "homepage": "http://rmcreative.ru/",
+                    "role": "Core framework development"
+                },
+                {
+                    "name": "Maurizio Domba",
+                    "homepage": "http://mdomba.info/",
+                    "role": "Core framework development"
+                },
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc",
+                    "homepage": "http://cebe.cc/",
+                    "role": "Core framework development"
+                },
+                {
+                    "name": "Timur Ruziev",
+                    "email": "resurtm@gmail.com",
+                    "homepage": "http://resurtm.com/",
+                    "role": "Core framework development"
+                },
+                {
+                    "name": "Paul Klimov",
+                    "email": "klimov.paul@gmail.com",
+                    "role": "Core framework development"
+                }
+            ],
+            "description": "Yii PHP Framework Version 2",
+            "homepage": "http://www.yiiframework.com/",
+            "keywords": [
+                "framework",
+                "yii2"
+            ],
+            "time": "2014-04-13T21:58:59+00:00"
+        },
+        {
+            "name": "yiisoft/yii2-composer",
+            "version": "2.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-composer.git",
+                "reference": "5c7ca9836cf80b34db265332a7f2f8438eb469b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/5c7ca9836cf80b34db265332a7f2f8438eb469b9",
+                "reference": "5c7ca9836cf80b34db265332a7f2f8438eb469b9",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0",
+                "phpunit/phpunit": "<7"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "yii\\composer\\Plugin",
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\composer\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Qiang Xue",
+                    "email": "qiang.xue@gmail.com"
+                },
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc"
+                }
+            ],
+            "description": "The composer plugin for Yii extension installer",
+            "keywords": [
+                "composer",
+                "extension installer",
+                "yii2"
+            ],
+            "time": "2019-07-16T13:22:30+00:00"
         }
     ],
     "packages-dev": [

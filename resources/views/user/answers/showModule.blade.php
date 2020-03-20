@@ -18,7 +18,7 @@
               </tr>
               <th>Answer</th>
               <tr>
-                <td>{{$answersModule->answer}}</td>
+                <td>@php echo $answersModule->answer @endphp</td>
               </tr>
            </tbody>
          </table>

@@ -114,7 +114,7 @@
                       </div>
                   </div>
 
-                  <div class="card " style="margin-top:20px;">
+                  <div class="card" style="margin-top:20px;">
                     <div class="card-header">
                       Answers
 
@@ -186,7 +186,7 @@
                                 <div class="card-tbody card-question">
                                     <table id="table-questions" class="table table-hover">
                                       <tbody>
-                                              <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                                              <div class="sideBar float-left" style="">
                                                 <form style="display:inline-block" method="POST" action="{{route('user.answers.voteCollege', [$questionsCollege->getTable(), $questionsCollege->id, $answersCollege->id])}}" class="float-right">
                                                   <input type="hidden" name="_method" value="PUT">
                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -206,7 +206,7 @@
                                                   @endif
                                                 </h7>
 
-                                                <p style="margin-top:15px;">{{ $answersCollege->answer }}</p>
+                                                <p style="margin-top:15px;">@php echo $answersCollege->answer @endphp</p>
 
                                                   @if($answersCollege->student_id === Auth::user()->student->id)
                                                   <a href="{{ route('user.answers.editCollege', $answersCollege->id )}}" class="btn submit mButton">Edit</a>
@@ -231,7 +231,7 @@
                           <div class="card-tbody card-question">
                               <table id="table-questions" class="table table-hover">
                                 <tbody>
-                                        <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                                        <div class="sideBar float-left" style="">
                                           <form style="display:inline-block" method="POST" action="{{route('user.answers.voteCourse', [$questionsCourse->getTable(), $questionsCourse->id, $answersCourse->id])}}" class="float-right">
                                             <input type="hidden" name="_method" value="PUT">
                                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -251,7 +251,7 @@
                                             @endif
                                           </h7>
 
-                                          <p style="margin-top:15px;">{{ $answersCourse->answer }}</p>
+                                          <p style="margin-top:15px;">@php echo $answersCourse->answer @endphp</p>
 
                                           @if($answersCourse->student_id === Auth::user()->student->id)
                                           <a href="{{ route('user.answers.editCourse', $answersCourse->id )}}" class="btn submit mButton float-left">Edit</a>
@@ -277,7 +277,7 @@
                           <div class="card-tbody card-question">
                               <table id="table-questions" class="table table-hover">
                                 <tbody>
-                                        <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                                        <div class="sideBar float-left" style="">
                                           <form style="display:inline-block" method="POST" action="{{route('user.answers.voteModule', [$questionsModule->getTable(), $questionsModule->id, $answersModule->id])}}" class="float-right">
                                             <input type="hidden" name="_method" value="PUT">
                                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -296,7 +296,7 @@
                                            </form>
                                             @endif
                                           </h7>
-                                          <p style="margin-top:15px;">{{ $answersModule->answer }}</p>
+                                          <p style="margin-top:15px;">@php echo $answersModule->answer @endphp</p>
 
                                           @if($answersModule->student_id === Auth::user()->student->id)
                                           <a href="{{ route('user.answers.editModule', $answersModule->id )}}" class="btn submit mButton float-left">Edit</a>
@@ -321,7 +321,7 @@
                           <div class="card-tbody card-question">
                               <table id="table-questions" class="table table-hover">
                                 <tbody>
-                                        <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                                        <div class="sideBar float-left" style="">
                                           <form style="display:inline-block" method="POST" action="{{route('user.answers.voteGeneral', [$questionsGeneral->getTable(), $questionsGeneral->id, $answersGeneral->id])}}" class="float-right">
                                             <input type="hidden" name="_method" value="PUT">
                                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -341,7 +341,7 @@
                                             @endif
                                           </h7>
 
-                                          <p style="margin-top:15px;">{{ $answersGeneral->answer }}</p>
+                                          <p style="margin-top:15px;">@php echo $answersGeneral->answer @endphp</p>
 
                                           @if($answersGeneral->student_id === Auth::user()->student->id)
                                           <a href="{{ route('user.answers.editGeneral', $answersGeneral->id )}}" class="btn submit mButton float-left">Edit</a>

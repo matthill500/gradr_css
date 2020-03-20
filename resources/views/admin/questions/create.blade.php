@@ -21,6 +21,8 @@
             <form method="POST" action="{{route('admin.questions.store')}}">
               <iput type="hidden" name="_token">
                 {{ csrf_field() }}
+
+            <input type="submit">
                 <div class="form-group">
                   <label for="title">Title</label>
                   <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}"/>
@@ -29,6 +31,7 @@
                   <label for="info">Info</label>
                   <textarea class="form-control" rows="5" id="title" name="info" value="{{old('info')}}"></textarea>
                 </div>
+
                 <br>
                 <a href="{{route('admin.questions.index')}}" class="btn btn-link">Cancel</a>
                 <button type="submit" class="btn submit float-right">Submit</button>

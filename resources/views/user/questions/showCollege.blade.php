@@ -23,7 +23,7 @@
                                     <div class="content">
                                       <h7><b>{{$questionsCollege->college->name}}</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsCollege->student->user->name) }}">{{ $questionsCollege->student->user->name }}</a></h7> · {{ substr($questionsCollege->created_at,'0','10')}}<h7 class="float-right btn submit dButton"><a href="{{ route('user.answers.create', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}">Answer</a></h7>
                                       <h2 style="margin-top:0.2em;">{{ $questionsCollege->title }}</h2>
-                                      <p>{{ $questionsCollege->info }}</p>
+                                      <p>@php echo $questionsCollege->info @endphp</p>
                                       <h7 style=""><a href="{{ route('user.answers.index', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}" > {{$questionsCollege->answers}} Answer(s) </a></h7><h7 class="float-right btn submit mButton"><a href="{{ route('user.answers.create', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}">Answer</a></h7>
                                    </div>
                             </tbody>

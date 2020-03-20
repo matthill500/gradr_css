@@ -19,7 +19,7 @@
               </tr>
               <th>Answer</th>
               <tr>
-                <td>{{$answersCollege->answer}}</td>
+                <td>@php echo $answersCollege->answer @endphp</td>
               </tr>
            </tbody>
          </table>

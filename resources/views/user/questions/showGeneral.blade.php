@@ -23,7 +23,7 @@
                                     <div class="content">
                                       <h7><b>General</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsGeneral->student->user->name) }}" class="link">{{ $questionsGeneral->student->user->name }}</a></h7> · {{ substr($questionsGeneral->created_at,'0','10')}}<h7 class="float-right btn submit dButton"><a href="{{ route('user.answers.create', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}" >Answer</a></h7>
                                       <h2 style="margin-top:0.2em;">{{ $questionsGeneral->title }}</h2>
-                                      <p>{{ $questionsGeneral->info }}</p>
+                                      <p>@php echo $questionsGeneral->info @endphp</p>
                                       <h7 style=""><a href="{{ route('user.answers.index', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}" class ="link"> {{$questionsGeneral->answers}} Answer(s) </a></h7><h7 class="float-right btn submit mButton"><a href="{{ route('user.answers.create', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}" >Answer</a></h7>
                                    </div>
                             </tbody>

@@ -38,4 +38,8 @@
       </div>
     </div>
   </div>
+  <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+  <script>
+      CKEDITOR.replace( 'info' );
+  </script>
 @endsection
