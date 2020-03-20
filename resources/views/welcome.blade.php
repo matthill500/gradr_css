@@ -2,6 +2,7 @@
 @extends('layouts.app')
 
 <link rel="stylesheet" href="{{ URL::asset('css/welcome.css') }}" />
+<link rel="stylesheet" href="{{ URL::asset('css/master.css') }}" />
 
 @section('content')
 

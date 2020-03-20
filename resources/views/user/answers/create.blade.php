@@ -8,11 +8,11 @@
       <div class ="col-md-12 col-md-offset-2">
 
         <div class="card ">
-          <div class="card-body">
+          <div class="card-body card-body1">
             @if($type === "questions_colleges")
             <table id="table-questions" class="table table-hover">
               <tbody>
-                      <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                      <div class="sideBar float-left" style="">
                         <form style="display:inline-block" method="POST" action="{{route('user.questions.voteCollege',$questionsCollege->id)}}" class="float-right">
                           <input type="hidden" name="_method" value="PUT">
                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -23,14 +23,15 @@
                         <h7><b>{{$questionsCollege->college->name}}</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsCollege->student->user->name) }}">{{ $questionsCollege->student->user->name }}</a></h7> · {{ substr($questionsCollege->created_at,'0','10')}}
                         <h2 style="margin-top:0.2em;">{{ $questionsCollege->title }}</h2>
                         <p>{{ $questionsCollege->info }}</p>
-                        <h7 style="margin-left:3.8em;"><a href="{{ route('user.answers.index', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}" > {{$questionsCollege->answers}} Answer(s) </a></h7>
+                        <h7 style=""><a href="{{ route('user.answers.index', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}" > {{$questionsCollege->answers}} Answer(s) </a></h7>
                      </div>
               </tbody>
             </table>
-            @elseif($type === "questions_generals")
+            @endif
+            @if($type === "questions_generals")
             <table id="table-questions" class="table table-hover">
               <tbody>
-                      <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                      <div class="sideBar float-left" style="">
                         <form style="display:inline-block" method="POST" action="{{route('user.questions.voteGeneral',$questionsGeneral->id)}}" class="float-right">
                           <input type="hidden" name="_method" value="PUT">
                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -41,14 +42,15 @@
                         <h7><b>General</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsGeneral->student->user->name) }}">{{ $questionsGeneral->student->user->name }}</a></h7> · {{ substr($questionsGeneral->created_at,'0','10')}}
                         <h2 style="margin-top:0.2em;">{{ $questionsGeneral->title }}</h2>
                         <p>{{ $questionsGeneral->info }}</p>
-                        <h7 style="margin-left:3.8em;"><a href="{{ route('user.answers.index', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}" > {{$questionsGeneral->answers}} Answer(s) </a></h7>
+                        <h7 style=""><a href="{{ route('user.answers.index', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}" > {{$questionsGeneral->answers}} Answer(s) </a></h7>
                      </div>
               </tbody>
             </table>
-            @elseif($type === "questions_courses")
+            @endif
+            @if($type === "questions_courses")
             <table id="table-questions" class="table table-hover">
               <tbody>
-                      <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                      <div class="sideBar float-left" style="">
                         <form style="display:inline-block" method="POST" action="{{route('user.questions.voteCourse',$questionsCourse->id)}}" class="float-right submit">
                           <input type="hidden" name="_method" value="PUT">
                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -56,17 +58,18 @@
                        </form>
                       </div>
                       <div class="content">
-                        <h7><b>{{$questionsCourse->course->name}}</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">{{ $questionsCourse->student->user->name }}</a></h7> · {{ substr($questionsCourse->created_at,'0','10')}}
+                        <h7><b>{{$questionsCourse->course->course_name}}</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">{{ $questionsCourse->student->user->name }}</a></h7> · {{ substr($questionsCourse->created_at,'0','10')}}
                         <h2 style="margin-top:0.2em;">{{ $questionsCourse->title }}</h2>
                         <p>{{ $questionsCourse->info }}</p>
-                        <h7 style="margin-left:3.8em;"><a href="{{ route('user.answers.index', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" > {{$questionsCourse->answers}} Answer(s) </a></h7>
+                        <h7 style=""><a href="{{ route('user.answers.index', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" > {{$questionsCourse->answers}} Answer(s) </a></h7>
                      </div>
               </tbody>
             </table>
-            @elseif($type === "questions_modules")
+            @endif
+            @if($type === "questions_modules")
             <table id="table-questions" class="table table-hover">
               <tbody>
-                      <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                      <div class="sideBar float-left" style="">
                         <form style="display:inline-block" method="POST" action="{{route('user.questions.voteModule',$questionsModule->id)}}" class="float-right">
                           <input type="hidden" name="_method" value="PUT">
                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -74,10 +77,10 @@
                        </form>
                       </div>
                       <div class="content">
-                        <h7><b>{{$questionsGeneral->module->name}}</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $questionsModule->student->user->name }}</a></h7> · {{ substr($questionsModule->created_at,'0','10')}}
-                        <h2 style="margin-top:0.2em;">{{ $questionsCourse->title }}</h2>
-                        <p>{{ $questionsCourse->info }}</p>
-                        <h7 style="margin-left:3.8em;"><a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" > {{$questionsModule->answers}} Answer(s) </a></h7>
+                        <h7><b>{{$questionsModule->module->module_name}}</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $questionsModule->student->user->name }}</a></h7> · {{ substr($questionsModule->created_at,'0','10')}}
+                        <h2 style="margin-top:0.2em;">{{ $questionsModule->title }}</h2>
+                        <p>{{ $questionsModule->info }}</p>
+                        <h7 style=""><a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" > {{$questionsModule->answers}} Answer(s) </a></h7>
                      </div>
               </tbody>
             </table>
@@ -90,7 +93,7 @@
           <div class="card-header">
             Add new answer
           </div>
-          <div class="card-body">
+          <div class="card-body card-body2">
             @if ($errors->any())
             <div class="alert alert-danger">
               <ul>

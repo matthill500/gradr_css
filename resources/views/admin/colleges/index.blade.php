@@ -10,7 +10,7 @@
           Colleges
           <a href="{{route('admin.colleges.create')}}" class="btn submit float-right">Add</a>
         </div>
-        <div class="card-body">
+        <div class="card-body card-body2">
         @if (count($colleges) === 0)
         <p> There are no colleges</p>
         @else

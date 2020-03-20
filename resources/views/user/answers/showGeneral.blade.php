@@ -8,7 +8,7 @@
         <div class="card-header">
           Answer
         </div>
-        <div class="card-tbody card-question">
+        <div class="card-tbody card-question card-body2">
           <table class="table table-hover">
             <tbody>
               <tr>

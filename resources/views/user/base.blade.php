@@ -15,7 +15,7 @@
                     <form id="print" method="POST" action="{{route('user.questions.sortModule', $module->id)}}">
                      {{ csrf_field() }}
                      <div class="input-field">
-                         <select name="orderBy" onchange="this.form.submit()">
+                         <select name="orderBy" onchange="this.form.submit()" style="width:82px;">
                              <option value="" disabled selected>Order by</option>
                              <option value="votes desc">Popularity</option>
                              <option value="created_at desc">Newest to Oldest</option>
@@ -27,7 +27,7 @@
                 </div>
 
 
-                <div class="card-body">
+                <div class="card-body card-body2">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -48,9 +48,9 @@
                                 <i class="fas fa-thumbs-up" style="margin-right:0.2em;"></i>{{ $questionsModule->votes }}
                               </div>
                               <div class="content">
-                                <h7><b>{{$questionsModule->module->module_name}}</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $questionsModule->student->user->name }}</a></h7> · {{ substr($questionsModule->created_at,'0','10')}}<h7 class="float-right btn submit"><a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}">Answer</a></h7>
+                                <h7><b>{{$questionsModule->module->module_name}}</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $questionsModule->student->user->name }}</a></h7> · {{ substr($questionsModule->created_at,'0','10')}}<h7 class="float-right btn submit dButton"><a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}">Answer</a></h7>
                                 <h2 style="margin-top:0.2em;"><a href="{{ route('user.questions.showModule', $questionsModule->id )}}" >{{ $questionsModule->title }}</a></h2>
-                                <h7><a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" > {{$questionsModule->answers}} Answer(s) </a></h7>
+                                <h7><a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" > {{$questionsModule->answers}} Answer(s) </a></h7><h7 class="float-right btn submit mButton"><a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}">Answer</a></h7>
                              </div>
                             </div>
                         </div>

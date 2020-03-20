@@ -8,7 +8,7 @@
           <div class="card-header">
             Edit question
           </div>
-          <div class="card-body">
+          <div class="card-body card-body2">
             @if ($errors->any())
             <div class="alert alert-danger">
               <ul>

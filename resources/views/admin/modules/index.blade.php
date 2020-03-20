@@ -10,7 +10,7 @@
           Modules
           <a href="{{route('admin.modules.create')}}" class="btn submit float-right">Add</a>
         </div>
-        <div class="card-body">
+        <div class="card-body card-body2">
         @if (count($modules) === 0)
         <p> There are no modules</p>
         @else

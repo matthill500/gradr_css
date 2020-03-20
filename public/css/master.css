@@ -32,7 +32,15 @@ body {
    padding:10px;
    background-color:#343a40;
 }
-.card-body  {
+.card-body1  {
+     align-items: center;
+     color: white;
+     background-color: #656569;
+      border-radius: 10px 10px 10px 10px;
+    /* text-align: center; */
+    /* border-radius: 0px 0px 20px 20px; */
+}
+.card-body2  {
      align-items: center;
      color: white;
      background-color: #656569;
@@ -55,13 +63,17 @@ body {
   background-color: #25235e!important;
   color: white!important;
   align-items: center;
-
 }
-
+.sideBar{
+  height:60px;
+}
 .cancel{
   background-color: red;
   align-items: center;
   color:white;
+}
+.list-card{
+ margin-left:3em;
 }
 b{
   font-weight: 500;
@@ -72,4 +84,46 @@ text-decoration:none;
 a:hover {
 color:#000000!important;
 text-decoration : none!important;
+}
+.mButton{
+  display:none;
+}
+.dButton{
+  display:block;
+}
+
+@media only screen and (max-width: 600px) {
+
+.displayTable{
+  display:none;
+}
+.reqDelete{
+  width:115px;
+  font-size:13px;
+  margin-top:5px;
+}
+.wReqDelete{
+  width:115px;
+  font-size:11px;
+  margin-top:5px;
+}
+.list-card{
+ margin-left:0em;
+}
+.dButton{
+  display:none;
+}
+.mButton{
+  display:block;
+  width:30%;
+  font-size:11px;
+}
+.content{
+  margin-top:.8em;
+  font-size:11px;
+}
+.sideBar{
+   height:10px;
+}
+
 }

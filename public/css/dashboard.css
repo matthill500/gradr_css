@@ -9,3 +9,11 @@ a:hover {
 color:#000000!important;
 text-decoration : none!important;
 }
+
+@media only screen and (max-width: 600px) {
+
+.sideBar{
+  height:100px;
+}
+
+}

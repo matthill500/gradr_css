@@ -11,11 +11,11 @@
 
 
                   <div class="card ">
-                      <div class="card-body card-question">
+                      <div class="card-body card-question card-body1">
                           <table id="table-questions" class="table table-hover">
                             <tbody>
                                 @if ($type === "questions_colleges")
-                                    <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                                    <div class="sideBar float-left" style="">
                                       <form style="display:inline-block" method="POST" action="{{route('user.questions.voteCollege',$questionsCollege->id)}}" class="float-right">
                                         <input type="hidden" name="_method" value="PUT">
                                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -23,7 +23,7 @@
                                      </form>
                                     </div>
                                @elseif ($type === "questions_courses")
-                                   <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                                   <div class="sideBar float-left" style="">
                                      <form style="display:inline-block" method="POST" action="{{route('user.questions.voteCourse',$questionsCourse->id)}}" class="float-right">
                                        <input type="hidden" name="_method" value="PUT">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -31,7 +31,7 @@
                                     </form>
                                    </div>
                               @elseif($type === "questions_modules")
-                                   <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                                   <div class="sideBar float-left" style="">
                                      <form style="display:inline-block" method="POST" action="{{route('user.questions.voteModule',$questionsModule->id)}}" class="float-right">
                                        <input type="hidden" name="_method" value="PUT">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -39,7 +39,7 @@
                                     </form>
                                    </div>
                                    @elseif($type === "questions_generals")
-                                   <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                                   <div class="sideBar float-left" style="">
                                      <form style="display:inline-block" method="POST" action="{{route('user.questions.voteGeneral',$questionsGeneral->id)}}" class="float-right">
                                        <input type="hidden" name="_method" value="PUT">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -64,40 +64,48 @@
                                       <h7>Posted by: <a href="{{ route('user.profile', $questionsGeneral->student->user->name) }}">
                                         {{ $questionsGeneral->student->user->name }}</a></h7> · {{ substr($questionsGeneral->created_at,'0','10')}}
                                         <h7><a href="{{ route('user.answers.create', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}"
-                                           class="float-right btn submit">Answer</a>
+                                           class="float-right btn submit dButton">Answer</a>
                                       @elseif ($type === "questions_colleges")
                                     </b></h7> ·
                                     <h7>Posted by: <a href="{{ route('user.profile', $questionsCollege->student->user->name) }}">
                                       {{ $questionsCollege->student->user->name }}</a></h7> · {{ substr($questionsCollege->created_at,'0','10')}}
                                       <h7><a href="{{ route('user.answers.create', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}"
-                                         class="float-right btn submit">Answer</a>
+                                         class="float-right btn submit dButton">Answer</a>
                                       @elseif ($type === "questions_courses")
                                       </b></h7> ·
                                       <h7>Posted by: <a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">
                                         {{ $questionsCourse->student->user->name }}</a></h7> · {{ substr($questionsCourse->created_at,'0','10')}}
                                         <h7><a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}"
-                                           class="float-right btn submit">Answer</a>
+                                           class="float-right btn submit dButton">Answer</a>
                                       @elseif ($type === "questions_modules")
                                     </b></h7> ·
                                     <h7>Posted by: <a href="{{ route('user.profile', $questionsModule->student->user->name) }}">
                                       {{ $questionsModule->student->user->name }}</a></h7> · {{ substr($questionsModule->created_at,'0','10')}}
                                       <h7><a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}"
-                                         class="float-right btn submit">Answer</a>
+                                         class="float-right btn submit dButton">Answer</a></h7>
                                      @endif
 
 
                                       @if ($type === "questions_colleges")
                                       <h2 style="margin-top:0.2em;">{{ $questionsCollege->title }}</h2>
                                       <p>{{ $questionsCollege->info }}</p>
+                                      <h7><a href="{{ route('user.answers.create', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}"
+                                         class="float-right btn submit mButton">Answer</a></h7>
                                       @elseif ($type === "questions_courses")
                                       <h2 style="margin-top:0.2em;">{{ $questionsCourse->title }}</h2>
                                       <p>{{ $questionsCourse->info }}</p>
+                                      <h7><a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}"
+                                         class="float-right btn submit mButton">Answer</a></h7>
                                       @elseif ($type === "questions_modules")
                                       <h2 style="margin-top:0.2em;">{{ $questionsModule->title }}</h2>
                                       <p>{{ $questionsModule->info }}</p>
+                                      <h7><a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}"
+                                         class="float-right btn submit mButton">Answer</a></h7>
                                       @elseif ($type === "questions_generals")
                                       <h2 style="margin-top:0.2em;">{{ $questionsGeneral->title }}</h2>
                                       <p>{{ $questionsGeneral->info }}</p>
+                                      <h7><a href="{{ route('user.answers.create', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}"
+                                         class="float-right btn submit mButton">Answer</a></h7>
                                       @endif
 
                                    </div>
@@ -167,47 +175,56 @@
                       </div>
 
                     </div>
-                    <div class="card-body">
+                    <div class="card-body card-body2">
                       @if (count($answersColleges) === 0 && (count($answersCourses) === 0) && (count($answersModules) === 0) && (count($answersGenerals) === 0))
                       <p> There are no answers</p>
                       @else
-                      <!-- college answer -->
-                      @foreach ($answersColleges as $answersCollege)
-                      @if($answersCollege->question_id === $qid && $answersCollege->type === $type)
-                      <div class="card card-question">
-                          <div class="card-tbody card-question">
-                              <table id="table-questions" class="table table-hover">
-                                <tbody>
-                                        <div class="sideBar float-left" style="margin-right:1em; height:75px">
-                                          <form style="display:inline-block" method="POST" action="{{route('user.answers.voteCollege', [$questionsCollege->getTable(), $questionsCollege->id, $answersCollege->id])}}" class="float-right">
-                                            <input type="hidden" name="_method" value="PUT">
-                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                               <button type="submit" class="form-control btn btn-sm" style="color: white"><i class="fas fa-thumbs-up" style="margin-right:0.2em; color: white;"></i>{{$answersCollege->votes}}</a>
-                                         </form>
-                                        </div>
-                                        <div class="content">
-                                          <h7>Posted by: <a href="{{ route('user.profile', $questionsCollege->student->user->name) }}">{{ $answersCollege->student->user->name }}</a></h7> · {{ substr($answersCollege->created_at,'0','10') }}
-                                          <h7 class="float-right">
-                                            @if($answersCollege->student_id === Auth::user()->student->id)
-                                            <a href="{{ route('user.answers.editCollege', $answersCollege->id )}}" class="btn submit">Edit</a>
-                                            <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyCollege',  [$answersCollege->getTable(), $answersCollege->id])}}">
-                                               <input type="hidden" name="_method" value="PUT">
-                                               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <button type="submit" class="btn cancel">Delete</button></a>
-                                           </form>
-                                            @endif
-                                          </h7>
+                            <!-- college answer -->
+                            @foreach ($answersColleges as $answersCollege)
+                            @if($answersCollege->question_id === $qid && $answersCollege->type === $type)
+                            <div class="card">
+                                <div class="card-tbody card-question">
+                                    <table id="table-questions" class="table table-hover">
+                                      <tbody>
+                                              <div class="sideBar float-left" style="margin-right:1em; height:75px">
+                                                <form style="display:inline-block" method="POST" action="{{route('user.answers.voteCollege', [$questionsCollege->getTable(), $questionsCollege->id, $answersCollege->id])}}" class="float-right">
+                                                  <input type="hidden" name="_method" value="PUT">
+                                                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                     <button type="submit" class="form-control btn btn-sm" style="color: white"><i class="fas fa-thumbs-up" style="margin-right:0.2em; color: white;"></i>{{$answersCollege->votes}}</a>
+                                               </form>
+                                              </div>
+                                              <div class="content">
+                                                <h7>Posted by: <a href="{{ route('user.profile', $questionsCollege->student->user->name) }}">{{ $answersCollege->student->user->name }}</a></h7> · {{ substr($answersCollege->created_at,'0','10') }}
+                                                <h7 class="float-right">
+                                                  @if($answersCollege->student_id === Auth::user()->student->id)
+                                                  <a href="{{ route('user.answers.editCollege', $answersCollege->id )}}" class="btn submit dButton">Edit</a>
+                                                  <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyCollege',  [$answersCollege->getTable(), $answersCollege->id])}}">
+                                                     <input type="hidden" name="_method" value="PUT">
+                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                      <button type="submit" class="btn cancel dButton">Delete</button></a>
+                                                 </form>
+                                                  @endif
+                                                </h7>
 
-                                          <p style="margin-top:15px;">{{ $answersCollege->answer }}</p>
+                                                <p style="margin-top:15px;">{{ $answersCollege->answer }}</p>
 
-                                       </div>
-                                </tbody>
-                              </table>
-                          </div>
-                      </div>
-                      @endif
-                      @endforeach
-                      <!-- course answer -->
+                                                  @if($answersCollege->student_id === Auth::user()->student->id)
+                                                  <a href="{{ route('user.answers.editCollege', $answersCollege->id )}}" class="btn submit mButton">Edit</a>
+                                                  <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyCollege',  [$answersCollege->getTable(), $answersCollege->id])}}">
+                                                     <input type="hidden" name="_method" value="PUT">
+                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                      <button type="submit" class="btn cancel mButton">Delete</button></a>
+                                                 </form>
+                                                  @endif
+
+                                             </div>
+                                      </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            @endif
+                            @endforeach
+                            <!-- course answer -->
                       @foreach ($answersCourses as $answersCourse)
                       @if($answersCourse->question_id === $qid && $answersCourse->type === $type)
                       <div class="card">
@@ -225,16 +242,25 @@
                                           <h7>Posted by: <a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">{{ $answersCourse->student->user->name }}</a></h7> · {{ substr($answersCourse->created_at,'0','10') }}
                                           <h7 class="float-right">
                                             @if($answersCourse->student_id === Auth::user()->student->id)
-                                            <a href="{{ route('user.answers.editCourse', $answersCourse->id )}}" class="btn submit">Edit</a>
+                                            <a href="{{ route('user.answers.editCourse', $answersCourse->id )}}" class="btn submit dButton">Edit</a>
                                             <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyCourse',  [$answersCourse->getTable(), $answersCourse->id])}}">
                                                <input type="hidden" name="_method" value="PUT">
                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <button type="submit" class="btn cancel">Delete</button></a>
+                                                <button type="submit" class="btn cancel dButton">Delete</button></a>
                                            </form>
                                             @endif
                                           </h7>
 
                                           <p style="margin-top:15px;">{{ $answersCourse->answer }}</p>
+
+                                          @if($answersCourse->student_id === Auth::user()->student->id)
+                                          <a href="{{ route('user.answers.editCourse', $answersCourse->id )}}" class="btn submit mButton float-left">Edit</a>
+                                          <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyCourse',  [$answersCourse->getTable(), $answersCourse->id])}}">
+                                             <input type="hidden" name="_method" value="PUT">
+                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                              <button type="submit" class="btn cancel mButton float-left" style="margin-left:5px">Delete</button></a>
+                                         </form>
+                                          @endif
 
                                        </div>
                                 </tbody>
@@ -243,7 +269,8 @@
                       </div>
                       @endif
                       @endforeach
-                      <!-- module answer -->
+
+                            <!-- module answer -->
                       @foreach ($answersModules as $answersModule)
                       @if($answersModule->question_id === $qid && $answersModule->type === $type)
                       <div class="card">
@@ -261,17 +288,24 @@
                                           <h7>Posted by: <a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $answersModule->student->user->name }}</a></h7> · {{ substr($answersModule->created_at,'0','10') }}
                                           <h7 class="float-right">
                                             @if($answersModule->student_id === Auth::user()->student->id)
-                                            <a href="{{ route('user.answers.editModule', $answersModule->id )}}" class="btn submit">Edit</a>
+                                            <a href="{{ route('user.answers.editModule', $answersModule->id )}}" class="btn submit dButton">Edit</a>
                                             <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyModule',  [$answersModule->getTable(), $answersModule->id])}}">
                                                <input type="hidden" name="_method" value="PUT">
                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <button type="submit" class="btn cancel">Delete</button></a>
+                                                <button type="submit" class="btn cancel dButton">Delete</button></a>
                                            </form>
                                             @endif
                                           </h7>
-
                                           <p style="margin-top:15px;">{{ $answersModule->answer }}</p>
 
+                                          @if($answersModule->student_id === Auth::user()->student->id)
+                                          <a href="{{ route('user.answers.editModule', $answersModule->id )}}" class="btn submit mButton float-left">Edit</a>
+                                          <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyModule',  [$answersModule->getTable(), $answersModule->id])}}">
+                                             <input type="hidden" name="_method" value="PUT">
+                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                              <button type="submit" class="btn cancel mButton float-left" style="margin-left:5px">Delete</button></a>
+                                         </form>
+                                          @endif
                                        </div>
                                 </tbody>
                               </table>
@@ -280,7 +314,7 @@
                       @endif
                       @endforeach
 
-                      <!-- general answer -->
+                            <!-- general answer -->
                       @foreach ($answersGenerals as $answersGeneral)
                       @if($answersGeneral->question_id === $qid && $answersGeneral->type === $type)
                       <div class="card">
@@ -298,16 +332,25 @@
                                           <h7>Posted by: <a href="{{ route('user.profile', $questionsGeneral->student->user->name) }}">{{ $answersGeneral->student->user->name }}</a></h7> · {{ substr($answersGeneral->created_at,'0','10') }}
                                           <h7 class="float-right">
                                             @if($answersGeneral->student_id === Auth::user()->student->id)
-                                            <a href="{{ route('user.answers.editGeneral', $answersGeneral->id )}}" class="btn submit">Edit</a>
+                                            <a href="{{ route('user.answers.editGeneral', $answersGeneral->id )}}" class="btn submit dButton">Edit</a>
                                             <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyGeneral',  [$answersGeneral->getTable(), $answersGeneral->id])}}">
                                                <input type="hidden" name="_method" value="PUT">
                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <button type="submit" class="btn cancel">Delete</button></a>
+                                                <button type="submit" class="btn cancel dButton">Delete</button></a>
                                            </form>
                                             @endif
                                           </h7>
 
                                           <p style="margin-top:15px;">{{ $answersGeneral->answer }}</p>
+
+                                          @if($answersGeneral->student_id === Auth::user()->student->id)
+                                          <a href="{{ route('user.answers.editGeneral', $answersGeneral->id )}}" class="btn submit mButton float-left">Edit</a>
+                                          <form style="display:inline-block" method="POST" action="{{route('user.answers.destroyGeneral',  [$answersGeneral->getTable(), $answersGeneral->id])}}">
+                                             <input type="hidden" name="_method" value="PUT">
+                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                              <button type="submit" class="btn cancel mButton float-left" style="margin-left:5px">Delete</button></a>
+                                         </form>
+                                          @endif
 
                                        </div>
                                 </tbody>
@@ -316,7 +359,9 @@
                       </div>
                       @endif
                       @endforeach
-                      @endif
+
+
+                    @endif
                     </div>
                 </div>
               </div>

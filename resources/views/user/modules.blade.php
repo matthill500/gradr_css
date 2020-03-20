@@ -10,7 +10,7 @@
                 <div class="card-header">@foreach ($courses as $course) @if($course->id === $mid) {{ $course->course_name }} @endif  @endforeach <a href="{{ route('user.questions.create')}}" class="btn submit float-right">Ask Question</a></div>
 
 
-                <div class="card-body">
+                <div class="card-body card-body2">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -19,11 +19,11 @@
 
                   @foreach ($modules as $module)
                   @if($module->course_id === $mid)
-                    <div class="card card-question float-left" style="width: 18rem; margin-left:38px; margin-bottom:18px; text-align:center;">
-                      <div class="card-tbody ">
+                    <div class="card card-question list-card float-left" style="width: 18rem; margin-bottom:18px; text-align:center;">
+                      <div class="card-tbody">
                         <h5 class="card-title">{{ $module->module_name }}</h5>
 
-                        <a href="{{ route('user.base', $module->id) }}" class="btn submit">{{$module->module_name}} Modules</a>
+                        <a href="{{ route('user.base', $module->id) }}" class="btn submit">{{$module->module_name}} Module</a>
                       </div>
                     </div>
                   @endif
@@ -45,7 +45,7 @@
                     <form id="print" method="POST" action="{{route('user.questions.sortCourse', $course->id)}}">
                      {{ csrf_field() }}
                      <div class="input-field">
-                         <select name="orderBy" onchange="this.form.submit()">
+                         <select name="orderBy" onchange="this.form.submit()" style="width:82px;">
                              <option value="" disabled selected>Order by</option>
                              <option value="votes desc">Popularity</option>
                              <option value="created_at desc">Newest to Oldest</option>
@@ -59,7 +59,7 @@
 
                 </div>
 
-                <div class="card-body">
+                <div class="card-body card-body2">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -76,14 +76,14 @@
                         @foreach ($questionsCourses as $questionsCourse)
                         @if($questionsCourse->course_id === $mid)
                         <div class="card ">
-                            <div class="card-tbody card-question">
+                            <div class="card-tbody card-question ">
                               <div class="sideBar float-left" style="margin-right:1em; height:75px">
                                 <i class="fas fa-thumbs-up" style="margin-right:0.2em;"></i>{{ $questionsCourse->votes }}
                               </div>
                               <div class="content">
-                                <h7><b>{{$questionsCourse->course->course_name}}</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">{{ $questionsCourse->student->user->name }}</a></h7> · {{ substr($questionsCourse->created_at,'0','10')}}<h7 class="float-right btn-submit"><a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}">Answer</a></h7>
+                                <h7><b>{{$questionsCourse->course->course_name}}</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">{{ $questionsCourse->student->user->name }}</a></h7> · {{ substr($questionsCourse->created_at,'0','10')}}<h7 class="float-right btn submit dButton"><a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}">Answer</a></h7>
                                 <h2 style="margin-top:0.2em;"><a href="{{ route('user.questions.showCourse', $questionsCourse->id )}}" >{{ $questionsCourse->title }}</a></h2>
-                                <h7><a href="{{ route('user.answers.index', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" > {{$questionsCourse->answers}} Answer(s) </a></h7>
+                                <h7><a href="{{ route('user.answers.index', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" > {{$questionsCourse->answers}} Answer(s) </a></h7><h7 class="float-right btn submit mButton"><a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}">Answer</a></h7>
                              </div>
                             </div>
                         </div>

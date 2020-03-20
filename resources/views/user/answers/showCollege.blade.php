@@ -9,7 +9,7 @@
         <div class="card-header">
           Answer
         </div>
-        <div class="card-body">
+        <div class="card-body card-body2">
           <table class="table table-hover">
             <tbody>
               <tr>

@@ -6,11 +6,11 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-      <div class="card card-question">
+      <div class="card ">
         <div class="card-header">
           My Profile
         </div>
-        <div class="card-body card-question">
+        <div class="card-body card-body2">
 
           @if ($errors->any())
           <div class="alert alert-danger">
@@ -28,6 +28,8 @@
           <p>{{$user->name}}</p>
           <h3>Bio</h3>
           <p>{{$user->bio}}</p>
+          <h4>Gradr Rating</h4>
+          <p>{{$rating}}</p>
 
           <a href="{{ url('/user/editProfile') }}" class="btn submit">Edit Profile</a>
 
@@ -36,11 +38,11 @@
     </div>
 
     <div class="col-sm-8 col-md-offset-2">
-      <div class="card card-question">
+      <div class="card">
         <div class="card-header">
           Activity
         </div>
-        <div class="card-body">
+        <div class="card-body card-body2">
 
           @if ($errors->any())
           <div class="alert alert-danger">
@@ -59,9 +61,9 @@
             <table id="table-questions" class="table table-hover">
               <thead class="table-head">
                 <th>Title</th>
-                <th>Info</th>
-                <th>Category</th>
-                <th>Date Posted</th>
+                <th class="displayTable">Info</th>
+                <th class="displayTable">Category</th>
+                <th class="displayTable">Date Posted</th>
                 <th></th>
              </thead>
              <tbody>
@@ -71,9 +73,9 @@
                @if($questionsCollege->student_id === Auth::user()->student->id)
                <tr data-id="{{$questionsCollege->id}}">
                  <td>{{ substr($questionsCollege->title,'0','20') }}</td>
-                 <td>{{ substr($questionsCollege->info,'0','40') }}</td>
-                 <td>{{ substr($questionsCollege->college->name,'0','40') }}</td>
-                 <td>{{ $questionsCollege->created_at }}</td>
+                 <td class="displayTable">{{ substr($questionsCollege->info,'0','30') }}</td>
+                 <td class="displayTable">{{ substr($questionsCollege->college->name,'0','40') }}</td>
+                 <td class="displayTable">{{ $questionsCollege->created_at }}</td>
                  <td>
                    <a href="{{ route('user.questions.showCollege', $questionsCollege->id )}}" class="btn submit">View</a>
                  </td>
@@ -87,9 +89,9 @@
             @if($questionsCourse->student_id === Auth::user()->student->id)
             <tr data-id="{{$questionsCourse->id}}">
               <td>{{ substr($questionsCourse->title,'0','20') }}</td>
-              <td>{{ substr($questionsCourse->info,'0','40') }}</td>
-              <td>{{ substr($questionsCourse->course->course_name,'0','40') }}</td>
-              <td>{{ $questionsCourse->created_at }}</td>
+              <td class="displayTable">{{ substr($questionsCourse->info,'0','30') }}</td>
+              <td class="displayTable">{{ substr($questionsCourse->course->course_name,'0','40') }}</td>
+              <td class="displayTable">{{ $questionsCourse->created_at }}</td>
               <td>
                 <a href="{{ route('user.questions.showCourse', $questionsCourse->id )}}" class="btn submit">View</a>
               </td>
@@ -103,9 +105,9 @@
          @if($questionsModule->student_id === Auth::user()->student->id)
          <tr data-id="{{$questionsModule->id}}">
            <td>{{ substr($questionsModule->title,'0','20') }}</td>
-           <td>{{ substr($questionsModule->info,'0','40') }}</td>
-           <td>{{ substr($questionsModule->module->module_name,'0','40') }}</td>
-           <td>{{ $questionsModule->created_at }}</td>
+           <td class="displayTable">{{ substr($questionsModule->info,'0','30') }}</td>
+           <td class="displayTable">{{ substr($questionsModule->module->module_name,'0','40') }}</td>
+           <td class="displayTable">{{ $questionsModule->created_at }}</td>
            <td>
              <a href="{{ route('user.questions.showModule', $questionsModule->id )}}" class="btn submit">View</a>
            </td>
@@ -119,9 +121,9 @@
       @if($questionsGeneral->student_id === Auth::user()->student->id)
       <tr data-id="{{$questionsGeneral->id}}">
         <td>{{ substr($questionsGeneral->title,'0','20') }}</td>
-        <td>{{ substr($questionsGeneral->info,'0','40') }}</td>
-        <td>General</td>
-        <td>{{ $questionsGeneral->created_at }}</td>
+        <td class="displayTable">{{ substr($questionsGeneral->info,'0','30') }}</td>
+        <td class="displayTable">General</td>
+        <td class="displayTable">{{ $questionsGeneral->created_at }}</td>
         <td>
           <a href="{{ route('user.questions.showGeneral', $questionsGeneral->id )}}" class="btn submit">View</a>
         </td>

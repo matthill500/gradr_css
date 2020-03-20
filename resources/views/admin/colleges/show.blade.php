@@ -8,7 +8,7 @@
         <div class="card-header">
           College: {{ $college->name }}
         </div>
-        <div class="card-body">
+        <div class="card-body card-body2">
         <table class="table table-hover">
           <tbody>
 

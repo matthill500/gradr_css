@@ -55,6 +55,9 @@ h1{
     color:white;
     filter: brightness(150%);
 }
+.drop-item{
+  color:black;
+}
 h2{
     text-align:center;
 }
@@ -62,7 +65,7 @@ h2{
 @media only screen and (max-width: 600px) {
 
 .about{
-  margin-bottom:10em;
+  margin-bottom:2em;
 }
 
 }
