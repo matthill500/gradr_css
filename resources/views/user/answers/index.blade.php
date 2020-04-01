@@ -88,22 +88,22 @@
 
                                       @if ($type === "questions_colleges")
                                       <h2 style="margin-top:0.2em;">{{ $questionsCollege->title }}</h2>
-                                      <p>{{ $questionsCollege->info }}</p>
+                                      <p>@php echo $questionsCollege->info @endphp</p>
                                       <h7><a href="{{ route('user.answers.create', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}"
                                          class="float-right btn submit mButton">Answer</a></h7>
                                       @elseif ($type === "questions_courses")
                                       <h2 style="margin-top:0.2em;">{{ $questionsCourse->title }}</h2>
-                                      <p>{{ $questionsCourse->info }}</p>
+                                      <p>@php echo $questionsCourse->info @endphp</p>
                                       <h7><a href="{{ route('user.answers.create', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}"
                                          class="float-right btn submit mButton">Answer</a></h7>
                                       @elseif ($type === "questions_modules")
                                       <h2 style="margin-top:0.2em;">{{ $questionsModule->title }}</h2>
-                                      <p>{{ $questionsModule->info }}</p>
+                                      <p>@php echo $questionsModule->info @endphp</p>
                                       <h7><a href="{{ route('user.answers.create', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}"
                                          class="float-right btn submit mButton">Answer</a></h7>
                                       @elseif ($type === "questions_generals")
                                       <h2 style="margin-top:0.2em;">{{ $questionsGeneral->title }}</h2>
-                                      <p>{{ $questionsGeneral->info }}</p>
+                                      <p>@php echo $questionsGeneral->info @endphp</p>
                                       <h7><a href="{{ route('user.answers.create', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}"
                                          class="float-right btn submit mButton">Answer</a></h7>
                                       @endif
@@ -224,7 +224,7 @@
                             </div>
                             @endif
                             @endforeach
-                            <!-- course answer -->
+                      <!-- course answer -->
                       @foreach ($answersCourses as $answersCourse)
                       @if($answersCourse->question_id === $qid && $answersCourse->type === $type)
                       <div class="card">
@@ -270,7 +270,7 @@
                       @endif
                       @endforeach
 
-                            <!-- module answer -->
+                      <!-- module answer -->
                       @foreach ($answersModules as $answersModule)
                       @if($answersModule->question_id === $qid && $answersModule->type === $type)
                       <div class="card">
@@ -314,7 +314,7 @@
                       @endif
                       @endforeach
 
-                            <!-- general answer -->
+                      <!-- general answer -->
                       @foreach ($answersGenerals as $answersGeneral)
                       @if($answersGeneral->question_id === $qid && $answersGeneral->type === $type)
                       <div class="card">

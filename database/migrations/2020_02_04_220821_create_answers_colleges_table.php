@@ -24,7 +24,7 @@ class CreateAnswersCollegesTable extends Migration
             $table->timestamps();
 
             $table->foreign('question_id')->references('id')->on('questions_colleges')->onDelete('cascade');
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
         });
     }
 
