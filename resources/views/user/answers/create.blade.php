@@ -22,7 +22,7 @@
                       <div class="content">
                         <h7><b>{{$questionsCollege->college->name}}</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsCollege->student->user->name) }}">{{ $questionsCollege->student->user->name }}</a></h7> · {{ substr($questionsCollege->created_at,'0','10')}}
                         <h2 style="margin-top:0.2em;">{{ $questionsCollege->title }}</h2>
-                        <p>{{ $questionsCollege->info }}</p>
+                        <p>@php echo $questionsCollege->info @endphp</p>
                         <h7 style=""><a href="{{ route('user.answers.index', ['type' => $questionsCollege->getTable(), 'id' => $questionsCollege->id])}}" > {{$questionsCollege->answers}} Answer(s) </a></h7>
                      </div>
               </tbody>
@@ -41,7 +41,7 @@
                       <div class="content">
                         <h7><b>General</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsGeneral->student->user->name) }}">{{ $questionsGeneral->student->user->name }}</a></h7> · {{ substr($questionsGeneral->created_at,'0','10')}}
                         <h2 style="margin-top:0.2em;">{{ $questionsGeneral->title }}</h2>
-                        <p>{{ $questionsGeneral->info }}</p>
+                        <p>@php echo $questionsGeneral->info @endphp</p>
                         <h7 style=""><a href="{{ route('user.answers.index', ['type' => $questionsGeneral->getTable(), 'id' => $questionsGeneral->id])}}" > {{$questionsGeneral->answers}} Answer(s) </a></h7>
                      </div>
               </tbody>
@@ -60,7 +60,7 @@
                       <div class="content">
                         <h7><b>{{$questionsCourse->course->course_name}}</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsCourse->student->user->name) }}">{{ $questionsCourse->student->user->name }}</a></h7> · {{ substr($questionsCourse->created_at,'0','10')}}
                         <h2 style="margin-top:0.2em;">{{ $questionsCourse->title }}</h2>
-                        <p>{{ $questionsCourse->info }}</p>
+                        <p>@php echo $questionsCourse->info @endphp</p>
                         <h7 style=""><a href="{{ route('user.answers.index', ['type' => $questionsCourse->getTable(), 'id' => $questionsCourse->id])}}" > {{$questionsCourse->answers}} Answer(s) </a></h7>
                      </div>
               </tbody>
@@ -79,7 +79,7 @@
                       <div class="content">
                         <h7><b>{{$questionsModule->module->module_name}}</b></h7> · <h7>Posted by: <a href="{{ route('user.profile', $questionsModule->student->user->name) }}">{{ $questionsModule->student->user->name }}</a></h7> · {{ substr($questionsModule->created_at,'0','10')}}
                         <h2 style="margin-top:0.2em;">{{ $questionsModule->title }}</h2>
-                        <p>{{ $questionsModule->info }}</p>
+                        <p>@php echo $questionsModule->info @endphp</p>
                         <h7 style=""><a href="{{ route('user.answers.index', ['type' => $questionsModule->getTable(), 'id' => $questionsModule->id])}}" > {{$questionsModule->answers}} Answer(s) </a></h7>
                      </div>
               </tbody>

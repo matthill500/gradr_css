@@ -7,7 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <script src="https://kit.fontawesome.com/2c0645eb19.js" crossorigin="anonymous"></script>
+
+    <title>Gradr</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -46,7 +48,8 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                  <i class="fas fa-home"></i>
+                    Gradr
                 </a>
                 <a class="navbar-brand" href="{{ url('/admin/home') }}">
                   Home

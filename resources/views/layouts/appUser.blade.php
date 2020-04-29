@@ -10,7 +10,7 @@
 
     <script src="https://kit.fontawesome.com/2c0645eb19.js" crossorigin="anonymous"></script>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Gradr</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -49,7 +49,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/user/home') }}">
                   <i class="fas fa-home"></i>
-                  {{ config('app.name', 'Laravel') }}
+                  Gradr
                 </a>
 
                 <a class="navbar-brand" href="{{ url('/user/questions') }}">
