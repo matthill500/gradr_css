@@ -389,9 +389,12 @@ class AnswerController extends Controller
     public function destroyGeneral($type, $id)
     {
        $answersGeneral = AnswersGeneral::findOrFail($id);
+       $questionsGeneral = QuestionsGeneral::findOrFail($answersGeneral->question_id);
        $qId  = $answersGeneral->question_id;
        $qType = $answersGeneral->type;
        $answersGeneral->delete();
+       $questionsGeneral->answers -= 1;
+       $questionsGeneral->save();
 
        return redirect()->route('user.answers.index',[$qType, $qId]);
     }
@@ -399,27 +402,37 @@ class AnswerController extends Controller
     public function destroyCollege($type, $id)
     {
        $answersCollege = AnswersCollege::findOrFail($id);
+       $questionsCollege = QuestionsCollege::findOrFail($answersCollege->question_id);
        $qId  = $answersCollege->question_id;
        $qType = $answersCollege->type;
        $answersCollege->delete();
+       $questionsCollege->answers -= 1;
+       $questionsCollege->save();
 
        return redirect()->route('user.answers.index',[$qType, $qId]);
     }
     public function destroyCourse($type, $id)
     {
        $answersCourse = AnswersCourse::findOrFail($id);
+       $questionsCourse = QuestionsCourse::findOrFail($answersCourse->question_id);
        $qId  = $answersCourse->question_id;
        $qType = $answersCourse->type;
        $answersCourse->delete();
+       $questionsCourse->answers -= 1;
+       $questionsCourse->save();
 
        return redirect()->route('user.answers.index',[$qType, $qId]);
     }
     public function destroyModule($type, $id)
     {
        $answersModule = AnswersModule::findOrFail($id);
+       $questionsModule = QuestionsModule::findOrFail($answersModule->question_id);
        $qId  = $answersModule->question_id;
        $qType = $answersModule->type;
        $answersModule->delete();
+
+       $questionsModule->answers -= 1;
+       $questionsModule->save();
 
        return redirect()->route('user.answers.index',[$qType, $qId]);
     }
